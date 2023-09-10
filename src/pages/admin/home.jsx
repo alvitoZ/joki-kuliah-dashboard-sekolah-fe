@@ -1,0 +1,63 @@
+import { Card, CardBody } from "@material-tailwind/react";
+import React from "react";
+import SearchIcon from "@mui/icons-material/Search";
+import { getMethod } from "@/service/auth";
+
+export const HomeAdmin = () => {
+  const [fullname, setFullname] = React.useState("");
+  React.useEffect(() => {
+    getMethod.GetUser().then((res) => {
+      setFullname(res.data.data.fullname);
+    });
+  }, []);
+  const [data, setData] = React.useState([]);
+  const [data2, setData2] = React.useState([]);
+  React.useEffect(() => {
+    getMethod.GetUsers("guru").then((res) => {
+      setData(res.data.data);
+    });
+    getMethod.GetUsers("siswa").then((res) => {
+      setData2(res.data.data);
+    });
+  }, []);
+  return (
+    <div className="flex flex-col gap-4">
+      <Card className="">
+        <CardBody className="flex flex-row gap-4">
+          <SearchIcon />
+          <div>mencari sesuatu....</div>
+        </CardBody>
+      </Card>
+      <Card className="">
+        <p className="p-6 text-2xl font-extrabold text-red-800">
+          Selamat datang, {fullname}
+        </p>
+        <CardBody className="p-8">
+          <Card className="">
+            <CardBody className="flex flex-col gap-4">
+              <div className="flex flex-col">
+                <p className="text-2xl font-extrabold text-red-800">
+                  Jumlah Guru : {data.length}
+                </p>
+                <p className="w-fit rounded-md border-2 border-light-green-600 p-2 font-bold text-light-green-600">
+                  Lihat Data Guru
+                </p>
+              </div>
+              <div className="flex flex-col">
+                <p className="text-2xl font-extrabold text-red-800">
+                  Jumlah Siswa : {data2.length}
+                </p>
+                <p className="w-fit rounded-md border-2 border-light-green-600 p-2 font-bold text-light-green-600">
+                  Lihat Data Siswa
+                </p>
+              </div>
+              <p>Tanggal</p>
+            </CardBody>
+          </Card>
+        </CardBody>
+      </Card>
+    </div>
+  );
+};
+
+export default HomeAdmin;

@@ -1,0 +1,127 @@
+  <Select
+                    size="lg"
+                    label="Pekerjaan"
+                    color="red"
+                    onChange={(e) => console.log(e)}
+                  >
+                    {test.map((e, i) => {
+                      return (
+                        <Option key={i} value={`${e.id}`}>
+                          {e.name}
+                        </Option>
+                        //  <Option value=>{e.id}</Option>
+                      );
+                    })}
+
+                  </Select>
+
+const [job, setJob] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://103.175.216.13:9090/api/v1/job")
+      .then((res) => {
+        setTest(res.data.Data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+
+
+import * as yup from "yup";
+
+export const validationSchema = yup
+  .object({
+    name: yup
+      .string()
+      .required("Field name Wajib di isi")
+      .min(5, "Minimal 5 karakter"),
+    password: yup
+      .string()
+      .min(4, "Password length should be at least 4 characters")
+      .max(12, "Password cannot exceed more than 12 characters"),
+    // postalCode: yup
+    //   .string()
+    //   .min(2, "postalCode length should be at least 4 characters")
+    //   .max(10, "postalCode cannot exceed more than 6 characters"),
+    placeOfBirth: yup
+      .string()
+      .min(4, "placeOfBirth length should be at least 4 characters")
+      .max(12, "placeOfBirth cannot exceed more than 12 characters"),
+    jobId: yup.number().typeError("jobId must be number"),
+    unitId: yup.number().typeError("unitId must be number"),
+    subDistrictId: yup.number().typeError("subDistrictId must be number"),
+    villageId: yup.number().typeError("villageId must be number"),
+    email: yup.string().email(),
+  })
+  .required();
+
+export const iniState = {
+  name: "",
+  password: "",
+  // postalCode: 0,
+  placeOfBirth: "",
+  jobId: "",
+  unitId: "",
+  subDistrictId: "",
+  villageId: "",
+  email: "",
+};
+
+{
+    "Status": {
+        "Code": 0,
+        "Message": "success"
+    },
+    "Data": {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIsIm5hbWUiOiJUYXVwaWsgUGlyZGlhbiIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTY4OTU3OTUxOH0.Bj2Esl_B149VX8gph2aKqQRDPTlJjxBNsbSXhtBBwcA",
+        "user": {
+            "id": "12",
+            "name": "Taupik Pirdian",
+            "email": "pirdiantaupik@gmail.com",
+            "phone": "085846132417",
+            "password": "",
+            "passwordConfirmation": "",
+            "jobId": 0,
+            "unitId": 0,
+            "placeOfBirth": "",
+            "dateOfBirth": "",
+            "gender": "",
+            "subDistrictId": 0,
+            "villageId": 0,
+            "address": "",
+            "postalCode": "",
+            "role": "admin",
+            "created_at": "0001-01-01T00:00:00Z"
+        }
+    }
+}
+
+  {/* INI MAPPINGNYA */}
+          {/* <div>
+            {schedule.map(({ date, schedulle }, index) => {
+              return schedulle.map(
+                ({ id, name, address, timeStart, timeEnd, type }, i) => {
+                  return (
+                    <Typography key={index}>
+                      {JSON.stringify({
+                        date: `${convertDateToId(
+                          dayjs(date).format(`dddd`)
+                        )} , ${dayjs(date).format("D YYYY")} ${dayjs(
+                          date
+                        ).format("MMMM")} ${dayjs(date).format("D YYYY")}`,
+                        id,
+                        name,
+                        address,
+                        timeStart,
+                        timeEnd,
+                        type,
+                      })}
+                    </Typography>
+                  );
+                }
+              );
+            })}
+          </div> */}
+          {/* ENDING MAPPINGNYA */}
