@@ -4,13 +4,25 @@ import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import { updateMethod, getMethod } from "@/service/auth";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Pengaturan = () => {
-  const [picture, setPicture] = useState(null);
+  //
+  const nav = useNavigate();
+  const [postData, setPostData] = useState({
+    fullname: "",
+    password: "",
+    image: null,
+  });
+  //
+
   const [imgData, setImgData] = useState(null);
   const onChangePicture = (e) => {
     if (e.target.files[0]) {
-      setPicture(e.target.files[0]);
+      setPostData({
+        ...postData,
+        image: e.target.files[0],
+      });
       const reader = new FileReader();
       reader.addEventListener("load", () => {
         setImgData(reader.result);
@@ -18,11 +30,8 @@ export const Pengaturan = () => {
       reader.readAsDataURL(e.target.files[0]);
     }
   };
-  console.log(picture);
   const changeEmail = (id, data) => {
-    updateMethod.UpdateEmail(id, data).then((res) => {
-      console.log(res);
-    });
+    updateMethod.UpdateEmail(id, data).then((res) => {});
   };
 
   const [data, setData] = useState({
@@ -32,6 +41,7 @@ export const Pengaturan = () => {
     email: "",
     gender: "",
     role: "",
+    image: "",
   });
 
   const [email, setEmail] = useState({
@@ -43,6 +53,12 @@ export const Pengaturan = () => {
       setData(res.data.data);
     });
   }, []);
+
+  const editProfil = (id, data) => {
+    updateMethod.EditProfil(id, data).then((res) => {
+      nav("/admin/pengaturan");
+    });
+  };
   return (
     <div className="flex flex-col gap-4">
       <Card className="">
@@ -62,7 +78,15 @@ export const Pengaturan = () => {
           <div className="flex flex-col gap-8">
             <p className="font-bold text-gray-600">Informasi Profil</p>
             <div className="flex items-center gap-4">
-              <img src={imgData} alt="your image" />
+              <img
+                className="max-h-40 w-40"
+                src={
+                  imgData
+                    ? imgData
+                    : `http://localhost:3001/images/${data.image}`
+                }
+                alt="your image"
+              />
               <div className="flex flex-col items-center rounded-md bg-red-600">
                 <p className="pt-2 text-white">Upload Foto</p>
                 <input
@@ -72,7 +96,14 @@ export const Pengaturan = () => {
                 />
               </div>
               <div className="flex h-fit items-center rounded-sm bg-gray-600 text-white">
-                <p className="py-1 px-2">hapus</p>
+                <p
+                  className="py-1 px-2"
+                  onClick={() =>
+                    setImgData(`http://localhost:3001/images/${data.image}`)
+                  }
+                >
+                  hapus
+                </p>
               </div>
             </div>
             <p>Maksimal ukuran file 1 MB</p>
@@ -94,6 +125,12 @@ export const Pengaturan = () => {
             size="lg"
             className={`form-control`}
             defaultValue={data.fullname}
+            onChange={(e) =>
+              setPostData({
+                ...postData,
+                fullname: e.target.value,
+              })
+            }
           />
           <Typography
             as="span"
@@ -142,6 +179,12 @@ export const Pengaturan = () => {
             size="lg"
             className={`form-control`}
             defaultValue={data.password}
+            onChange={(e) =>
+              setPostData({
+                ...postData,
+                password: e.target.value,
+              })
+            }
           />
           <Typography
             as="span"
@@ -166,6 +209,14 @@ export const Pengaturan = () => {
             JENIS KELAMIN
           </Typography>
           <div className="h-4 w-10 rounded-lg bg-green-400"></div>
+          <div>
+            <button
+              className="bg-red-500"
+              onClick={() => editProfil(data._id, postData)}
+            >
+              Edit Profil
+            </button>
+          </div>
         </div>
       </Card>
     </div>

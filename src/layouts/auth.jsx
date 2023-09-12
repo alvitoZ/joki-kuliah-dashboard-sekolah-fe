@@ -6,10 +6,10 @@ import {
   ArrowRightOnRectangleIcon,
 } from "@heroicons/react/24/solid";
 import { Navbar, Footer } from "@/widgets/layout";
-import { ForgotPassword, SignIn } from "@/pages/auth";
 import { RegisterSiswa } from "@/widgets/layout/RegisterSiswa";
 import { RegisterGuru } from "@/widgets/layout/RegisterGuru";
 import { RegisterAdmin } from "@/widgets/layout/RegisterAdmin";
+import { SignIn } from "@/pages/auth";
 
 export function Auth() {
   const navbarRoutes = [
@@ -39,11 +39,6 @@ export function Auth() {
           name: "sign in",
           path: "/sign-in",
           element: <SignIn />,
-        },
-        {
-          name: "sign up",
-          path: "/forgot-password",
-          element: <ForgotPassword />,
         },
         {
           name: "register siswa",

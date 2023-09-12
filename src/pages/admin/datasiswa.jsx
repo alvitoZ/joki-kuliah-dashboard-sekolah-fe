@@ -15,11 +15,10 @@ export const DataSiswa = () => {
     email: "",
     gender: "0",
     role: "siswa",
+    image: "",
   });
   const handleRegister = (data) => {
-    postMethod.Register(data).then((res) => {
-      console.log(res);
-    });
+    postMethod.Register(data).then((res) => {});
   };
 
   const [data, setData] = useState([]);
@@ -71,10 +70,10 @@ export const DataSiswa = () => {
                           {i + 1}
                         </td>
                         <td className="dark:border-neutral-500 whitespace-nowrap border-r px-6 py-4">
-                          {email}
+                          {fullname}
                         </td>
                         <td className="dark:border-neutral-500 whitespace-nowrap border-r px-6 py-4">
-                          {fullname}
+                          {email}
                         </td>
                         <td className="dark:border-neutral-500 whitespace-nowrap border-r px-6 py-4">
                           {password}

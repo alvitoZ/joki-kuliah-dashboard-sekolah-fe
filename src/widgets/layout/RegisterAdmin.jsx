@@ -26,6 +26,7 @@ export function RegisterAdmin() {
     email: "",
     gender: "",
     role: "admin",
+    image: "",
   });
   const nav = useNavigate();
   const handleRegister = (data) => {

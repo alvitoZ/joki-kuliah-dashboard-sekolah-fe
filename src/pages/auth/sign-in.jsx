@@ -1,15 +1,9 @@
-import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
 import React, { useState } from "react";
-// import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import {
   Card,
-  CardHeader,
   CardBody,
-  CardFooter,
   Input,
-  Checkbox,
   Button,
   Typography,
 } from "@material-tailwind/react";

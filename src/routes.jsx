@@ -6,8 +6,8 @@ import {
   DataGuru,
   Pengaturan,
 } from "@/pages/admin";
-import { TugasSiswa, HomeSiswa, NilaiSiswa } from "./pages/siswa/";
-import { HomeGuru, NilaiSiswaGuru, BuatSoal } from "./pages/guru";
+import { TugasSiswa, HomeSiswa, NilaiSiswa, Materi } from "./pages/siswa/";
+import { HomeGuru, NilaiSiswaGuru, BuatSoal, BuatMateri } from "./pages/guru";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -89,7 +89,7 @@ export const routes = [
         icon: <UserCircleIcon {...icon} />,
         name: "Materi Fisika:Gerak",
         path: "/materi",
-        element: <Profile />,
+        element: <Materi />,
       },
       {
         icon: <UserPlusIcon {...icon} />,
@@ -130,9 +130,15 @@ export const routes = [
     pages: [
       {
         icon: <UserPlusIcon {...icon} />,
-        name: "Buat Tugas",
-        path: "/Latihan-Tugas",
+        name: "Buat Soal",
+        path: "/Buat-Soal",
         element: <BuatSoal />,
+      },
+      {
+        icon: <UserPlusIcon {...icon} />,
+        name: "Buat Materi",
+        path: "/Buat-Materi",
+        element: <BuatMateri />,
       },
       {
         icon: <UserPlusIcon {...icon} />,

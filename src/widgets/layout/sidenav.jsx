@@ -15,16 +15,16 @@ import { useNavigate } from "react-router-dom";
 export function Sidenav({ brandImg, brandName, routes }) {
   const nav = useNavigate();
   const [role, setRole] = React.useState("");
-  // React.useEffect(() => {
-  //   getMethod
-  //     .GetUser()
-  //     .then((res) => {
-  //       setRole(res.data.data.role);
-  //     })
-  //     .catch((err) => {
-  //       nav("/auth/sign-in");
-  //     });
-  // }, []);
+  React.useEffect(() => {
+    getMethod
+      .GetUser()
+      .then((res) => {
+        setRole(res.data.data.role);
+      })
+      .catch((err) => {
+        nav("/auth/sign-in");
+      });
+  }, []);
   const [controller, dispatch] = useMaterialTailwindController();
   const { sidenavColor, sidenavType, openSidenav } = controller;
   const sidenavTypes = {
@@ -45,13 +45,11 @@ export function Sidenav({ brandImg, brandName, routes }) {
         }`}
       >
         <Link to="/" className="flex items-center gap-4 py-6 px-8">
-          <Avatar src={brandImg} size="sm" />
-          <Typography
-            variant="h6"
-            color={sidenavType === "dark" ? "white" : "blue-gray"}
-          >
-            {brandName}
-          </Typography>
+          <marquee behavior="" direction="">
+            <Typography variant="h3" color="red">
+              Diagnostik Siswa Online
+            </Typography>
+          </marquee>
         </Link>
         <IconButton
           variant="text"
@@ -67,7 +65,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
       <div className="m-4">
         {routes.map(
           ({ layout, title, pages }, key) =>
-            layout === "guru" && (
+            layout === role && (
               <ul key={key} className="mb-4 flex flex-col gap-1">
                 {title && (
                   <li className="mx-3.5 mt-4 mb-2">

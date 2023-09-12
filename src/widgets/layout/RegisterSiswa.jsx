@@ -20,6 +20,7 @@ export function RegisterSiswa() {
     email: "",
     gender: "0",
     role: "siswa",
+    image: "",
   });
   const nav = useNavigate();
   const handleRegister = (data) => {

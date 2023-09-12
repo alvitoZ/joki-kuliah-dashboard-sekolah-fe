@@ -2,7 +2,8 @@ import axios from "axios";
 
 export const publicHeader = () => {
   return {
-    "Content-Type": "application/json",
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
+    "content-type": "multipart/form-data",
   };
 };
 export const tokenHeader = () => {

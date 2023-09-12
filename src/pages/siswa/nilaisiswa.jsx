@@ -9,7 +9,6 @@ export function NilaiSiswa() {
 
   useEffect(() => {
     getMethod.GetNilai().then((res) => {
-      // console.log(res);
       setData(res.data.data);
     });
   }, []);
@@ -35,7 +34,14 @@ export function NilaiSiswa() {
           <tbody className="text-left">
             {data.map(({ nama, nilai, kategori }, i) => {
               return (
-                <tr key={i}>
+                <tr
+                  key={i}
+                  className={`${
+                    i % 2 ? "bg-blue-gray-300" : "bg-white"
+                  } hover:bg-blue-gray-400
+                  `}
+                  // onClick={(event) => handleUpdateSelection(event, i)}
+                >
                   <td className="p-4">{nama}</td>
                   <td className="p-4">{nilai}</td>
                   <td className="p-4">{kategori}</td>

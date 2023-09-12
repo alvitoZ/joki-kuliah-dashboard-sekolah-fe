@@ -12,7 +12,6 @@ export function TugasSiswa() {
   useEffect(() => {
     getMethod.SoalList(`c${kategoriC}`).then((res) => {
       setSoal(res.data.data);
-      // console.log(res.data.data[0].);
     });
   }, [kategoriC, layout]);
 
@@ -32,7 +31,6 @@ export function TugasSiswa() {
     const filtered = jawaban.filter(
       ({ nomor }, index) => !ids.includes(nomor, index + 1)
     );
-    console.log(filtered);
     if (filtered.length >= soal.length) {
       postMethod.PostJawaban(filtered).then((res) => {
         setJawaban([]);

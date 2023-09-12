@@ -1,5 +1,4 @@
-import axios from "axios";
-import { publicHeader, tokenHeader, api } from "../../helpers/config";
+import { tokenHeader, api, publicHeader } from "../../helpers/config";
 
 //post method
 class PostMethod {
@@ -27,7 +26,17 @@ class PostMethod {
 
   PostSoal = async (category, data) => {
     return await api
-      .post(`/api/v1/soal/post-soal/:${category}`, data, {
+      .post(`/api/v1/soal/post-soal/${category}`, data, {
+        headers: tokenHeader(),
+      })
+      .then((res) => {
+        return res;
+      });
+  };
+
+  PostMateri = async (data) => {
+    return await api
+      .post(`/api/v1/materi`, data, {
         headers: tokenHeader(),
       })
       .then((res) => {
@@ -88,6 +97,16 @@ class GetMethod {
         return res;
       });
   };
+
+  GetMateri = async () => {
+    return await api
+      .get(`/api/v1/materi`, {
+        headers: tokenHeader(),
+      })
+      .then((res) => {
+        return res;
+      });
+  };
 }
 
 //end get method
@@ -99,6 +118,16 @@ class UpdateMethod {
     return await api
       .put(`/api/v1/auth/update-email/${id}`, data, {
         headers: tokenHeader(),
+      })
+      .then((res) => {
+        return res;
+      });
+  };
+
+  EditProfil = async (id, data) => {
+    return await api
+      .put(`/api/v1/auth/edit-profil/${id}`, data, {
+        headers: publicHeader(),
       })
       .then((res) => {
         return res;

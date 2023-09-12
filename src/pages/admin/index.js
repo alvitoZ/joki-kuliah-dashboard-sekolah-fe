@@ -1,4 +1,3 @@
-export * from "@/pages/admin/adduser";
 export * from "@/pages/admin/home";
 export * from "@/pages/admin/profile";
 export * from "@/pages/admin/datasiswa";

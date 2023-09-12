@@ -16,12 +16,11 @@ export const DataGuru = () => {
     email: "",
     gender: "",
     role: "guru",
+    image: "",
   });
 
   const handleRegister = (data) => {
-    postMethod.Register(data).then((res) => {
-      console.log(res);
-    });
+    postMethod.Register(data).then((res) => {});
   };
 
   const [data, setData] = useState([]);

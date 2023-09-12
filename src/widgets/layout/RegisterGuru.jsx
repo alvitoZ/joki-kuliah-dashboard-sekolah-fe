@@ -19,6 +19,7 @@ export function RegisterGuru() {
     email: "",
     gender: "",
     role: "guru",
+    image: "",
   });
   const nav = useNavigate();
   const handleRegister = (data) => {
