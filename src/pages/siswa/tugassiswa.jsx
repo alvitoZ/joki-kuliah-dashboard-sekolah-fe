@@ -3,12 +3,17 @@ import { Typography } from "@material-tailwind/react";
 import ContainerTugas from "@/widgets/cards/container-tugas";
 import TugasGagal from "@/widgets/cards/tugas-gagal";
 import { getMethod, postMethod } from "@/service/auth";
+import { GrafikNilai } from "@/widgets/layout";
+import { useNavigate } from "react-router-dom";
 
 export function TugasSiswa() {
   const [soal, setSoal] = useState([]);
   const [hasil, setHasil] = useState({});
   const [layout, setLayout] = useState(false);
   const [kategoriC, setKategoriC] = useState(1);
+  const [grafikNilai, setGrafikNilai] = useState(1);
+  const nav = useNavigate();
+
   useEffect(() => {
     getMethod.SoalList(`c${kategoriC}`).then((res) => {
       setSoal(res.data.data);
@@ -40,8 +45,13 @@ export function TugasSiswa() {
     }
   };
 
+  if (grafikNilai > 6) {
+    return nav("/siswa/grafik-nilai");
+  }
+
   const lanjut = () => {
-    setKategoriC((e) => e + 1);
+    setGrafikNilai((e) => e + 1);
+    setKategoriC((e) => (e <= 6 ? e + 1 : (e = 1)));
     setLayout((v) => !v);
   };
 
@@ -68,7 +78,7 @@ export function TugasSiswa() {
           nilai={hasil.nilai}
         />
       ) : (
-        <div className="max-w-xs overflow-hidden rounded bg-blue-gray-300 ">
+        <div className="max-w-xs overflow-hidden rounded bg-white ">
           <div className="px-6 py-4 shadow-lg">
             <p className="mb-2 text-lg font-bold text-red-900">Pilihan Ganda</p>
             <p className="mb-2 text-sm font-bold text-red-900">Nomor 1-20</p>
