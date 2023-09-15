@@ -67,15 +67,40 @@ const removeFieldsSoal2 = (index) => {
 };
 // console.log(removeFieldsSoal2(2));
 
+const c4 = [
+  {
+    nomor: 0,
+    soal: "",
+    jawaban: [
+      { soal: "kjkj", status: false },
+      { soal: "", status: false },
+    ],
+  },
+  {
+    nomor: 0,
+    soal: "",
+    jawaban: [
+      { soal: "", status: false },
+      { soal: "", status: false },
+      { soal: "", status: false },
+    ],
+  },
+  {
+    nomor: 0,
+    soal: "",
+    jawaban: [{ soal: "", status: false }],
+  },
+];
+
 const removeFieldsJawaban = (parentIndex, childIndex) => {
-  let data = [...c2];
+  let data = [...c4];
   //   data[childIndex];
   let jawaban = data[parentIndex].jawaban[childIndex];
   data[parentIndex].jawaban.splice(childIndex, 1);
   // setSoal(data);
-  return { data: c2[0].jawaban, jawaban, parentIndex, childIndex };
+  return { data: c4[0].jawaban, jawaban, parentIndex, childIndex };
 };
-// console.log(removeFieldsJawaban(0, 2));
+console.log(removeFieldsJawaban(0, 1));
 
 const addFieldsJawaban = (parentIndex) => {
   let data = [...c3];
@@ -100,4 +125,13 @@ const addFieldsJawaban = (parentIndex) => {
 
 let alphabet = "abcdefghijklmnopqrstuvwxyz";
 // alphabet = [...alphabet[0]];
-console.log(alphabet[0]);
+// console.log(alphabet[0]);
+
+const coba = [
+  {
+    coba: "meong",
+    kitan: "kitan",
+  },
+];
+
+// console.log(coba[0].kitan);s

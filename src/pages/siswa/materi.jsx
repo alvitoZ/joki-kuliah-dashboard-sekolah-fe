@@ -1,7 +1,6 @@
 import { getMethod } from "@/service/auth";
 import { Card, CardBody } from "@material-tailwind/react";
 import React from "react";
-import ReactMarkdown from "react-markdown";
 
 export function Materi() {
   const [data, setData] = React.useState([]);
@@ -19,9 +18,7 @@ export function Materi() {
               <div className=" text-4xl font-bold text-red-900">
                 <h1 className="p-4">{title}</h1>
               </div>
-              <div>
-                <ReactMarkdown>{body}</ReactMarkdown>
-              </div>
+              <div dangerouslySetInnerHTML={{ __html: body }}></div>
             </div>
           );
         })}

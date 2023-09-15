@@ -68,11 +68,6 @@ export function TugasSiswa() {
           nilai={hasil.nilai}
         />
       ) : (
-        <div></div>
-      )}
-      {layout ? (
-        <div></div>
-      ) : (
         <div className="max-w-xs overflow-hidden rounded bg-blue-gray-300 ">
           <div className="px-6 py-4 shadow-lg">
             <p className="mb-2 text-lg font-bold text-red-900">Pilihan Ganda</p>
@@ -90,11 +85,11 @@ export function TugasSiswa() {
                 />
               );
             })}
-            <div className="bg-black text-center text-base font-bold text-red-900">
-              <p className="pb-2" onClick={() => cobafilter(jawaban)}>
-                Kumpulkan Jawaban
-              </p>
-            </div>
+          </div>
+          <div className="bg-black text-center text-base font-bold text-red-900">
+            <p className="pb-2" onClick={() => cobafilter(jawaban)}>
+              Kumpulkan Jawaban
+            </p>
           </div>
         </div>
       )}

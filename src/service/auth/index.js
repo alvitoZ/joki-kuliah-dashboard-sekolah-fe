@@ -43,6 +43,16 @@ class PostMethod {
         return res;
       });
   };
+
+  PostImage = async (data) => {
+    return await api
+      .post(`/api/v1/image`, data, {
+        headers: publicHeader(),
+      })
+      .then((res) => {
+        return res;
+      });
+  };
 }
 //end post method
 
@@ -51,6 +61,26 @@ class GetMethod {
   SoalList = async (category) => {
     return await api
       .get(`/api/v1/soal/list-soal/${category}`, {
+        headers: tokenHeader(),
+      })
+      .then((res) => {
+        return res;
+      });
+  };
+
+  GetNilaiById = async (id) => {
+    return await api
+      .get(`/api/v1/soal/nilai/${id}`, {
+        headers: tokenHeader(),
+      })
+      .then((res) => {
+        return res;
+      });
+  };
+
+  GetUserById = async (id) => {
+    return await api
+      .get(`/api/v1/auth/user-id/${id}`, {
         headers: tokenHeader(),
       })
       .then((res) => {
@@ -81,6 +111,26 @@ class GetMethod {
   GetUsers = async (role) => {
     return await api
       .get(`/api/v1/auth/user/${role}`, {
+        headers: tokenHeader(),
+      })
+      .then((res) => {
+        return res;
+      });
+  };
+
+  GetImages = async () => {
+    return await api
+      .get(`/api/v1/image/`, {
+        headers: tokenHeader(),
+      })
+      .then((res) => {
+        return res;
+      });
+  };
+
+  GetOnlyImages = async () => {
+    return await api
+      .get(`/api/v1/image/images`, {
         headers: tokenHeader(),
       })
       .then((res) => {
@@ -133,11 +183,55 @@ class UpdateMethod {
         return res;
       });
   };
+
+  EditNilai = async (id, data) => {
+    return await api
+      .put(`/api/v1/soal/edit-nilai/${id}`, data, {
+        headers: tokenHeader(),
+      })
+      .then((res) => {
+        return res;
+      });
+  };
+
+  EditUser = async (id, data) => {
+    return await api
+      .put(`/api/v1/auth/edit-user/${id}`, data, {
+        headers: tokenHeader(),
+      })
+      .then((res) => {
+        return res;
+      });
+  };
 }
 //end put method
 
+//delete method
+class DeleteMethod {
+  DeleteNilaiById = async (id) => {
+    return await api
+      .delete(`/api/v1/soal/nilai/${id}`, {
+        headers: tokenHeader(),
+      })
+      .then((res) => {
+        return res;
+      });
+  };
+
+  DeleteImageById = async (id) => {
+    return await api
+      .delete(`/api/v1/image/${id}`, {
+        headers: tokenHeader(),
+      })
+      .then((res) => {
+        return res;
+      });
+  };
+}
+//end delete method
 //
 export const getMethod = new GetMethod();
 export const postMethod = new PostMethod();
 export const updateMethod = new UpdateMethod();
+export const deleteMethod = new DeleteMethod();
 //

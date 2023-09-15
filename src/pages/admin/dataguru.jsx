@@ -8,6 +8,8 @@ import {
 } from "@material-tailwind/react";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import { getMethod, postMethod } from "@/service/auth";
+import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 export const DataGuru = () => {
   const [regis, setRegis] = useState({
@@ -19,8 +21,29 @@ export const DataGuru = () => {
     image: "",
   });
 
+  const [refresh, setRefresh] = useState(false);
+
   const handleRegister = (data) => {
-    postMethod.Register(data).then((res) => {});
+    Swal.fire({
+      title: `tambah guru dengan nama:${regis.fullname} ?`,
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Ya, Tambah!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: `data berhasil ditambah`,
+          icon: "success",
+          confirmButtonText: "Tutup",
+        }).then((_) => {
+          postMethod.Register(data).then((res) => {
+            setRefresh((v) => !v);
+          });
+        });
+      }
+    });
   };
 
   const [data, setData] = useState([]);
@@ -28,7 +51,7 @@ export const DataGuru = () => {
     getMethod.GetUsers("guru").then((res) => {
       setData(res.data.data);
     });
-  }, []);
+  }, [refresh]);
   return (
     <CardBody className="mr-8 px-0 pb-2">
       <Card className="h-full w-full overflow-y-auto">
@@ -40,8 +63,13 @@ export const DataGuru = () => {
           <p className="text-lg font-medium text-gray-600">
             Data Guru yang terdaftar di website ini.
           </p>
+          {data.length < 1 ? (
+            <p className="font-medium text-red-400">Data tidak ditemukan !</p>
+          ) : (
+            <p className="font-medium text-red-400"></p>
+          )}
         </div>
-        <p className="font-medium text-red-400">Data tidak ditemukan !</p>
+
         <div className="flex flex-col">
           <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
             <div className="overflow-hidden">
@@ -66,30 +94,37 @@ export const DataGuru = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.map(({ email, fullname, password, createdAt }, i) => {
-                    return (
-                      <tr key={i} className="dark:border-neutral-500 border-b">
-                        <td className="dark:border-neutral-500 whitespace-nowrap border-r px-6 py-4 font-medium">
-                          {i + 1}
-                        </td>
-                        <td className="dark:border-neutral-500 whitespace-nowrap border-r px-6 py-4">
-                          {fullname}
-                        </td>
-                        <td className="dark:border-neutral-500 whitespace-nowrap border-r px-6 py-4">
-                          {email}
-                        </td>
-                        <td className="dark:border-neutral-500 whitespace-nowrap border-r px-6 py-4">
-                          {password}
-                        </td>
-                        <td className="dark:border-neutral-500 whitespace-nowrap border-r px-6 py-4">
-                          {createdAt}
-                        </td>
-                        <td className="dark:border-neutral-500 whitespace-nowrap border-r px-6 py-4">
-                          <BorderColorIcon /> <span>Edit</span>
-                        </td>
-                      </tr>
-                    );
-                  })}
+                  {data.map(
+                    ({ email, fullname, password, createdAt, _id }, i) => {
+                      return (
+                        <tr
+                          key={i}
+                          className="dark:border-neutral-500 border-b"
+                        >
+                          <td className="dark:border-neutral-500 whitespace-nowrap border-r px-6 py-4 font-medium">
+                            {i + 1}
+                          </td>
+                          <td className="dark:border-neutral-500 whitespace-nowrap border-r px-6 py-4">
+                            {fullname}
+                          </td>
+                          <td className="dark:border-neutral-500 whitespace-nowrap border-r px-6 py-4">
+                            {email}
+                          </td>
+                          <td className="dark:border-neutral-500 whitespace-nowrap border-r px-6 py-4">
+                            {password}
+                          </td>
+                          <td className="dark:border-neutral-500 whitespace-nowrap border-r px-6 py-4">
+                            {createdAt}
+                          </td>
+                          <td className="dark:border-neutral-500 whitespace-nowrap border-r px-6 py-4">
+                            <Link to={`/admin/edit-user/${_id}`}>
+                              <BorderColorIcon /> <span>Edit</span>
+                            </Link>
+                          </td>
+                        </tr>
+                      );
+                    }
+                  )}
                 </tbody>
               </table>
             </div>

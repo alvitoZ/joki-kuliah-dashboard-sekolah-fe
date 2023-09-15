@@ -22,13 +22,11 @@ export function NilaiSiswa() {
         <table className="w-[70%] table-auto text-left">
           <thead className="">
             <tr>
-              {["Nama Siswa", "Total Nilai", "Kategori", "Aksi", ""].map(
-                (head) => (
-                  <th key={head} className="p-4 text-sm font-medium uppercase">
-                    {head}
-                  </th>
-                )
-              )}
+              {["Nama Siswa", "Total Nilai", "Kategori"].map((head) => (
+                <th key={head} className="p-4 text-sm font-medium uppercase">
+                  {head}
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody className="text-left">
@@ -40,12 +38,11 @@ export function NilaiSiswa() {
                     i % 2 ? "bg-blue-gray-300" : "bg-white"
                   } hover:bg-blue-gray-400
                   `}
-                  // onClick={(event) => handleUpdateSelection(event, i)}
                 >
                   <td className="p-4">{nama}</td>
                   <td className="p-4">{nilai}</td>
                   <td className="p-4">{kategori}</td>
-                  <td className="p-4">
+                  {/* <td className="hidden p-4">
                     <div className="flex flex-col gap-2">
                       <div>
                         <BorderColorIcon />
@@ -56,7 +53,7 @@ export function NilaiSiswa() {
                         <span className="font-bold text-red-500">Hapus</span>
                       </div>
                     </div>
-                  </td>
+                  </td> */}
                 </tr>
               );
             })}

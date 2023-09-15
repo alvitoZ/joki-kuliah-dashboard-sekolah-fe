@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Input,
   Typography,
@@ -7,10 +7,9 @@ import {
   Option,
 } from "@material-tailwind/react";
 import { PlusCircleIcon, MinusCircleIcon } from "@heroicons/react/24/outline";
-
-import { useState } from "react";
-import { postMethod } from "@/service/auth";
+import { getMethod, postMethod } from "@/service/auth";
 import Swal from "sweetalert2";
+import Rte from "@/widgets/layout/Rte";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -18,6 +17,7 @@ const icon = {
 
 export function BuatSoal() {
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
+
   const [soal, setSoal] = useState([
     {
       nomor: 0,
@@ -28,13 +28,13 @@ export function BuatSoal() {
 
   const handleFormSoalChange = (event, index) => {
     let data = [...soal];
-    data[index][event.target.name] = event.target.value;
+    data[index].soal = event;
     setSoal(data);
   };
 
   const handleFormSoalNomorChange = (event, index) => {
     let data = [...soal];
-    data[index][event.target.name] = parseInt(event.target.value);
+    data[index].nomor = parseInt(event.target.value);
     setSoal(data);
   };
 
@@ -53,11 +53,11 @@ export function BuatSoal() {
     setSoal([...soal, object]);
   };
 
-  const removeFieldsSoal = (index) => {
-    let data = [...soal];
-    data.splice(index, 1);
-    setSoal(data);
-  };
+  // const removeFieldsSoal = (index) => {
+  //   let data = [...soal];
+  //   data.splice(index, 1);
+  //   setSoal(data);
+  // };
 
   const addFieldsJawaban = (parentIndex) => {
     let data = [...soal];
@@ -70,46 +70,67 @@ export function BuatSoal() {
     setSoal(data);
   };
 
-  const removeFieldsJawaban = (parentIndex, childIndex) => {
-    let data = [...soal];
-    data[parentIndex].jawaban.splice(childIndex, 1);
-    setSoal(data);
-  };
-
+  // const removeFieldsJawaban = (parentIndex, childIndex) => {
+  //   let data = [...soal];
+  //   data[parentIndex].jawaban.splice(childIndex, 1);
+  //   setSoal(data);
+  // };
   //
 
   const handleFormJawabanChange = (event, parentIndex, childIndex) => {
     let data = [...soal];
-    data[parentIndex].jawaban[childIndex][event.target.name] =
-      event.target.value;
+    data[parentIndex].jawaban[childIndex].soal = event;
     setSoal(data);
   };
   const handleFormJawabanStatusChange = (event, parentIndex, childIndex) => {
     let data = [...soal];
-    data[parentIndex].jawaban[childIndex][event.target.name] =
-      event.target.checked;
+    data[parentIndex].jawaban[childIndex].status = event.target.checked;
     setSoal(data);
   };
   //
 
   const sendData = (category, data) => {
-    postMethod.PostSoal(category, data).then((res) => {
-      Swal.fire(`${res.data.msg}`);
-      setSoal([
-        {
-          nomor: 0,
-          soal: "",
-          jawaban: [{ soal: "", status: false }],
-        },
-      ]);
+    Swal.fire({
+      title: "Post Soal ini?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Ya, Tambah!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: `data berhasil ditambahkan`,
+          icon: "success",
+          confirmButtonText: "Tutup",
+        }).then((_) => {
+          postMethod.PostSoal(category, data).then((res) => {
+            setSoal([
+              {
+                nomor: 0,
+                soal: "",
+                jawaban: [{ soal: "", status: false }],
+              },
+            ]);
+          });
+        });
+      }
     });
   };
 
   const [temp, setTemp] = useState("");
 
+  const [images, setImages] = React.useState([]);
+  React.useEffect(() => {
+    getMethod.GetImages().then((res) => {
+      setImages(res.data.data);
+    });
+  }, []);
+
   return (
     <React.Fragment>
       <div className="grid gap-4 px-60">
+        {/* <DialogPostImage /> */}
         <div className="flex gap-4 border-2 border-red-600">
           <IconButton color="pink" onClick={addFieldsSoal}>
             <PlusCircleIcon {...icon} />
@@ -131,7 +152,7 @@ export function BuatSoal() {
           <Option value="c6">c6</Option>
         </Select>
 
-        {soal.map((form, parentIndex) => {
+        {soal.map((parent, parentIndex) => {
           return (
             <div key={parentIndex} className="flex gap-10">
               <div className="">
@@ -143,19 +164,18 @@ export function BuatSoal() {
                 </Typography>
                 <Input
                   name="nomor"
+                  value={parent.nomor ? parent.nomor : 0}
                   onChange={(event) =>
                     handleFormSoalNomorChange(event, parentIndex)
                   }
                   label="Nomor"
-                  type="number"
-                  value={form.nomor}
                 />
-                <Input
-                  name="soal"
-                  onChange={(event) => handleFormSoalChange(event, parentIndex)}
-                  value={form.soal}
-                  label="Soal Di Nomor ini"
-                />
+                <div className="py-6">
+                  <Rte
+                    childData={parent.soal}
+                    childFunc={(e) => handleFormSoalChange(e, parentIndex)}
+                  />
+                </div>
                 <div className="flex gap-4 border-2 border-red-600">
                   <IconButton
                     color="blue"
@@ -165,58 +185,63 @@ export function BuatSoal() {
                   </IconButton>
                   <p className="text-blue-700">tambah jawaban</p>
                 </div>
-                {form.jawaban.map((e, childIndex) => {
+                {parent.jawaban.map((child, childIndex) => {
                   return (
                     <div className="pl-10" key={childIndex}>
-                      <Typography
-                        variant="small"
-                        className="flex items-center font-bold text-red-900"
-                      >
-                        Jawaban: {alphabet[childIndex]}
-                      </Typography>
-
-                      <div className="flex">
-                        <p>status</p>
-                        <input
-                          type="checkbox"
-                          name="status"
-                          onChange={(event) =>
-                            handleFormJawabanStatusChange(
-                              event,
-                              parentIndex,
-                              childIndex
-                            )
-                          }
-                        />
-                      </div>
-                      <Input
-                        name="soal"
-                        onChange={(event) =>
-                          handleFormJawabanChange(
-                            event,
-                            parentIndex,
-                            childIndex
-                          )
-                        }
-                        value={e.soal}
-                        label="Teks Di status ini"
-                      />
-                      <div className="flex gap-4 border-2 border-red-600">
-                        <IconButton
-                          color="yellow"
-                          onClick={() =>
-                            removeFieldsJawaban(parentIndex, childIndex)
-                          }
+                      <div className="border-2 border-red-600">
+                        <Typography
+                          variant="small"
+                          className="flex items-center font-bold text-red-900"
                         >
-                          <MinusCircleIcon {...icon} />
-                        </IconButton>
-                        <p className="text-yellow-600">hapus jawaban</p>
+                          Jawaban: {alphabet[childIndex]}
+                        </Typography>
+
+                        <div className="flex border-2 border-red-600">
+                          <p>status</p>
+                          <input
+                            type="checkbox"
+                            name="status"
+                            value={child.status}
+                            onChange={(event) =>
+                              handleFormJawabanStatusChange(
+                                event,
+                                parentIndex,
+                                childIndex
+                              )
+                            }
+                          />
+                        </div>
+                        <div>
+                          <div className="py-6">
+                            <Rte
+                              childData={child.soal}
+                              childFunc={(e) =>
+                                handleFormJawabanChange(
+                                  e,
+                                  parentIndex,
+                                  childIndex
+                                )
+                              }
+                            />
+                          </div>
+                        </div>
+                        {/* <div className="flex gap-4 border-2 border-red-600">
+                          <IconButton
+                            color="yellow"
+                            onClick={() =>
+                              removeFieldsJawaban(parentIndex, childIndex)
+                            }
+                          >
+                            <MinusCircleIcon {...icon} />
+                          </IconButton>
+                          <p className="text-yellow-600">hapus jawaban</p>
+                        </div> */}
                       </div>
                     </div>
                   );
                 })}
 
-                <div className="flex gap-4 border-2 border-red-600">
+                {/* <div className="flex gap-4 border-2 border-red-600">
                   <IconButton
                     color="red"
                     onClick={() => removeFieldsSoal(parentIndex)}
@@ -224,13 +249,16 @@ export function BuatSoal() {
                     <MinusCircleIcon {...icon} />
                   </IconButton>
                   <p className="text-red-900">hapus soal</p>
-                </div>
+                </div> */}
               </div>
             </div>
           );
         })}
-        <div className="py-10">
-          <button onClick={() => sendData(temp, soal)}>Post Soal</button>
+        <div
+          onClick={() => sendData(temp, soal)}
+          className="flex items-center justify-center rounded-lg bg-green-600 hover:bg-red-600"
+        >
+          <button className="w-fit p-2">Post Soal</button>
         </div>
       </div>
     </React.Fragment>
@@ -240,35 +268,11 @@ export function BuatSoal() {
 export default BuatSoal;
 
 {
-  /* {jawaban.map((form, index) => {
-          return (
-            <div key={index}>
-              <div className="flex flex-row gap-2">
-                <Typography
-                  variant="h6"
-                  className="flex items-center text-red-900"
-                >
-                  Jawaban: {index + 1}
-                </Typography>
-              </div>
-              <div key={index} className="flex items-center justify-between">
-                <div>
-                  <Input
-                    name="soal"
-                    onChange={(event) => handleFormChange(event, index)}
-                    value={form.soal}
-                  />
-                  <Input
-                    name="status"
-                    onChange={(event) => handleFormChange(event, index)}
-                    value={form.status}
-                  />
-                </div>
-                <IconButton color="red" onClick={() => removeFields(index)}>
-                  <MinusCircleIcon {...icon} />
-                </IconButton>
-              </div>
-            </div>
-          );
-        })} */
+  /* <Input
+value={parent.soal}
+label="test"
+onChange={(e) =>
+  handleFormSoalChange(e.target.value, parentIndex)
+}
+/> */
 }

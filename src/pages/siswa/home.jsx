@@ -2,6 +2,7 @@ import { Card, CardBody } from "@material-tailwind/react";
 import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { getMethod } from "@/service/auth";
+import { Link } from "react-router-dom";
 
 export const HomeSiswa = () => {
   const [fullname, setFullname] = React.useState("");
@@ -26,7 +27,7 @@ export const HomeSiswa = () => {
           <p className="font-bold">
             kamu memiliki 1 tugas latihan yang baru.{" "}
             <span className="font-extrabold text-red-800">
-              Kerjakan sekarang!
+              <Link to="/siswa/Latihan-Tugas">Kerjakan sekarang!</Link>
             </span>
           </p>
           <p className="font-bold">
@@ -34,7 +35,9 @@ export const HomeSiswa = () => {
             ini ya.
           </p>
           <div className="flex h-auto w-32 items-center justify-center rounded-lg border-2 border-red-600">
-            <p className="p-1 font-extrabold text-red-500">lihat nilaimu</p>
+            <p className="p-1 font-extrabold text-red-500">
+              <Link to="/siswa/Nilai-Siswa">lihat nilaimu</Link>
+            </p>
           </div>
         </CardBody>
         <CardBody>
@@ -45,7 +48,7 @@ export const HomeSiswa = () => {
             <p className="font-bold">
               kamu memiliki 1 tugas latihan yang baru.{" "}
               <span className="font-extrabold text-red-800">
-                Kerjakan sekarang!
+                <Link to="/siswa/Latihan-Tugas">Kerjakan sekarang!</Link>
               </span>
             </p>
             <p className="font-bold">
@@ -53,7 +56,10 @@ export const HomeSiswa = () => {
               hari ini ya.
             </p>
             <div className="flex h-auto w-32 items-center justify-center rounded-lg border-2 border-red-600">
-              <p className="p-1 font-extrabold text-red-500">lihat nilaimu</p>
+              <p className="p-1 font-extrabold text-red-500">
+                {" "}
+                <Link to="/siswa/Nilai-Siswa">lihat nilaimu</Link>
+              </p>
             </div>
           </div>
         </CardBody>

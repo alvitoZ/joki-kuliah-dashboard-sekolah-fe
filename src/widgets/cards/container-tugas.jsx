@@ -14,10 +14,14 @@ const ContainerTugas = ({ kategori, nomor, soal, id, data, atasFunc }) => {
 
   return (
     <div>
-      <p className="mb-2 text-xs font-bold text-gray-700">
+      <p className="py-4 text-xs font-bold text-gray-700">
         nomor {nomor} kategori {kategori}
       </p>
-      <p className="text-base font-bold text-gray-800">{soal}</p>
+      <div className="flex gap-1">
+        <span className="font-bold">{nomor}.</span>{" "}
+        <div dangerouslySetInnerHTML={{ __html: soal }}></div>
+      </div>
+
       {(() => {
         let text = "a";
         let code = text.charCodeAt(0) + data.length;

@@ -21,7 +21,7 @@ export const HomeGuru = () => {
       <Card className="">
         <CardBody className="flex flex-col gap-4">
           <p className="text-2xl font-extrabold text-red-800">
-            Selamat datang, {fullname}
+            Selamat Datang ibu/bapak guru {fullname}
           </p>
         </CardBody>
       </Card>

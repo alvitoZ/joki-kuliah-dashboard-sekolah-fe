@@ -5,6 +5,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import { updateMethod, getMethod } from "@/service/auth";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export const Pengaturan = () => {
   //
@@ -31,7 +32,26 @@ export const Pengaturan = () => {
     }
   };
   const changeEmail = (id, data) => {
-    updateMethod.UpdateEmail(id, data).then((res) => {});
+    Swal.fire({
+      title: `update dengan email : ${email.email}`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Ya, update!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: `email berhasil diupdate`,
+          icon: "success",
+          confirmButtonText: "Tutup",
+        }).then((_) => {
+          updateMethod.UpdateEmail(id, data).then((res) => {
+            nav("/admin/dashboard");
+          });
+        });
+      }
+    });
   };
 
   const [data, setData] = useState({
@@ -55,8 +75,25 @@ export const Pengaturan = () => {
   }, []);
 
   const editProfil = (id, data) => {
-    updateMethod.EditProfil(id, data).then((res) => {
-      nav("/admin/pengaturan");
+    Swal.fire({
+      title: `update dengan nama : ${postData.fullname} dan password: ${postData.password}`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Ya, update!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: `data berhasil diupdate`,
+          icon: "success",
+          confirmButtonText: "Tutup",
+        }).then((_) => {
+          updateMethod.EditProfil(id, data).then((res) => {
+            nav("/admin/dashboard");
+          });
+        });
+      }
     });
   };
   return (
@@ -139,7 +176,7 @@ export const Pengaturan = () => {
           >
             EMAIL
           </Typography>
-          <div>
+          <div className="">
             <Input
               color="red"
               type="text"
@@ -147,7 +184,7 @@ export const Pengaturan = () => {
               className={`form-control`}
               defaultValue={data.email}
             />
-            <div className="flex gap-1">
+            <div className="flex gap-1 py-4">
               <input
                 type="text"
                 className="border-2 border-gray-700"
@@ -162,7 +199,7 @@ export const Pengaturan = () => {
                 className=" bg-blue-gray-300 text-black"
                 onClick={() => changeEmail(data._id, email)}
               >
-                <p className="p-[4px] text-sm">Update Email</p>
+                <p className="p-[4px] px-2 text-sm">Update Email</p>
               </button>
             </div>
           </div>
@@ -211,7 +248,7 @@ export const Pengaturan = () => {
           <div className="h-4 w-10 rounded-lg bg-green-400"></div>
           <div>
             <button
-              className="bg-red-500"
+              className="bg-blue-800 px-2 text-white"
               onClick={() => editProfil(data._id, postData)}
             >
               Edit Profil
