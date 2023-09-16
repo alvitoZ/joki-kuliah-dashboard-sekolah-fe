@@ -6,45 +6,6 @@ import { Pie, Bar } from "react-chartjs-2";
 import { Link } from "react-router-dom";
 import { getMethod } from "@/service/auth";
 
-// export const Data = [
-//   {
-//     id: 1,
-//     kategori: "C1",
-//     nilai: 80000,
-//     userLost: 823,
-//   },
-//   {
-//     id: 2,
-//     kategori: "C2",
-//     nilai: 45677,
-//     userLost: 345,
-//   },
-//   {
-//     id: 3,
-//     kategori: "C3",
-//     nilai: 78888,
-//     userLost: 555,
-//   },
-//   {
-//     id: 4,
-//     kategori: "C4",
-//     nilai: 90000,
-//     userLost: 4555,
-//   },
-//   {
-//     id: 5,
-//     kategori: "C5",
-//     nilai: 4300,
-//     userLost: 234,
-//   },
-//   {
-//     id: 5,
-//     kategori: "C6",
-//     nilai: 4300,
-//     userLost: 234,
-//   },
-// ];
-
 Chart.register(CategoryScale);
 
 export function GrafikNilai() {
@@ -107,9 +68,9 @@ export function GrafikNilai() {
           }}
         />
       </div>
-      <div className="py-10">
+      <div className="py-10 pl-10">
         <Link
-          className="rounded-lg bg-green-400 p-1 hover:bg-blue-500"
+          className="rounded-lg bg-green-400 p-1 px-20 text-white hover:bg-blue-500"
           to="/siswa/Latihan-Tugas"
         >
           kembali

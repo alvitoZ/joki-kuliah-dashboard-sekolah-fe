@@ -6,6 +6,7 @@ import React from "react";
 import Image from "@tiptap/extension-image";
 import { getMethod } from "@/service/auth";
 import DialogPostImage from "./DialogPostImage";
+import "./Rte.css";
 
 const Rte = ({ childFunc, childData, index }) => {
   const [images, setImages] = React.useState([]);
@@ -36,7 +37,8 @@ const Rte = ({ childFunc, childData, index }) => {
   // const [data, setData] = React.useState(``);
   const editor = useEditor({
     extensions: extensions,
-    content: childData,
+    content: `<p>Masukkan Teks disini.......</p> 
+    ${childData}`,
     onUpdate({ editor }) {
       childFunc(editor.getHTML(), index, childData);
     },
@@ -64,7 +66,7 @@ const Rte = ({ childFunc, childData, index }) => {
           onClick={() => editor.chain().focus().toggleBold().run()}
           disabled={!editor.can().chain().focus().toggleBold().run()}
           className={`border-2 border-black p-1 ${
-            editor.isActive("bold") ? "text-red-900" : ""
+            editor.isActive("bold") ? "bg-blue-400 text-white" : ""
           }`}
         >
           bold
@@ -73,7 +75,7 @@ const Rte = ({ childFunc, childData, index }) => {
           onClick={() => editor.chain().focus().toggleItalic().run()}
           disabled={!editor.can().chain().focus().toggleItalic().run()}
           className={`border-2 border-black  p-1 ${
-            editor.isActive("italic") ? "text-red-900" : ""
+            editor.isActive("italic") ? "bg-blue-400 text-white" : ""
           }`}
         >
           italic
@@ -82,7 +84,7 @@ const Rte = ({ childFunc, childData, index }) => {
           onClick={() => editor.chain().focus().toggleStrike().run()}
           disabled={!editor.can().chain().focus().toggleStrike().run()}
           className={`border-2 border-black   p-1 ${
-            editor.isActive("strike") ? "text-red-900" : ""
+            editor.isActive("strike") ? "bg-blue-400 text-white" : ""
           }`}
         >
           strike
@@ -90,7 +92,7 @@ const Rte = ({ childFunc, childData, index }) => {
         <button
           onClick={() => editor.chain().focus().setParagraph().run()}
           className={`border-2 border-black  p-1 ${
-            editor.isActive("paragraph") ? "text-red-900" : ""
+            editor.isActive("paragraph") ? "bg-blue-400 text-white" : ""
           }`}
         >
           paragraph
@@ -100,7 +102,9 @@ const Rte = ({ childFunc, childData, index }) => {
             editor.chain().focus().toggleHeading({ level: 1 }).run()
           }
           className={`border-2 border-black  p-1 ${
-            editor.isActive("heading", { level: 1 }) ? "text-red-900" : ""
+            editor.isActive("heading", { level: 1 })
+              ? "bg-blue-400 text-white"
+              : ""
           }`}
         >
           h1
@@ -110,7 +114,9 @@ const Rte = ({ childFunc, childData, index }) => {
             editor.chain().focus().toggleHeading({ level: 2 }).run()
           }
           className={`border-2 border-black  p-1 ${
-            editor.isActive("heading", { level: 2 }) ? "text-red-900" : ""
+            editor.isActive("heading", { level: 2 })
+              ? "bg-blue-400 text-white"
+              : ""
           }`}
         >
           h2
@@ -120,7 +126,9 @@ const Rte = ({ childFunc, childData, index }) => {
             editor.chain().focus().toggleHeading({ level: 3 }).run()
           }
           className={`border-2 border-black  p-1 ${
-            editor.isActive("heading", { level: 3 }) ? "text-red-900" : ""
+            editor.isActive("heading", { level: 3 })
+              ? "bg-blue-400 text-white"
+              : ""
           }`}
         >
           h3
@@ -130,7 +138,9 @@ const Rte = ({ childFunc, childData, index }) => {
             editor.chain().focus().toggleHeading({ level: 4 }).run()
           }
           className={`border-2 border-black  p-1 ${
-            editor.isActive("heading", { level: 4 }) ? "text-red-900" : ""
+            editor.isActive("heading", { level: 4 })
+              ? "bg-blue-400 text-white"
+              : ""
           }`}
         >
           h4
@@ -140,7 +150,9 @@ const Rte = ({ childFunc, childData, index }) => {
             editor.chain().focus().toggleHeading({ level: 5 }).run()
           }
           className={`border-2 border-black  p-1 ${
-            editor.isActive("heading", { level: 5 }) ? "text-red-900" : ""
+            editor.isActive("heading", { level: 5 })
+              ? "bg-blue-400 text-white"
+              : ""
           }`}
         >
           h5
@@ -150,7 +162,9 @@ const Rte = ({ childFunc, childData, index }) => {
             editor.chain().focus().toggleHeading({ level: 6 }).run()
           }
           className={`border-2 border-black  p-1 ${
-            editor.isActive("heading", { level: 6 }) ? "text-red-900" : ""
+            editor.isActive("heading", { level: 6 })
+              ? "bg-blue-400 text-white"
+              : ""
           }`}
         >
           h6

@@ -39,28 +39,31 @@ export function BuatMateri() {
     <Card className="h-full w-full overflow-y-auto">
       <CardBody className="flex flex-col gap-8 px-0 py-10">
         <div className="border-2 border-black py-6">
-          <Input
-            label="title"
-            onChange={(e) =>
-              setData({
-                ...data,
-                title: e.target.value,
-              })
-            }
-          />
-          {/* <DialogPostImage /> */}
-          <div className="py-6">
-            <Rte
-              childData={data.body}
-              childFunc={(e) => handleFormSoalChange(e, 0)}
+          <div className="px-8">
+            <Input
+              className=""
+              label="title"
+              onChange={(e) =>
+                setData({
+                  ...data,
+                  title: e.target.value,
+                })
+              }
             />
+            {/* <DialogPostImage /> */}
+            <div className="py-6">
+              <Rte
+                childData={data.body}
+                childFunc={(e) => handleFormSoalChange(e, 0)}
+              />
+            </div>
           </div>
         </div>
         <button
-          className="border-2 border-black bg-blue-600 text-yellow-600"
+          className="border-2 border-black bg-blue-600 font-bold text-white"
           onClick={() => sendData(data)}
         >
-          post data
+          Post Data
         </button>
       </CardBody>
     </Card>
