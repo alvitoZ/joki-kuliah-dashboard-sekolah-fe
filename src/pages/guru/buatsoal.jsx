@@ -20,7 +20,6 @@ export function BuatSoal() {
 
   const [soal, setSoal] = useState([
     {
-      nomor: 0,
       soal: "",
       jawaban: [{ soal: "", status: false }],
     },
@@ -32,15 +31,8 @@ export function BuatSoal() {
     setSoal(data);
   };
 
-  const handleFormSoalNomorChange = (event, index) => {
-    let data = [...soal];
-    data[index].nomor = parseInt(event.target.value);
-    setSoal(data);
-  };
-
   const addFieldsSoal = () => {
     let object = {
-      nomor: 0,
       soal: "",
       jawaban: [
         {
@@ -107,7 +99,6 @@ export function BuatSoal() {
           postMethod.PostSoal(category, data).then((res) => {
             setSoal([
               {
-                nomor: 0,
                 soal: "",
                 jawaban: [{ soal: "", status: false }],
               },
@@ -120,17 +111,9 @@ export function BuatSoal() {
 
   const [temp, setTemp] = useState("");
 
-  const [images, setImages] = React.useState([]);
-  React.useEffect(() => {
-    getMethod.GetImages().then((res) => {
-      setImages(res.data.data);
-    });
-  }, []);
-
   return (
     <React.Fragment>
       <div className="grid gap-4 px-60">
-        {/* <DialogPostImage /> */}
         <div className="flex gap-4 border-2 border-red-600">
           <IconButton color="pink" onClick={addFieldsSoal}>
             <PlusCircleIcon {...icon} />
@@ -162,14 +145,6 @@ export function BuatSoal() {
                 >
                   Soal: {parentIndex + 1}
                 </Typography>
-                <Input
-                  name="nomor"
-                  value={parent.nomor ? parent.nomor : 0}
-                  onChange={(event) =>
-                    handleFormSoalNomorChange(event, parentIndex)
-                  }
-                  label="Nomor"
-                />
                 <div className="py-6">
                   <Rte
                     childData={parent.soal}
@@ -256,9 +231,11 @@ export function BuatSoal() {
         })}
         <div
           onClick={() => sendData(temp, soal)}
-          className="flex items-center justify-center rounded-lg bg-green-600 hover:bg-red-600"
+          className="flex items-center justify-center rounded-lg"
         >
-          <button className="w-fit p-2">Post Soal</button>
+          <button className="w-fit bg-green-500 p-2 text-white hover:bg-red-600">
+            Post Soal
+          </button>
         </div>
       </div>
     </React.Fragment>

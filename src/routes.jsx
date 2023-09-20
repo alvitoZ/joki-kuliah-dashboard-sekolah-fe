@@ -7,7 +7,13 @@ import {
   Pengaturan,
 } from "@/pages/admin";
 import { TugasSiswa, HomeSiswa, NilaiSiswa, Materi } from "./pages/siswa/";
-import { HomeGuru, NilaiSiswaGuru, BuatSoal, BuatMateri } from "./pages/guru";
+import {
+  HomeGuru,
+  NilaiSiswaGuru,
+  BuatSoal,
+  BuatMateri,
+  EditSoal,
+} from "./pages/guru";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -133,6 +139,12 @@ export const routes = [
         name: "Buat Soal",
         path: "/Buat-Soal",
         element: <BuatSoal />,
+      },
+      {
+        icon: <UserPlusIcon {...icon} />,
+        name: "Edit Soal",
+        path: "/Edit-Soal",
+        element: <EditSoal />,
       },
       {
         icon: <UserPlusIcon {...icon} />,

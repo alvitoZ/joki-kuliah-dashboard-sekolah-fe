@@ -12,7 +12,7 @@ import {
 } from "react-router-dom";
 import { Admin, Auth, Siswa, Guru } from "@/layouts";
 import ErrorPage from "./pages/error-page";
-import { EditNilai } from "./pages/guru";
+import { EditNilai, EditSoals } from "./pages/guru";
 import { EditUser } from "./pages/admin";
 import GrafikNilai from "./widgets/layout/grafiknilai";
 // React-Router
@@ -35,6 +35,11 @@ const router = createBrowserRouter([
   {
     path: "/guru/edit-nilai/:id",
     element: <EditNilai />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/guru/Edit-Soal/:category",
+    element: <EditSoals />,
     errorElement: <ErrorPage />,
   },
   {

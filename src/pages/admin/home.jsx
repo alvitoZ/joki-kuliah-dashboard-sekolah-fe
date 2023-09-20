@@ -2,6 +2,7 @@ import { Card, CardBody } from "@material-tailwind/react";
 import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { getMethod } from "@/service/auth";
+import { Link } from "react-router-dom";
 
 export const HomeAdmin = () => {
   const [fullname, setFullname] = React.useState("");
@@ -39,17 +40,22 @@ export const HomeAdmin = () => {
                 <p className="text-2xl font-extrabold text-red-800">
                   Jumlah Guru : {data.length}
                 </p>
-                <p className="w-fit rounded-md border-2 border-light-green-600 p-2 font-bold text-light-green-600">
-                  Lihat Data Guru
-                </p>
+
+                <Link to={"/admin/data-guru"}>
+                  <p className="w-fit rounded-md border-2 border-light-green-600 p-2 font-bold text-light-green-600">
+                    Lihat Data Guru
+                  </p>
+                </Link>
               </div>
               <div className="flex flex-col">
                 <p className="text-2xl font-extrabold text-red-800">
                   Jumlah Siswa : {data2.length}
                 </p>
-                <p className="w-fit rounded-md border-2 border-light-green-600 p-2 font-bold text-light-green-600">
-                  Lihat Data Siswa
-                </p>
+                <Link to={"/admin/data-siswa"}>
+                  <p className="w-fit rounded-md border-2 border-light-green-600 p-2 font-bold text-light-green-600">
+                    Lihat Data Siswa
+                  </p>
+                </Link>
               </div>
               <p>Tanggal</p>
             </CardBody>

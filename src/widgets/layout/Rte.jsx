@@ -9,14 +9,6 @@ import DialogPostImage from "./DialogPostImage";
 import "./Rte.css";
 
 const Rte = ({ childFunc, childData, index }) => {
-  const [images, setImages] = React.useState([]);
-  // const [image, setImage] = React.useState(``);
-  React.useEffect(() => {
-    getMethod.GetImages().then((res) => {
-      setImages(res.data.data);
-    });
-  }, []);
-
   const extensions = [
     Image,
     TextStyle.configure({ types: [ListItem.name] }),
@@ -32,13 +24,10 @@ const Rte = ({ childFunc, childData, index }) => {
     }),
   ];
 
-  const content = "<p>Masukkan Teks disini.......</p>";
-
   // const [data, setData] = React.useState(``);
   const editor = useEditor({
     extensions: extensions,
-    content: `<p>Masukkan Teks disini.......</p> 
-    ${childData}`,
+    content: `${childData}`,
     onUpdate({ editor }) {
       childFunc(editor.getHTML(), index, childData);
     },
@@ -98,95 +87,21 @@ const Rte = ({ childFunc, childData, index }) => {
           paragraph
         </button>
         <button
-          onClick={() =>
-            editor.chain().focus().toggleHeading({ level: 1 }).run()
-          }
-          className={`border-2 border-black  p-1 ${
-            editor.isActive("heading", { level: 1 })
-              ? "bg-blue-400 text-white"
-              : ""
-          }`}
-        >
-          h1
-        </button>
-        <button
-          onClick={() =>
-            editor.chain().focus().toggleHeading({ level: 2 }).run()
-          }
-          className={`border-2 border-black  p-1 ${
-            editor.isActive("heading", { level: 2 })
-              ? "bg-blue-400 text-white"
-              : ""
-          }`}
-        >
-          h2
-        </button>
-        <button
-          onClick={() =>
-            editor.chain().focus().toggleHeading({ level: 3 }).run()
-          }
-          className={`border-2 border-black  p-1 ${
-            editor.isActive("heading", { level: 3 })
-              ? "bg-blue-400 text-white"
-              : ""
-          }`}
-        >
-          h3
-        </button>
-        <button
-          onClick={() =>
-            editor.chain().focus().toggleHeading({ level: 4 }).run()
-          }
-          className={`border-2 border-black  p-1 ${
-            editor.isActive("heading", { level: 4 })
-              ? "bg-blue-400 text-white"
-              : ""
-          }`}
-        >
-          h4
-        </button>
-        <button
-          onClick={() =>
-            editor.chain().focus().toggleHeading({ level: 5 }).run()
-          }
-          className={`border-2 border-black  p-1 ${
-            editor.isActive("heading", { level: 5 })
-              ? "bg-blue-400 text-white"
-              : ""
-          }`}
-        >
-          h5
-        </button>
-        <button
-          onClick={() =>
-            editor.chain().focus().toggleHeading({ level: 6 }).run()
-          }
-          className={`border-2 border-black  p-1 ${
-            editor.isActive("heading", { level: 6 })
-              ? "bg-blue-400 text-white"
-              : ""
-          }`}
-        >
-          h6
-        </button>
-        <button
           onClick={() => editor.chain().focus().undo().run()}
           disabled={!editor.can().chain().focus().undo().run()}
-          className="border-2 border-black  p-1"
+          className="cursor-pointer border-2 border-black p-1 "
         >
           undo
         </button>
         <button
           onClick={() => editor.chain().focus().redo().run()}
           disabled={!editor.can().chain().focus().redo().run()}
-          className="border-2 border-black  p-1"
+          className="cursor-pointer border-2 border-black p-1"
         >
           redo
         </button>
       </div>
-      <div className=" h-auto w-auto overflow-auto bg-brown-100 px-4">
-        <EditorContent editor={editor} />
-      </div>
+      <EditorContent editor={editor} />
     </div>
   );
 };

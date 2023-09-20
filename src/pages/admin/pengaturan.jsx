@@ -70,6 +70,11 @@ export const Pengaturan = () => {
 
   useEffect(() => {
     getMethod.GetUser().then((res) => {
+      setPostData({
+        ...postData,
+        fullname: res.data.data.fullname,
+        password: res.data.data.password,
+      });
       setData(res.data.data);
     });
   }, []);
@@ -196,7 +201,7 @@ export const Pengaturan = () => {
                 }
               />
               <button
-                className=" bg-blue-gray-300 text-black"
+                className=" bg-blue-gray-300 text-white hover:bg-green-500"
                 onClick={() => changeEmail(data._id, email)}
               >
                 <p className="p-[4px] px-2 text-sm">Update Email</p>
@@ -247,12 +252,14 @@ export const Pengaturan = () => {
           </Typography>
           <div className="h-4 w-10 rounded-lg bg-green-400"></div>
           <div>
-            <button
-              className="bg-blue-800 px-2 text-white"
+            <div
               onClick={() => editProfil(data._id, postData)}
+              className="flex items-center justify-center rounded-lg"
             >
-              Edit Profil
-            </button>
+              <button className="w-fit bg-green-500 p-2 text-white hover:bg-blue-600">
+                Edit Profil
+              </button>
+            </div>
           </div>
         </div>
       </Card>

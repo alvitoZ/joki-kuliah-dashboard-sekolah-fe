@@ -10,7 +10,7 @@ const CardTugas = ({ id, abcde, text, isSelected, onClick }) => {
     <div
       className={`border-[2px] border-black ${
         buttonClassName ? buttonClassName : "bg-[#f1f0f0] "
-      }  text-center text-sm font-bold `}
+      }  cursor-pointer text-center text-sm font-bold hover:bg-green-500`}
       // onClick={() => setClicked("bg-red-700")}
       onClick={coba}
     >

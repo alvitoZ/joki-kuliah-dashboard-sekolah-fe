@@ -213,6 +213,16 @@ class UpdateMethod {
         return res;
       });
   };
+
+  EditSoal = async (category, id, data) => {
+    return await api
+      .put(`/api/v1/soal/update-soal/${category}/${id}`, data, {
+        headers: tokenHeader(),
+      })
+      .then((res) => {
+        return res;
+      });
+  };
 }
 //end put method
 
@@ -231,6 +241,16 @@ class DeleteMethod {
   DeleteImageById = async (id) => {
     return await api
       .delete(`/api/v1/image/${id}`, {
+        headers: tokenHeader(),
+      })
+      .then((res) => {
+        return res;
+      });
+  };
+
+  DeleteSoalById = async (category, id) => {
+    return await api
+      .delete(`/api/v1/soal/delete-soal/${category}/${id}`, {
         headers: tokenHeader(),
       })
       .then((res) => {

@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import CardTugas from "./card-tugas";
 
-const ContainerTugas = ({ kategori, nomor, soal, id, data, atasFunc }) => {
+const ContainerTugas = ({ kategori, _id, soal, id, data, atasFunc }) => {
   const [selectedButtonId, setSelectedButtonId] = useState(null);
   const [selectedButtonId2, setSelectedButtonId2] = useState(null);
 
@@ -15,10 +15,10 @@ const ContainerTugas = ({ kategori, nomor, soal, id, data, atasFunc }) => {
   return (
     <div>
       <p className="py-4 text-xs font-bold text-gray-700">
-        nomor {nomor} kategori {kategori}
+        nomor {id + 1} kategori {kategori}
       </p>
       <div className="flex gap-1">
-        <span className="font-bold">{nomor}.</span>{" "}
+        <span className="font-bold">{id + 1}.</span>{" "}
         <div dangerouslySetInnerHTML={{ __html: soal }}></div>
       </div>
 
@@ -40,7 +40,7 @@ const ContainerTugas = ({ kategori, nomor, soal, id, data, atasFunc }) => {
               isSelected={selectedButtonId === i && selectedButtonId2 === id}
               onClick={() => {
                 // handleFormSoal(kategori, nomor, soal, data[i].soal, i, data);
-                atasFunc(data, i, nomor, kategori);
+                atasFunc(data, i, _id, kategori);
                 // handleFormChange(i, data, id, kategori, nomor, data[i]._id);
                 handleUpdateSelection(i, id);
               }}

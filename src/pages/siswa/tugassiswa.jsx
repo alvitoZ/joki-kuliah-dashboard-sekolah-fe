@@ -19,22 +19,23 @@ export function TugasSiswa() {
       setSoal(res.data.data);
     });
   }, [kategoriC, layout]);
+  // console.log(soal);
 
   const [jawaban, setJawaban] = useState([]);
 
-  const handleFormChange = (data, i, nomor, kategori) => {
+  const handleFormChange = (data, i, _id, kategori) => {
     jawaban.push({
-      nomor: nomor,
-      objectId: data[i]._id,
+      _id: _id,
       kategori: kategori,
       jawaban: { soal: data[i].soal, status: data[i].status },
     });
+    // console.log(jawaban);
   };
 
   const cobafilter = (jawaban) => {
-    const ids = jawaban.map(({ nomor }) => nomor);
+    const ids = jawaban.map(({ _id }) => _id);
     const filtered = jawaban.filter(
-      ({ nomor }, index) => !ids.includes(nomor, index + 1)
+      ({ _id }, index) => !ids.includes(_id, index + 1)
     );
     if (filtered.length >= soal.length) {
       postMethod.PostJawaban(filtered).then((res) => {
@@ -42,6 +43,7 @@ export function TugasSiswa() {
         setHasil(res.data);
         setLayout((v) => !v);
       });
+      // console.log(filtered);
     }
   };
 
@@ -82,14 +84,14 @@ export function TugasSiswa() {
           <div className="px-6 py-4 shadow-lg">
             <p className="mb-2 text-lg font-bold text-red-900">Pilihan Ganda</p>
             <p className="mb-2 text-sm font-bold text-red-900">Nomor 1-20</p>
-            {soal.map((data, id) => {
+            {soal.map(({ jawaban, kategori, soal, _id }, id) => {
               return (
                 <ContainerTugas
-                  data={data.jawaban}
-                  kategori={data.kategori}
-                  nomor={data.nomor}
+                  data={jawaban}
+                  kategori={kategori}
+                  _id={_id}
                   id={id}
-                  soal={data.soal}
+                  soal={soal}
                   key={id}
                   atasFunc={handleFormChange}
                 />
