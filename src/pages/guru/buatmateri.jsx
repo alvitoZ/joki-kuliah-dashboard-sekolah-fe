@@ -60,7 +60,7 @@ export function BuatMateri() {
           </div>
         </div>
         <button
-          className="border-2 border-black bg-blue-600 font-bold text-white"
+          className="border-2 border-black bg-blue-600 font-bold text-white hover:bg-green-500"
           onClick={() => sendData(data)}
         >
           Post Data

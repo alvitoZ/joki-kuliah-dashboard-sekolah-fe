@@ -10,7 +10,7 @@ export function Materi() {
     });
   }, []);
   return (
-    <Card className="h-full w-full overflow-y-auto">
+    <Card className="h-full w-full overflow-y-auto break-words p-6">
       <CardBody className="mr-8 px-0 pb-2">
         {data.map(({ title, body }, i) => {
           return (

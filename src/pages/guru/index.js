@@ -5,3 +5,5 @@ export * from "@/pages/guru/buatmateri";
 export * from "@/pages/guru/editnilai";
 export * from "@/pages/guru/editsoals";
 export * from "@/pages/guru/editsoal";
+export * from "@/pages/guru/materiguru";
+export * from "@/pages/guru/pengaturanguru";

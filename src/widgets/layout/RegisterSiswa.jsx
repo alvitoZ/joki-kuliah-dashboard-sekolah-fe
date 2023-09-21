@@ -30,13 +30,14 @@ export function RegisterSiswa() {
   };
 
   return (
-    <>
-      <img
-        src="https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80"
-        className="absolute inset-0 z-0 h-full w-full object-cover"
-      />
-      <div className="mx-auto h-auto p-4">
-        <Card className="absolute top-2/4 left-2/4 w-full max-w-[24rem] -translate-y-60 -translate-x-2/4">
+    <div className="">
+      {/* <img
+        src="/public/img/container.jpg"
+        className="absolute left-0 right-0 top-0 bottom-0 h-[100vh]"
+      /> */}
+      <div className=" m-auto flex h-auto items-center justify-center p-10">
+        <Card className="h-fit w-[24rem]">
+          {/* <Card className="absolute top-2/4 left-2/4 w-full max-w-[24rem] -translate-y-60 -translate-x-2/4"> */}
           <Typography variant="small" className="py-4 text-center font-bold">
             Register Siswa
           </Typography>
@@ -186,7 +187,7 @@ export function RegisterSiswa() {
           </CardBody>
         </Card>
       </div>
-    </>
+    </div>
   );
 }
 

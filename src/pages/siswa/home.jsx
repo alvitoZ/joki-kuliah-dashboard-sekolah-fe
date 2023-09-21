@@ -26,7 +26,7 @@ export const HomeSiswa = () => {
           </p>
           <p className="font-bold">
             kamu memiliki 1 tugas latihan yang baru.{" "}
-            <span className="font-extrabold text-red-800">
+            <span className="font-extrabold text-red-800 hover:text-green-500">
               <Link to="/siswa/Latihan-Tugas">Kerjakan sekarang!</Link>
             </span>
           </p>
@@ -34,11 +34,11 @@ export const HomeSiswa = () => {
             Keterangan absen kamu kemaren adalah Hadir , jangan lupa absen hari
             ini ya.
           </p>
-          <div className="flex h-auto w-32 items-center justify-center rounded-lg border-2 border-red-600">
-            <p className="p-1 font-extrabold text-red-500">
-              <Link to="/siswa/Nilai-Siswa">lihat nilaimu</Link>
-            </p>
-          </div>
+          <Link to="/siswa/Nilai-Siswa">
+            <div className="flex h-auto w-32 items-center justify-center rounded-lg border-2 border-red-600 text-red-500 hover:border-green-500 hover:text-green-500">
+              <p className="p-1 font-extrabold ">lihat nilaimu</p>
+            </div>
+          </Link>
         </CardBody>
         <CardBody>
           <div className="flex flex-col gap-4 ">
@@ -47,20 +47,21 @@ export const HomeSiswa = () => {
             </p>
             <p className="font-bold">
               kamu memiliki 1 tugas latihan yang baru.{" "}
-              <span className="font-extrabold text-red-800">
-                <Link to="/siswa/Latihan-Tugas">Kerjakan sekarang!</Link>
-              </span>
+              <Link to="/siswa/Latihan-Tugas">
+                <span className="font-extrabold text-red-800 hover:text-green-500">
+                  Kerjakan sekarang!
+                </span>
+              </Link>
             </p>
             <p className="font-bold">
               Keterangan absen kamu kemaren adalah Hadir , jangan lupa absen
               hari ini ya.
-            </p>
-            <div className="flex h-auto w-32 items-center justify-center rounded-lg border-2 border-red-600">
-              <p className="p-1 font-extrabold text-red-500">
-                {" "}
-                <Link to="/siswa/Nilai-Siswa">lihat nilaimu</Link>
-              </p>
-            </div>
+            </p>{" "}
+            <Link to="/siswa/Nilai-Siswa">
+              <div className="flex h-auto w-32 items-center justify-center rounded-lg border-2 border-red-600 text-red-500 hover:border-green-500 hover:text-green-500">
+                <p className="p-1 font-extrabold">lihat nilaimu</p>
+              </div>
+            </Link>
           </div>
         </CardBody>
       </Card>

@@ -6,21 +6,20 @@ import Rte from "@/widgets/layout/Rte";
 import { useParams, Link, useNavigate } from "react-router-dom";
 
 export function EditSoals() {
-  const nav = useNavigate();
   const [soal, setSoal] = useState({
     soal: "",
   });
-  const handleFormSoalChange = (event, index) => {
+  const handleFormSoalChange = (event) => {
     setSoal({
       soal: event,
     });
     // console.log(data);
   };
 
-  const sendData = (category, id, data) => {
+  const sendData = (category, id, data, nomor) => {
     // console.log({ category, id, data });
     Swal.fire({
-      title: "Update Soal ini?",
+      title: `Update Soal nomor ${nomor} ini?`,
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -42,10 +41,10 @@ export function EditSoals() {
     });
   };
 
-  const deleteData = (category, id) => {
+  const deleteData = (category, id, nomor) => {
     // console.log({ category, id, data });
     Swal.fire({
-      title: "Hapus Soal ini?",
+      title: `Hapus Soal nomor ${nomor} ini?`,
       icon: "error",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -81,7 +80,7 @@ export function EditSoals() {
       <div className="grid gap-4 px-60">
         <Link to={"/guru/Edit-Soal"}>
           <button className="w-fit rounded-lg bg-blue-600 p-2 text-white hover:bg-red-600">
-            kembali
+            ganti kategori?
           </button>
         </Link>
         {defaultValue.map((parent, parentIndex) => {
@@ -97,13 +96,15 @@ export function EditSoals() {
                 <div className="py-6">
                   <Rte
                     childData={parent.soal}
-                    childFunc={(e) => handleFormSoalChange(e, parentIndex)}
+                    childFunc={(e) => handleFormSoalChange(e)}
                   />
                 </div>
               </div>
               <div className="flex flex-row items-center justify-center gap-10">
                 <div
-                  onClick={() => deleteData(category, parent._id)}
+                  onClick={() =>
+                    deleteData(category, parent._id, parentIndex + 1)
+                  }
                   className="flex items-center justify-center rounded-lg"
                 >
                   <button className="w-fit bg-red-500 p-2 text-white hover:bg-blue-600">
@@ -111,7 +112,9 @@ export function EditSoals() {
                   </button>
                 </div>
                 <div
-                  onClick={() => sendData(category, parent._id, soal)}
+                  onClick={() =>
+                    sendData(category, parent._id, soal, parentIndex + 1)
+                  }
                   className="flex items-center justify-center rounded-lg"
                 >
                   <button className="w-fit bg-green-500 p-2 text-white hover:bg-blue-600">

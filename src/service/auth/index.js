@@ -138,16 +138,6 @@ class GetMethod {
       });
   };
 
-  GetOnlyImages = async () => {
-    return await api
-      .get(`/api/v1/image/images`, {
-        headers: tokenHeader(),
-      })
-      .then((res) => {
-        return res;
-      });
-  };
-
   GetUser = async () => {
     return await api
       .get(`/api/v1/auth/user-role`, {
@@ -177,6 +167,16 @@ class UpdateMethod {
   UpdateEmail = async (id, data) => {
     return await api
       .put(`/api/v1/auth/update-email/${id}`, data, {
+        headers: tokenHeader(),
+      })
+      .then((res) => {
+        return res;
+      });
+  };
+
+  UpdateMateri = async (id, data) => {
+    return await api
+      .put(`/api/v1/materi/${id}`, data, {
         headers: tokenHeader(),
       })
       .then((res) => {
@@ -231,6 +231,16 @@ class DeleteMethod {
   DeleteNilaiById = async (id) => {
     return await api
       .delete(`/api/v1/soal/nilai/${id}`, {
+        headers: tokenHeader(),
+      })
+      .then((res) => {
+        return res;
+      });
+  };
+
+  DeleteMateriById = async (id) => {
+    return await api
+      .delete(`/api/v1/materi/${id}`, {
         headers: tokenHeader(),
       })
       .then((res) => {

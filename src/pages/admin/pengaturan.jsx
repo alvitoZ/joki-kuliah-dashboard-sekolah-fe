@@ -9,12 +9,12 @@ import Swal from "sweetalert2";
 
 export const Pengaturan = () => {
   //
-  const nav = useNavigate();
   const [postData, setPostData] = useState({
     fullname: "",
     password: "",
     image: null,
   });
+  const [refresh, setRefresh] = useState(false);
   //
 
   const [imgData, setImgData] = useState(null);
@@ -47,7 +47,7 @@ export const Pengaturan = () => {
           confirmButtonText: "Tutup",
         }).then((_) => {
           updateMethod.UpdateEmail(id, data).then((res) => {
-            nav("/admin/dashboard");
+            setRefresh((v) => !v);
           });
         });
       }
@@ -77,7 +77,7 @@ export const Pengaturan = () => {
       });
       setData(res.data.data);
     });
-  }, []);
+  }, [refresh]);
 
   const editProfil = (id, data) => {
     Swal.fire({
@@ -95,7 +95,30 @@ export const Pengaturan = () => {
           confirmButtonText: "Tutup",
         }).then((_) => {
           updateMethod.EditProfil(id, data).then((res) => {
-            nav("/admin/dashboard");
+            setRefresh((v) => !v);
+          });
+        });
+      }
+    });
+  };
+
+  const deleteImage = (id) => {
+    Swal.fire({
+      title: `hapus gambar ini?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Ya, hapus!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: `gambar berhasil dihapus`,
+          icon: "success",
+          confirmButtonText: "Tutup",
+        }).then((_) => {
+          updateMethod.EditProfil(id, data).then((res) => {
+            setRefresh((v) => !v);
           });
         });
       }
@@ -121,7 +144,7 @@ export const Pengaturan = () => {
             <p className="font-bold text-gray-600">Informasi Profil</p>
             <div className="flex items-center gap-4">
               <img
-                className="max-h-40 w-40"
+                className="h-28 w-28 object-cover hover:scale-150"
                 src={
                   imgData
                     ? imgData
@@ -137,15 +160,13 @@ export const Pengaturan = () => {
                   onChange={onChangePicture}
                 />
               </div>
-              <div className="flex h-fit items-center rounded-sm bg-gray-600 text-white">
-                <p
+              <div className="flex h-fit cursor-pointer items-center rounded-sm bg-gray-600 text-white hover:bg-green-500 ">
+                <button
                   className="py-1 px-2"
-                  onClick={() =>
-                    setImgData(`http://localhost:3001/images/${data.image}`)
-                  }
+                  onClick={() => deleteImage(data._id)}
                 >
                   hapus
-                </p>
+                </button>
               </div>
             </div>
             <p>Maksimal ukuran file 1 MB</p>
@@ -251,15 +272,13 @@ export const Pengaturan = () => {
             JENIS KELAMIN
           </Typography>
           <div className="h-4 w-10 rounded-lg bg-green-400"></div>
-          <div>
-            <div
-              onClick={() => editProfil(data._id, postData)}
-              className="flex items-center justify-center rounded-lg"
-            >
-              <button className="w-fit bg-green-500 p-2 text-white hover:bg-blue-600">
-                Edit Profil
-              </button>
-            </div>
+          <div
+            onClick={() => editProfil(data._id, postData)}
+            className="flex items-start justify-start rounded-lg"
+          >
+            <button className="w-fit bg-green-500 p-2 text-white hover:bg-blue-600">
+              Edit Profil
+            </button>
           </div>
         </div>
       </Card>

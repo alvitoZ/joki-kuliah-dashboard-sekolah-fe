@@ -11,7 +11,7 @@ export function EditSoal() {
 
   return (
     <div className="p-28">
-      <div className="flex gap-4 border-2 border-red-600 p-10">
+      <div className="flex gap-4 rounded-lg border-2 border-red-600 p-10">
         <p className="text-pink-600">Select Kategori</p>
         <Select
           size="lg"

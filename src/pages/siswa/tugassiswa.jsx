@@ -98,10 +98,11 @@ export function TugasSiswa() {
               );
             })}
           </div>
-          <div className="bg-black text-center text-base font-bold text-red-900">
-            <p className="pb-2" onClick={() => cobafilter(jawaban)}>
-              Kumpulkan Jawaban
-            </p>
+          <div
+            onClick={() => cobafilter(jawaban)}
+            className="cursor-pointer bg-black text-center text-base font-bold text-red-900 hover:bg-blue-500 hover:text-white"
+          >
+            <button className="pb-2">Kumpulkan Jawaban</button>
           </div>
         </div>
       )}

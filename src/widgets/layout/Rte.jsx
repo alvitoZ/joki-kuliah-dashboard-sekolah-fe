@@ -101,6 +101,7 @@ const Rte = ({ childFunc, childData, index }) => {
           redo
         </button>
       </div>
+      <p>masukkan teks....</p>
       <EditorContent editor={editor} />
     </div>
   );

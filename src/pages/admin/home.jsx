@@ -42,7 +42,7 @@ export const HomeAdmin = () => {
                 </p>
 
                 <Link to={"/admin/data-guru"}>
-                  <p className="w-fit rounded-md border-2 border-light-green-600 p-2 font-bold text-light-green-600">
+                  <p className="w-fit rounded-md border-2 border-light-green-600 p-2 font-bold text-light-green-600 hover:border-red-500 hover:text-red-500">
                     Lihat Data Guru
                   </p>
                 </Link>
@@ -52,7 +52,7 @@ export const HomeAdmin = () => {
                   Jumlah Siswa : {data2.length}
                 </p>
                 <Link to={"/admin/data-siswa"}>
-                  <p className="w-fit rounded-md border-2 border-light-green-600 p-2 font-bold text-light-green-600">
+                  <p className="w-fit rounded-md border-2 border-light-green-600 p-2 font-bold text-light-green-600 hover:border-red-500 hover:text-red-500">
                     Lihat Data Siswa
                   </p>
                 </Link>

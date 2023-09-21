@@ -6,13 +6,21 @@ import {
   DataGuru,
   Pengaturan,
 } from "@/pages/admin";
-import { TugasSiswa, HomeSiswa, NilaiSiswa, Materi } from "./pages/siswa/";
+import {
+  TugasSiswa,
+  HomeSiswa,
+  NilaiSiswa,
+  Materi,
+  PengaturanSiswa,
+} from "./pages/siswa/";
 import {
   HomeGuru,
   NilaiSiswaGuru,
   BuatSoal,
   BuatMateri,
   EditSoal,
+  MateriGuru,
+  PengaturanGuru,
 } from "./pages/guru";
 
 const icon = {
@@ -76,8 +84,8 @@ export const routes = [
       {
         icon: <UserCircleIcon {...icon} />,
         name: "Edit profil",
-        path: "/profile",
-        element: <Profile />,
+        path: "/pengaturan",
+        element: <PengaturanSiswa />,
       },
       {
         icon: <UserPlusIcon {...icon} />,
@@ -124,6 +132,12 @@ export const routes = [
       },
       {
         icon: <UserPlusIcon {...icon} />,
+        name: "Pengaturan",
+        path: "/edit-profil",
+        element: <PengaturanGuru />,
+      },
+      {
+        icon: <UserPlusIcon {...icon} />,
         name: "Logout",
         path: "/logout",
         element: <Profile />,
@@ -151,6 +165,12 @@ export const routes = [
         name: "Buat Materi",
         path: "/Buat-Materi",
         element: <BuatMateri />,
+      },
+      {
+        icon: <UserPlusIcon {...icon} />,
+        name: "Edit Materi",
+        path: "/edit-materi",
+        element: <MateriGuru />,
       },
       {
         icon: <UserPlusIcon {...icon} />,
