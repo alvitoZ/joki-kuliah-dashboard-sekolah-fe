@@ -23,12 +23,12 @@ const TugasGagal = ({ kategori, total_benar, nilai, hasilParent }) => {
           Kategori Penilaian: {kategori ? kategori : ""}
         </p>
         {nilai === 10 ? (
-          <p
-            className="text-base font-bold text-gray-800"
+          <button
+            className="w-fit bg-green-500 text-base font-bold text-white hover:bg-red-500"
             onClick={() => hasilParent()}
           >
             Lanjut
-          </p>
+          </button>
         ) : (
           <p className="text-base font-bold text-gray-800">
             Komentar: Kamu sepertinya mengalami kesulitan dalam menganalisa
