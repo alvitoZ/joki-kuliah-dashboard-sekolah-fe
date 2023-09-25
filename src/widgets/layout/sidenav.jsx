@@ -21,6 +21,9 @@ export function Sidenav({ brandImg, brandName, routes }) {
       .then((res) => {
         setRole(res.data.data.role);
       })
+      .catch((err) => {
+        nav("/auth/sign-in");
+      });
   }, []);
   const [controller, dispatch] = useMaterialTailwindController();
   const { sidenavColor, sidenavType, openSidenav } = controller;
