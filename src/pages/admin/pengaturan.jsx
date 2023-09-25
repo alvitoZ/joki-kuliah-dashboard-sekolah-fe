@@ -148,7 +148,7 @@ export const Pengaturan = () => {
                 src={
                   imgData
                     ? imgData
-                    : `http://localhost:3001/images/${data.image}`
+                    : `https://2093-103-186-31-38.ngrok-free.app/images/${data.image}`
                 }
                 alt="your image"
               />

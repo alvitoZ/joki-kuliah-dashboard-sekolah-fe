@@ -117,12 +117,12 @@ export function DialogPostImage({ child }) {
             return (
               <div
                 key={i}
-                onClick={() => child("http://localhost:3001/images/" + image)}
+                onClick={() => child("https://2093-103-186-31-38.ngrok-free.app/images/" + image)}
                 className="flex h-40 w-40 flex-col items-center rounded-md border-2 border-red-600"
               >
                 <img
                   className="h-32 w-32 object-cover"
-                  src={`http://localhost:3001/images/${image}`}
+                  src={`https://2093-103-186-31-38.ngrok-free.app/images/${image}`}
                   alt={alt}
                 />
                 <p className="text-[8px] font-normal text-black">{image}</p>
