@@ -15,15 +15,21 @@ import { useNavigate } from "react-router-dom";
 export function Sidenav({ brandImg, brandName, routes }) {
   const nav = useNavigate();
   const [role, setRole] = React.useState("");
+
+  const coba = () => {
+    setTimeout(() => {
+      getMethod
+        .GetUser()
+        .then((res) => {
+          setRole(res.data.data.role);
+        })
+        .catch((err) => {
+          nav("/auth/sign-in");
+        });
+    }, 3000);
+  };
   React.useEffect(() => {
-    getMethod
-      .GetUser()
-      .then((res) => {
-        setRole(res.data.data.role);
-      })
-      .catch((err) => {
-        nav("/auth/sign-in");
-      });
+    coba();
   }, []);
   const [controller, dispatch] = useMaterialTailwindController();
   const { sidenavColor, sidenavType, openSidenav } = controller;
