@@ -8,7 +8,6 @@ import {
 } from "@material-tailwind/react";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import { updateMethod, getMethod } from "@/service/auth";
-import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
 export const PengaturanGuru = () => {
@@ -56,13 +55,13 @@ export const PengaturanGuru = () => {
   };
 
   return (
-    <CardBody className="mr-8 px-0 pb-2">
-      <Card className="flex h-full w-full flex-col gap-8">
-        <div className="py-4 pl-5 text-xl font-bold">
+    <CardBody className="px-0 pb-2">
+      <Card className="flex h-full w-full flex-col gap-8 p-10">
+        <div className="text-xl font-bold">
           <p>edit profil</p>
         </div>
         <Input
-          label="fullname"
+          label="full name"
           defaultValue={data.fullname}
           onChange={(e) => {
             setData({
@@ -91,14 +90,14 @@ export const PengaturanGuru = () => {
             });
           }}
         />
-        <div className="flex flex-col items-start">
-          <BorderColorIcon />
-          <span
-            className="font-bold text-gray-700 hover:cursor-pointer"
-            onClick={() => edit(id, data)}
-          >
-            edit
-          </span>
+        <div
+          onClick={() => edit(id, data)}
+          className="w-fit rounded-lg border-2 border-black bg-green-300 text-white hover:cursor-pointer  hover:bg-red-500"
+        >
+          <button className="flex flex-row items-start p-2">
+            <BorderColorIcon />
+            <span className="font-semibold">edit</span>
+          </button>
         </div>
       </Card>
     </CardBody>

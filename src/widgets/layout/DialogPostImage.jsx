@@ -92,7 +92,7 @@ export function DialogPostImage({ child }) {
   //
   return (
     <>
-      <div className="w-fit rounded-lg bg-green-500 font-bold text-white hover:bg-blue-400">
+      <div className="w-fit cursor-pointer rounded-lg bg-green-500 font-bold text-white hover:bg-blue-400">
         <p onClick={() => handleOpenDialog()} className="p-2">
           Open Image
         </p>
@@ -103,7 +103,7 @@ export function DialogPostImage({ child }) {
         className="h-full w-full overflow-auto"
       >
         <DialogHeader>Tambah Gambar Untuk Soal/Jawaban Baru</DialogHeader>
-        <DialogBody divider className="h-full w-full p-4">
+        <DialogBody divider className="flex h-full w-full flex-wrap p-4">
           <div className="flex h-40 w-40 flex-col items-center rounded-md border-2 border-red-600">
             <img className="max-w-32 max-h-32" src={imgData} alt="your image" />
             <input
@@ -120,15 +120,14 @@ export function DialogPostImage({ child }) {
                 onClick={() =>
                   child(`${import.meta.env.VITE_BASEURL}/images/` + "/" + image)
                 }
-                className="flex h-40 w-40 flex-col items-center rounded-md border-2 border-red-600"
+                className="relative flex h-40 w-40 cursor-pointer flex-col items-center rounded-md border-2 border-red-600 active:opacity-70"
               >
                 <img
-                  className="h-32 w-32 object-cover"
+                  className="max-w-32 max-h-32"
                   src={`${import.meta.env.VITE_BASEURL}/images/${image}`}
                   alt={alt}
                 />
-                <p className="text-[8px] font-normal text-black">{image}</p>
-                <div className="absolute top-24 cursor-pointer rounded-md bg-red-500 hover:bg-green-600">
+                <div className="absolute top-20 cursor-pointer rounded-md bg-red-500 hover:bg-green-600">
                   <p
                     className="p-1 text-xs text-white"
                     onClick={() => hapusGambar(_id)}

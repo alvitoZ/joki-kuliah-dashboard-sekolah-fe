@@ -44,16 +44,16 @@ export function NilaiSiswaGuru() {
   return (
     <CardBody className="mr-8 flex flex-col gap-4 px-0 pb-2">
       <Search />
-      <Card className="h-full w-full overflow-y-auto">
-        <div className="py-4 pl-5 text-xl font-bold">
+      <Card className="flex h-full w-full flex-col items-start justify-start overflow-y-auto px-8">
+        <div className="py-4 text-xl font-bold">
           <p>Daftar nilai berdasarkan kategori</p>
         </div>
-        <table className="w-[70%] table-auto text-left">
+        <table className="w-[100%] table-auto text-left">
           <thead className="">
             <tr>
               {["Nama Siswa", "Total Nilai", "Kategori", "Aksi", ""].map(
                 (head) => (
-                  <th key={head} className="p-4 text-sm font-medium uppercase">
+                  <th key={head} className="text-sm font-medium uppercase">
                     {head}
                   </th>
                 )
@@ -64,28 +64,32 @@ export function NilaiSiswaGuru() {
             {data.map(({ _id, nama, nilai, kategori }, i) => {
               return (
                 <tr key={i}>
-                  <td className="p-4">{nama}</td>
+                  <td className="">{nama}</td>
                   <td className="p-4">{nilai}</td>
                   <td className="p-4">{kategori}</td>
                   <td className="p-4">
                     <div className="flex flex-col gap-2">
-                      <div>
-                        <BorderColorIcon />
-                        <span
-                          className="font-bold text-gray-700 hover:cursor-pointer"
-                          onClick={() => Navigate(`/guru/edit-nilai/${_id}`)}
-                        >
-                          edit
-                        </span>
+                      <div
+                        className="w-fit rounded-lg border-2 border-green-200 text-blue-500 hover:cursor-pointer hover:text-green-300"
+                        onClick={() => Navigate(`/guru/edit-nilai/${_id}`)}
+                      >
+                        <button className="p-1 ">
+                          <BorderColorIcon />
+                          <span className="font-bold hover:cursor-pointer">
+                            Edit
+                          </span>
+                        </button>
                       </div>
-                      <div>
-                        <DeleteIcon />
-                        <span
-                          className="font-bold text-red-500 hover:cursor-pointer"
+                      <div className="w-fit rounded-lg border-2 border-green-200 text-red-500 hover:cursor-pointer hover:text-green-300">
+                        <button
+                          className="p-1 "
                           onClick={() => deleteById(_id)}
                         >
-                          Hapus
-                        </span>
+                          <DeleteIcon />
+                          <span className="font-bold hover:cursor-pointer">
+                            Hapus
+                          </span>
+                        </button>
                       </div>
                     </div>
                   </td>

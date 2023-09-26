@@ -11,7 +11,7 @@ export function Profile() {
       </div>
       <Card className="mx-3 mb-6 -mt-16 lg:mx-4">
         <CardBody className="p-4">
-          <div>meong</div>
+          <div>coming soon</div>
         </CardBody>
       </Card>
     </>

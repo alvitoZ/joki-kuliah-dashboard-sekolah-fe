@@ -15,15 +15,15 @@ export function NilaiSiswa() {
 
   return (
     <CardBody className="mr-8 px-0 pb-2">
-      <Card className="h-full w-full overflow-y-auto">
-        <div className="py-4 pl-5 text-xl font-bold">
+      <Card className="flex h-full w-full flex-col gap-4 overflow-y-auto p-10">
+        <div className="text-xl font-bold">
           <p>Daftar nilai berdasarkan kategori</p>
         </div>
-        <table className="w-[70%] table-auto text-left">
+        <table className="w-[100%] table-auto text-left">
           <thead className="">
             <tr>
               {["Nama Siswa", "Total Nilai", "Kategori"].map((head) => (
-                <th key={head} className="p-4 text-sm font-medium uppercase">
+                <th key={head} className="py-4 text-sm font-medium uppercase">
                   {head}
                 </th>
               ))}
@@ -39,9 +39,9 @@ export function NilaiSiswa() {
                   } hover:bg-blue-gray-400
                   `}
                 >
-                  <td className="p-4">{nama}</td>
-                  <td className="p-4">{nilai}</td>
-                  <td className="p-4">{kategori}</td>
+                  <td className="py-2">{nama}</td>
+                  <td className="py-2">{nilai}</td>
+                  <td className="py-2">{kategori}</td>
                   {/* <td className="hidden p-4">
                     <div className="flex flex-col gap-2">
                       <div>

@@ -80,7 +80,7 @@ export function EditSoals() {
       <div className="grid gap-4 px-60">
         <Link to={"/guru/Edit-Soal"}>
           <button className="w-fit rounded-lg bg-blue-600 p-2 text-white hover:bg-red-600">
-            ganti kategori?
+            ganti kategori ?
           </button>
         </Link>
         {defaultValue.map((parent, parentIndex) => {

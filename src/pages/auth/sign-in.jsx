@@ -51,7 +51,7 @@ export function SignIn() {
                   variant="small"
                   className="text-left font-bold"
                 >
-                  fullname
+                  Full name
                 </Typography>
                 <Input
                   color="red"
