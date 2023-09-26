@@ -51,12 +51,12 @@ export function SignIn() {
                   variant="small"
                   className="text-left font-bold"
                 >
-                  fulln ame
+                  fullname
                 </Typography>
                 <Input
                   color="red"
                   type="text"
-                  label="Masukkan fullName"
+                  label="Masukkan nama lengkap"
                   size="lg"
                   className={`form-control`}
                   onChange={(e) =>

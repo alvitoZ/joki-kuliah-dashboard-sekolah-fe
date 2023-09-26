@@ -1,20 +1,26 @@
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import {
-  Card,
-  CardBody,
-  Input,
-  Radio,
-  Button,
-  Typography,
-} from "@material-tailwind/react";
-import { ListRegister } from "@/widgets/layout/ListRegister";
-import { postMethod } from "@/service/auth";
+import React, { useEffect } from "react";
+import { Card, Typography } from "@material-tailwind/react";
+import { getMethod } from "@/service/auth";
+import axios from "axios";
 
 export function Home() {
   const split = `1. masukkan nama lengkap - 2.masukkan email - 3.masukkan password - 4.konfirmasi password sebelumnya - 5.pilih role optional`;
 
+  useEffect(() => {
+    axios
+      .get("https://09d1-103-186-31-38.ngrok-free.app/api/v1/materi", {
+        headers: {
+          "ngrok-skip-browser-warning": "true",
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      });
+    getMethod.GetMateri().then((res) => {
+      console.log(res);
+    });
+  }, []);
   return (
     <div className="bgImage container mx-auto p-16">
       <Card className="w-full max-w-full p-4">
