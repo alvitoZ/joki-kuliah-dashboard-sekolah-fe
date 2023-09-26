@@ -117,12 +117,14 @@ export function DialogPostImage({ child }) {
             return (
               <div
                 key={i}
-                onClick={() => child("https://2093-103-186-31-38.ngrok-free.app/images/" + image)}
+                onClick={() =>
+                  child(`${import.meta.env.VITE_BASEURL}/images/` + "/" + image)
+                }
                 className="flex h-40 w-40 flex-col items-center rounded-md border-2 border-red-600"
               >
                 <img
                   className="h-32 w-32 object-cover"
-                  src={`https://2093-103-186-31-38.ngrok-free.app/images/${image}`}
+                  src={`${import.meta.env.VITE_BASEURL}/images/${image}`}
                   alt={alt}
                 />
                 <p className="text-[8px] font-normal text-black">{image}</p>

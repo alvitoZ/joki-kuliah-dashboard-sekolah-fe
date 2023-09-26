@@ -16,9 +16,14 @@ export function Sidenav({ brandImg, brandName, routes }) {
   const nav = useNavigate();
   const [role, setRole] = React.useState("");
   React.useEffect(() => {
-    getMethod.GetUser().then((res) => {
-      setRole(res.data.data.role);
-    });
+    getMethod
+      .GetUser()
+      .then((res) => {
+        setRole(res.data.data.role);
+      })
+      .catch((err) => {
+        nav("/auth/sign-in");
+      });
   }, []);
   const [controller, dispatch] = useMaterialTailwindController();
   const { sidenavColor, sidenavType, openSidenav } = controller;

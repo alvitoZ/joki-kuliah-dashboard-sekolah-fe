@@ -13,5 +13,5 @@ export const tokenHeader = () => {
   };
 };
 export const api = axios.create({
-	baseURL: "https://2093-103-186-31-38.ngrok-free.app",
+  baseURL: `${import.meta.env.VITE_BASEURL}`,
 });

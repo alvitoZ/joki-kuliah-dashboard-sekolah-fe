@@ -4,7 +4,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import { updateMethod, getMethod } from "@/service/auth";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 export const Pengaturan = () => {
@@ -144,11 +143,12 @@ export const Pengaturan = () => {
             <p className="font-bold text-gray-600">Informasi Profil</p>
             <div className="flex items-center gap-4">
               <img
+                crossOrigin="anonymous"
                 className="h-28 w-28 object-cover hover:scale-150"
                 src={
                   imgData
                     ? imgData
-                    : `https://2093-103-186-31-38.ngrok-free.app/images/${data.image}`
+                    : `${import.meta.env.VITE_BASEURL}/images/${data.image}`
                 }
                 alt="your image"
               />
