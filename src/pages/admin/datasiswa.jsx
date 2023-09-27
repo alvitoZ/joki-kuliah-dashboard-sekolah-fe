@@ -51,8 +51,8 @@ export const DataSiswa = () => {
     });
   }, [refresh]);
   return (
-    <CardBody className="mr-8 px-0 pb-2">
-      <Card className="h-full w-full overflow-y-auto">
+    <CardBody className="px-0 pb-2">
+      <Card className="h-full w-full">
         <div className="flex flex-col gap-8 py-8 pl-8">
           <p className="font-medium text-red-400">
             Anda diwajibkan untuk menjaga kerahasiaan data siswa agar tidak
@@ -68,8 +68,8 @@ export const DataSiswa = () => {
           <p className="font-medium text-red-400"></p>
         )}
         <div className="flex flex-col">
-          <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-            <div className="overflow-hidden">
+          <div className="inline-block w-full min-w-full py-2 sm:px-6 lg:px-8">
+            <div className="overflow-auto">
               <table className="dark:border-neutral-500 min-w-full table-fixed border text-left text-sm font-light">
                 <thead className="dark:border-neutral-500 border-b font-medium">
                   <tr>
@@ -114,9 +114,14 @@ export const DataSiswa = () => {
                             {createdAt}
                           </td>
                           <td className="dark:border-neutral-500 whitespace-nowrap border-r px-6 py-4">
-                            <Link to={`/admin/edit-user/${_id}`}>
-                              <BorderColorIcon /> <span>Edit</span>
-                            </Link>
+                            <div className="w-fit rounded-lg border-2 border-green-200 text-blue-500 hover:cursor-pointer hover:text-green-300">
+                              <Link
+                                to={`/admin/edit-user/${_id}`}
+                                className="p-1"
+                              >
+                                <BorderColorIcon /> <span>Edit</span>
+                              </Link>
+                            </div>
                           </td>
                         </tr>
                       );
@@ -128,7 +133,7 @@ export const DataSiswa = () => {
           </div>
         </div>
         <Card className="flex w-full items-center justify-center">
-          <CardBody className="mb-4 flex w-full flex-col gap-4 px-52">
+          <CardBody className="mb-4 flex w-full flex-col items-center justify-center gap-4">
             <Typography
               as="span"
               variant="small"

@@ -1,28 +1,17 @@
 import { Link } from "react-router-dom";
 import React, { useEffect } from "react";
-import { Card, Typography } from "@material-tailwind/react";
-import { getMethod } from "@/service/auth";
-import axios from "axios";
+import { Card, Typography, Button, IconButton } from "@material-tailwind/react";
+import { UserCircleIcon } from "@heroicons/react/24/solid";
+import { useNavigate } from "react-router-dom";
 
 export function Home() {
   const split = `1. masukkan nama lengkap - 2.masukkan email - 3.masukkan password - 4.konfirmasi password sebelumnya - 5.pilih role optional`;
-
+  const nav = useNavigate();
   useEffect(() => {
-    axios
-      .get("https://09d1-103-186-31-38.ngrok-free.app/api/v1/materi", {
-        headers: {
-          "ngrok-skip-browser-warning": "true",
-        },
-      })
-      .then((res) => {
-        console.log(res);
-      });
-    getMethod.GetMateri().then((res) => {
-      console.log(res);
-    });
+    nav("/auth/home", { replace: true });
   }, []);
   return (
-    <div className="bgImage container mx-auto p-16">
+    <div className=" container mx-auto p-16">
       <Card className="w-full max-w-full p-4">
         <Typography variant="lead" className="py-4 text-start font-bold">
           Tata Cara Register siswa
@@ -38,8 +27,15 @@ export function Home() {
             );
           })}
         <p className="p-2">5.pilih gender</p>
-        <Link to="/auth/register/siswa" className="text-red-600">
-          register siswa
+        <Link to="/auth/register/siswa">
+          <Button
+            variant="text"
+            color="blue-gray"
+            className="flex items-center gap-1 px-4"
+          >
+            <UserCircleIcon className="h-5 w-5 text-blue-gray-500" />
+            Register Siswa
+          </Button>
         </Link>
         <Typography variant="lead" className="py-4 text-start font-bold">
           Tata Cara Register guru
@@ -51,8 +47,15 @@ export function Home() {
             </p>
           );
         })}
-        <Link to="/auth/register/guru" className="text-red-600">
-          register guru
+        <Link to="/auth/register/guru">
+          <Button
+            variant="text"
+            color="blue-gray"
+            className=" flex items-center gap-1 px-4"
+          >
+            <UserCircleIcon className="h-5 w-5 text-blue-gray-500" />
+            Register Guru
+          </Button>
         </Link>
         <Typography variant="lead" className="py-4 text-start font-bold">
           Tata Cara Register admin
@@ -64,8 +67,15 @@ export function Home() {
             </p>
           );
         })}
-        <Link to="/auth/register/admin" className="text-red-600">
-          register admin
+        <Link to="/auth/register/admin">
+          <Button
+            variant="text"
+            color="blue-gray"
+            className=" flex items-center gap-1 px-4"
+          >
+            <UserCircleIcon className="h-5 w-5 text-blue-gray-500" />
+            Register Admin
+          </Button>
         </Link>
         <Typography variant="lead" className="py-4 text-start font-bold">
           Tata Cara Login admin/siswa/guru
@@ -80,8 +90,15 @@ export function Home() {
               </p>
             );
           })}
-        <Link to="/auth/sign-in" className="text-red-600">
-          Login
+        <Link to="/auth/sign-in">
+          <Button
+            variant="text"
+            color="blue-gray"
+            className=" flex items-center gap-1 px-4"
+          >
+            <UserCircleIcon className="h-5 w-5 text-blue-gray-500" />
+            Login
+          </Button>
         </Link>
       </Card>
     </div>

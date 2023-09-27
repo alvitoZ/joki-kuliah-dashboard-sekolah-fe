@@ -26,7 +26,7 @@ export function SignOut() {
                 "Silahkan masuk kembali untuk melihat dashboard"
               ).then((_) => {
                 localStorage.removeItem("token");
-                navigate("/auth/sign-in");
+                navigate("/auth/home", { replace: true });
               });
             }
           });

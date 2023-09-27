@@ -124,7 +124,7 @@ export const Pengaturan = () => {
     });
   };
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col flex-wrap gap-4">
       <Card className="">
         <CardBody className="flex flex-row gap-4">
           <SearchIcon />
@@ -152,7 +152,7 @@ export const Pengaturan = () => {
                 }
                 alt="your image"
               />
-              <div className="flex flex-col items-center rounded-md bg-red-600">
+              <div className="flex flex-col items-center rounded-md bg-red-600 ">
                 <p className="pt-2 text-white">Upload Foto</p>
                 <input
                   type="file"
@@ -160,7 +160,7 @@ export const Pengaturan = () => {
                   onChange={onChangePicture}
                 />
               </div>
-              <div className="flex h-fit cursor-pointer items-center rounded-sm bg-gray-600 text-white hover:bg-green-500 ">
+              <div className="flex h-fit cursor-pointer items-center rounded-md bg-gray-600 text-white hover:bg-green-500 ">
                 <button
                   className="py-1 px-2"
                   onClick={() => deleteImage(data._id)}
@@ -173,8 +173,8 @@ export const Pengaturan = () => {
           </div>
         </CardBody>
       </Card>
-      <Card className="flex flex-row justify-start gap-4">
-        <CardBody className="flex w-[70%] flex-col gap-4">
+      <Card className="flex h-full  flex-row justify-start gap-4">
+        <CardBody className="flex flex-col flex-wrap gap-4">
           <Typography
             as="span"
             variant="small"

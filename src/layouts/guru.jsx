@@ -7,9 +7,9 @@ import { useMaterialTailwindController, setOpenConfigurator } from "@/context";
 
 export function Guru() {
   const [controller, dispatch] = useMaterialTailwindController();
-  const { sidenavType } = controller;
+  const { sidenavType, openImage } = controller;
   return (
-    <div className="min-h-screen bg-blue-gray-50/50">
+    <div className={`min-h-screen bg-blue-gray-50/50 bg-[url(${openImage})]`}>
       <Sidenav
         routes={routes}
         brandImg={

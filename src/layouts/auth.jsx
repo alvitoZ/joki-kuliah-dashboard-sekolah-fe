@@ -5,13 +5,23 @@ import {
   UserPlusIcon,
   ArrowRightOnRectangleIcon,
 } from "@heroicons/react/24/solid";
-import { Navbar, Footer } from "@/widgets/layout";
+import {
+  Navbar,
+  Footer,
+  Sidenav,
+  DashboardNavbar,
+  Home,
+} from "@/widgets/layout";
 import { RegisterSiswa } from "@/widgets/layout/RegisterSiswa";
 import { RegisterGuru } from "@/widgets/layout/RegisterGuru";
 import { RegisterAdmin } from "@/widgets/layout/RegisterAdmin";
 import { SignIn } from "@/pages/auth";
+import { useMaterialTailwindController, setOpenConfigurator } from "@/context";
 
 export function Auth() {
+  const [controller, dispatch] = useMaterialTailwindController();
+  const { sidenavType } = controller;
+
   const navbarRoutes = [
     {
       name: "dashboard",
@@ -35,6 +45,11 @@ export function Auth() {
       title: "auth pages",
       layout: "auth",
       pages: [
+        {
+          name: "home",
+          path: "/home",
+          element: <Home />,
+        },
         {
           name: "sign in",
           path: "/sign-in",
@@ -60,21 +75,32 @@ export function Auth() {
   ];
 
   return (
-    <div className="bgImage relative min-h-screen w-full">
-      <div className="container relative z-40 mx-auto p-4">
-        <Navbar routes={navbarRoutes} />
-      </div>
-      <Routes>
-        {auth.map(
-          ({ layout, pages }) =>
-            layout === "auth" &&
-            pages.map(({ path, element }) => (
-              <Route exact path={path} element={element} />
-            ))
-        )}
-      </Routes>
-      <div className="container absolute bottom-8 left-2/4 z-10 mx-auto -translate-x-2/4 text-white">
-        <Footer />
+    <div className="bgImage min-h-screen bg-blue-gray-50/50">
+      <Sidenav
+        routes={auth}
+        brandImg={
+          sidenavType === "dark"
+            ? "/img/Donor_Darah.png"
+            : "/img/Donor_Darah.png"
+        }
+      />
+      <div className="p-4 xl:ml-80">
+        <DashboardNavbar />
+        <div className="container relative z-40 mx-auto p-4">
+          <Navbar routes={navbarRoutes} />
+        </div>
+        <Routes>
+          {auth.map(
+            ({ layout, pages }) =>
+              layout === "auth" &&
+              pages.map(({ path, element }) => (
+                <Route exact path={path} element={element} />
+              ))
+          )}
+        </Routes>
+        <div className="text-blue-gray-600">
+          <Footer />
+        </div>
       </div>
     </div>
   );

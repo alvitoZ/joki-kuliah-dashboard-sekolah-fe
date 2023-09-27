@@ -36,8 +36,8 @@ export function EditUser() {
 
   return (
     <CardBody className="mr-8 px-0 pb-2">
-      <Card className="flex h-full w-full flex-col gap-8">
-        <div className="py-4 pl-5 text-xl font-bold">
+      <Card className="flex h-full w-full flex-col gap-8 p-10">
+        <div className=" text-xl font-bold">
           <p>Halaman Edit User {role}</p>
         </div>
         <Input
@@ -70,7 +70,10 @@ export function EditUser() {
             });
           }}
         />
-        <div>
+        <div
+          className="w-fit rounded-lg border-2 border-green-200 text-blue-500 hover:cursor-pointer hover:text-green-300"
+          onClick={() => edit(id, data)}
+        >
           <BorderColorIcon />
           <span
             className="font-bold text-gray-700 hover:cursor-pointer"

@@ -2,11 +2,31 @@ import { useLocation, Link } from "react-router-dom";
 import {
   Navbar,
   Typography,
+  Button,
   IconButton,
   Breadcrumbs,
+  Input,
+  Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,
+  Avatar,
+  Tooltip,
 } from "@material-tailwind/react";
-import { Bars3Icon } from "@heroicons/react/24/solid";
-import { useMaterialTailwindController, setOpenSidenav } from "@/context";
+import {
+  UserCircleIcon,
+  Cog6ToothIcon,
+  ArrowRightOnRectangleIcon,
+  BellIcon,
+  ClockIcon,
+  CreditCardIcon,
+  Bars3Icon,
+} from "@heroicons/react/24/solid";
+import {
+  useMaterialTailwindController,
+  setOpenConfigurator,
+  setOpenSidenav,
+} from "@/context";
 
 import SignOut from "./SignOut";
 
@@ -18,11 +38,11 @@ export function DashboardNavbar() {
 
   return (
     <Navbar
-      color={fixedNavbar ? "white" : "transparent"}
-      className={`rounded-xl transition-all ${
+      color={fixedNavbar ? "transparent" : "white"}
+      className={`w-full rounded-xl transition-all ${
         fixedNavbar
-          ? "sticky top-4 z-40 py-3 shadow-md shadow-blue-gray-500/5"
-          : "px-0 py-1"
+          ? "sticky top-4 z-40 py-3 shadow-md shadow-blue-gray-500/5 "
+          : "px-4 py-1"
       }`}
       fullWidth
       blurred={fixedNavbar}
@@ -48,14 +68,39 @@ export function DashboardNavbar() {
               color="blue-gray"
               className="font-normal"
             >
-              {page.replace("-", " ")}
+              {page}
             </Typography>
           </Breadcrumbs>
           <Typography variant="h6" color="blue-gray">
             {page}
           </Typography>
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center gap-4">
+          <Link to="/auth/home">
+            <IconButton variant="text" color="blue-gray">
+              <img
+                src="https://4.bp.blogspot.com/-hVKO2rXc7TY/UQvFrX6l0QI/AAAAAAAAMYA/rQ8YJoAYtWA/s1600/LOGO+UNIVERSITAS+JAMBI.png"
+                alt="universitas jambi"
+              />
+            </IconButton>
+          </Link>
+          <Link to="/auth/sign-in">
+            <Button
+              variant="text"
+              color="blue-gray"
+              className="hidden items-center gap-1 px-4 xl:flex"
+            >
+              <UserCircleIcon className="h-5 w-5 text-blue-gray-500" />
+              Sign In
+            </Button>
+            <IconButton
+              variant="text"
+              color="blue-gray"
+              className="grid xl:hidden"
+            >
+              <UserCircleIcon className="h-5 w-5 text-blue-gray-500" />
+            </IconButton>
+          </Link>
           <IconButton
             variant="text"
             color="blue-gray"
@@ -64,6 +109,7 @@ export function DashboardNavbar() {
           >
             <Bars3Icon strokeWidth={3} className="h-6 w-6 text-blue-gray-500" />
           </IconButton>
+
           <SignOut />
         </div>
       </div>

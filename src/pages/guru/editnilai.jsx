@@ -33,7 +33,7 @@ export function EditNilai() {
 
   return (
     <CardBody className="mr-8 px-0 pb-2">
-      <Card className="flex h-full w-full flex-col gap-8">
+      <Card className="flex h-full w-full flex-col gap-8 p-10">
         <div className="py-4 pl-5 text-xl font-bold">
           <p>Halaman Edit Nilai</p>
         </div>
@@ -68,14 +68,14 @@ export function EditNilai() {
             });
           }}
         />
-        <div>
-          <BorderColorIcon />
-          <span
-            className="font-bold text-gray-700 hover:cursor-pointer"
-            onClick={() => edit(id, data)}
-          >
-            edit
-          </span>
+        <div
+          className="w-fit rounded-lg border-2 border-green-200 text-blue-500 hover:cursor-pointer hover:text-green-300"
+          onClick={() => edit(id, data)}
+        >
+          <button className="p-1 ">
+            <BorderColorIcon />
+            <span className="font-bold hover:cursor-pointer">Edit Nilai ?</span>
+          </button>
         </div>
       </Card>
     </CardBody>

@@ -11,3 +11,4 @@ export * from "@/widgets/layout/RegisterSiswa";
 export * from "@/widgets/layout/Rte";
 export * from "@/widgets/layout/Search";
 export * from "@/widgets/layout/SignOut";
+export * from "@/widgets/layout/Home";

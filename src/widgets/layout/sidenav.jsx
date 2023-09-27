@@ -22,11 +22,13 @@ export function Sidenav({ brandImg, brandName, routes }) {
         setRole(res.data.data.role);
       })
       .catch((err) => {
-        nav("/auth/sign-in");
+        nav("/auth/home", { replace: true });
       });
   }, []);
   const [controller, dispatch] = useMaterialTailwindController();
   const { sidenavColor, sidenavType, openSidenav } = controller;
+
+  const Role = () => (role === "" ? "auth" : role);
 
   return (
     <aside
@@ -60,7 +62,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
       <div className="m-4">
         {routes.map(
           ({ layout, title, pages }, key) =>
-            layout === role && (
+            layout === Role() && (
               <ul key={key} className="mb-4 flex flex-col gap-1">
                 {title && (
                   <li className="mx-3.5 mt-4 mb-2">

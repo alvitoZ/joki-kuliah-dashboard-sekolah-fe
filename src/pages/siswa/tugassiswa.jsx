@@ -12,11 +12,15 @@ export function TugasSiswa() {
   const [layout, setLayout] = useState(false);
   const [kategoriC, setKategoriC] = useState(1);
   const [grafikNilai, setGrafikNilai] = useState(1);
+  const [time, setTime] = useState(true);
   const nav = useNavigate();
 
   useEffect(() => {
     getMethod.SoalList(`c${kategoriC}`).then((res) => {
       setSoal(res.data.data);
+      setTimeout(() => {
+        setTime((v) => !v);
+      }, 5000);
     });
   }, [kategoriC, layout]);
   // console.log(soal);
@@ -43,7 +47,6 @@ export function TugasSiswa() {
         setHasil(res.data);
         setLayout((v) => !v);
       });
-      // console.log(filtered);
     }
   };
 
@@ -98,11 +101,14 @@ export function TugasSiswa() {
               );
             })}
           </div>
-          <div
-            onClick={() => cobafilter(jawaban)}
-            className="cursor-pointer bg-black text-center text-base font-bold text-red-900 hover:bg-blue-500 hover:text-white"
-          >
-            <button className="pb-2">Kumpulkan Jawaban</button>
+          <div className=" bg-black text-center text-base font-bold text-red-900 ">
+            <button
+              disabled={time}
+              onClick={() => cobafilter(jawaban)}
+              className="pb-2 hover:bg-blue-500 hover:text-white"
+            >
+              Kumpulkan Jawaban
+            </button>
           </div>
         </div>
       )}
