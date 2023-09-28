@@ -33,7 +33,6 @@ export function EditSoals() {
           confirmButtonText: "Tutup",
         }).then((_) => {
           updateMethod.EditSoal(category, id, data).then((res) => {
-            // nav("/guru/Edit-Soal");
             window.location.reload();
           });
         });
@@ -42,7 +41,6 @@ export function EditSoals() {
   };
 
   const deleteData = (category, id, nomor) => {
-    // console.log({ category, id, data });
     Swal.fire({
       title: `Hapus Soal nomor ${nomor} ini?`,
       icon: "error",
@@ -57,8 +55,8 @@ export function EditSoals() {
           icon: "success",
           confirmButtonText: "Tutup",
         }).then((_) => {
+          console.log(category, id);
           deleteMethod.DeleteSoalById(category, id).then((res) => {
-            // nav("/guru/Edit-Soal");
             window.location.reload();
           });
         });
