@@ -22,7 +22,7 @@ const TugasGagal = ({ kategori, total_benar, nilai, hasilParent }) => {
         <p className="text-base font-bold text-gray-800">
           Kategori Penilaian: {kategori ? kategori : ""}
         </p>
-        {nilai === 10 ? (
+        {nilai === 100 ? (
           <button
             className="w-fit bg-green-500 text-base font-bold text-white hover:bg-red-500"
             onClick={() => hasilParent()}
