@@ -9,7 +9,7 @@ export function Siswa() {
   const [controller, dispatch] = useMaterialTailwindController();
   const { sidenavType } = controller;
   return (
-    <div className={`min-h-screen bg-blue-gray-50/50 bg-[url(${openImage})]`}>
+    <div className={`min-h-screen bg-blue-gray-50/50 `}>
       <Sidenav routes={routes} />
       <div className="p-4 xl:ml-80">
         <DashboardNavbar />
