@@ -80,7 +80,7 @@ export function NilaiSiswaGuru() {
                           </span>
                         </button>
                       </div>
-                      <div className="w-fit rounded-lg border-2 border-green-200 text-red-500 hover:cursor-pointer hover:text-green-300">
+                      <div className="w-fit rounded-lg border-2 border-red-500 text-red-500 hover:cursor-pointer hover:text-green-300">
                         <button
                           className="p-1 "
                           onClick={() => deleteById(_id)}
