@@ -2,7 +2,7 @@ import { Card, CardBody, Input, Typography } from "@material-tailwind/react";
 import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
-import { updateMethod, getMethod } from "@/service/auth";
+import { updateMethod, getMethod, deleteMethod } from "@/service/auth";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
 
@@ -101,7 +101,7 @@ export const Pengaturan = () => {
     });
   };
 
-  const deleteImage = (id) => {
+  const deleteImage = (data) => {
     Swal.fire({
       title: `hapus gambar ini?`,
       icon: "warning",
@@ -116,9 +116,8 @@ export const Pengaturan = () => {
           icon: "success",
           confirmButtonText: "Tutup",
         }).then((_) => {
-          updateMethod.EditProfil(id, data).then((res) => {
-            setRefresh((v) => !v);
-          });
+          deleteMethod.DeleteImageFile(data.image);
+          setRefresh((v) => !v);
         });
       }
     });
@@ -143,12 +142,11 @@ export const Pengaturan = () => {
             <p className="font-bold text-gray-600">Informasi Profil</p>
             <div className="flex items-center gap-4">
               <img
-                crossOrigin="anonymous"
                 className="h-28 w-28 object-cover hover:scale-150"
                 src={
                   imgData
                     ? imgData
-                    : `${import.meta.env.VITE_BASEURL}/images/${data.image}`
+                    : `${import.meta.env.VITE_BASEURL}/images/` + data.image
                 }
                 alt="your image"
               />
@@ -163,7 +161,7 @@ export const Pengaturan = () => {
               <div className="flex h-fit cursor-pointer items-center rounded-md bg-gray-600 text-white hover:bg-green-500 ">
                 <button
                   className="py-1 px-2"
-                  onClick={() => deleteImage(data._id)}
+                  onClick={() => deleteImage(data.image)}
                 >
                   hapus
                 </button>

@@ -258,6 +258,16 @@ class DeleteMethod {
       });
   };
 
+  DeleteImageFile = async (image) => {
+    return await api
+      .delete(`/api/v1/image/file/${image}`, {
+        headers: tokenHeader(),
+      })
+      .then((res) => {
+        return res;
+      });
+  };
+
   DeleteSoalById = async (category, id) => {
     return await api
       .delete(`/api/v1/soal/delete-soal/${category}/${id}`, {

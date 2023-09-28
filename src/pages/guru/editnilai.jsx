@@ -72,7 +72,7 @@ export function EditNilai() {
           className="w-fit rounded-lg border-2 border-green-200 text-blue-500 hover:cursor-pointer hover:text-green-300"
           onClick={() => edit(id, data)}
         >
-          <button className="p-1 ">
+          <button className="p-2">
             <BorderColorIcon />
             <span className="font-bold hover:cursor-pointer">Edit Nilai ?</span>
           </button>

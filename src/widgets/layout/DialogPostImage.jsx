@@ -100,57 +100,65 @@ export function DialogPostImage({ child }) {
       <Dialog
         open={opendialog}
         // handler={handleOpenDialog}
-        className="h-full w-full overflow-auto"
+        className=" h-full w-full  overflow-auto"
       >
         <DialogHeader>Tambah Gambar Untuk Soal/Jawaban Baru</DialogHeader>
-        <DialogBody divider className="flex h-full w-full flex-wrap p-4">
-          <div className="flex h-40 w-40 flex-col items-center rounded-md border-2 border-red-600">
-            <img className="max-w-32 max-h-32" src={imgData} alt="your image" />
-            <input
-              // onChange={(e) => console.log(e.target.files[0].name)}
-              onChange={(e) => onChangePicture(e)}
-              className="block w-32 cursor-pointer rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:placeholder-gray-400"
-              type="file"
-            />
-          </div>
-          {images.map(({ image, alt, _id }, i) => {
-            return (
-              <div
-                key={i}
-                onClick={() =>
-                  child(`${import.meta.env.VITE_BASEURL}/images/` + "/" + image)
-                }
-                className="relative flex h-40 w-40 cursor-pointer flex-col items-center rounded-md border-2 border-red-600 active:opacity-70"
-              >
-                <img
-                  className="max-w-32 max-h-32"
-                  src={`${import.meta.env.VITE_BASEURL}/images/${image}`}
-                  alt={alt}
-                />
-                <div className="absolute top-20 cursor-pointer rounded-md bg-red-500 hover:bg-green-600">
-                  <p
-                    className="p-1 text-xs text-white"
-                    onClick={() => hapusGambar(_id)}
-                  >
-                    hapus?
-                  </p>
+        <div>
+          <DialogBody divider className="flex h-full w-full flex-wrap p-4">
+            <div className="flex h-40 w-40 flex-col items-center rounded-md border-2 border-red-600">
+              <img
+                className="max-w-32 max-h-32"
+                src={imgData}
+                alt="your image"
+              />
+              <input
+                // onChange={(e) => console.log(e.target.files[0].name)}
+                onChange={(e) => onChangePicture(e)}
+                className="block w-32 cursor-pointer rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:placeholder-gray-400"
+                type="file"
+              />
+            </div>
+            {images.map(({ image, alt, _id }, i) => {
+              return (
+                <div
+                  key={i}
+                  onClick={() =>
+                    child(
+                      `${import.meta.env.VITE_BASEURL}/images/` + "/" + image
+                    )
+                  }
+                  className="relative flex h-40 w-40 cursor-pointer flex-col items-center rounded-md border-2 border-red-600 active:opacity-70"
+                >
+                  <img
+                    className="max-w-32 max-h-32"
+                    src={`${import.meta.env.VITE_BASEURL}/images/${image}`}
+                    alt={alt}
+                  />
+                  <div className="absolute top-20 cursor-pointer rounded-md bg-red-500 hover:bg-green-600">
+                    <p
+                      className="p-1 text-xs text-white"
+                      onClick={() => hapusGambar(_id)}
+                    >
+                      hapus?
+                    </p>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </DialogBody>
-        <DialogFooter className="space-x-2">
-          <Button
-            variant="gradient"
-            color="red"
-            onClick={() => postGambar(data)}
-          >
-            tambah gambar
-          </Button>
-          <Button variant="outlined" color="red" onClick={handleOpenDialog}>
-            batal
-          </Button>
-        </DialogFooter>
+              );
+            })}
+          </DialogBody>
+          <DialogFooter className="">
+            <Button
+              variant="gradient"
+              color="red"
+              onClick={() => postGambar(data)}
+            >
+              tambah gambar
+            </Button>
+            <Button variant="outlined" color="red" onClick={handleOpenDialog}>
+              batal
+            </Button>
+          </DialogFooter>
+        </div>
       </Dialog>
     </>
   );

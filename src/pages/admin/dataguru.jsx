@@ -117,11 +117,8 @@ export const DataGuru = () => {
                             {createdAt}
                           </td>
                           <td className="dark:border-neutral-500 whitespace-nowrap border-r px-6 py-4">
-                            <div className="w-fit rounded-lg border-2 border-green-200 text-blue-500 hover:cursor-pointer hover:text-green-300">
-                              <Link
-                                to={`/admin/edit-user/${_id}`}
-                                className="p-1"
-                              >
+                            <div className="w-fit rounded-lg border-2 border-green-200 p-2 text-blue-500 hover:cursor-pointer hover:text-green-300">
+                              <Link to={`/admin/edit-user/${_id}`} className="">
                                 <BorderColorIcon /> <span>Edit</span>
                               </Link>
                             </div>

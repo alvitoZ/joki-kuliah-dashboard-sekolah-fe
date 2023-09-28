@@ -74,13 +74,15 @@ export function EditUser() {
           className="w-fit rounded-lg border-2 border-green-200 text-blue-500 hover:cursor-pointer hover:text-green-300"
           onClick={() => edit(id, data)}
         >
-          <BorderColorIcon />
-          <span
-            className="font-bold text-gray-700 hover:cursor-pointer"
-            onClick={() => edit(id, data)}
-          >
-            edit
-          </span>
+          <div className="p-2">
+            <BorderColorIcon />
+            <span
+              className="font-bold text-gray-700 hover:cursor-pointer"
+              onClick={() => edit(id, data)}
+            >
+              edit
+            </span>
+          </div>
         </div>
       </Card>
     </CardBody>
