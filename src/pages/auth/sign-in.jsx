@@ -23,7 +23,7 @@ export function SignIn() {
       .Login(data)
       .then((res) => {
         localStorage.setItem("token", res.data.token);
-        nav(`/${res.data.role}/dashboard/`);
+        nav(`/${res.data.role}/dashboard/`, { replace: true });
       })
       .catch((err) => {});
   };
