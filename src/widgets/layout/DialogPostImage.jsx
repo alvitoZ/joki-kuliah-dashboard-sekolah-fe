@@ -123,9 +123,7 @@ export function DialogPostImage({ child }) {
                 <div
                   key={i}
                   onClick={() =>
-                    child(
-                      `${import.meta.env.VITE_BASEURL}/images/` + "/" + image
-                    )
+                    child(`${import.meta.env.VITE_BASEURL}/images/` + image)
                   }
                   className="relative flex h-40 w-40 cursor-pointer flex-col items-center rounded-md border-2 border-red-600 active:opacity-70"
                 >
