@@ -8,24 +8,20 @@ import Swal from "sweetalert2";
 export function EditNilai() {
   const { id } = useParams();
   const Navigate = useNavigate();
-  const [data, setData] = useState({
-    nama: "",
-    nilai: null,
-    kategori: "",
+  const [data, setData] = useState([]);
+  const [postData, setPostData] = useState({
+    nilai: 0,
   });
 
   useEffect(() => {
     getMethod.GetNilaiById(id).then((res) => {
-      setData({
-        nama: res.data.data.nama,
-        nilai: res.data.data.nilai,
-        kategori: res.data.data.kategori,
-      });
+      setData(res.data.data.nilai);
     });
   }, []);
 
-  const edit = (id, data) => {
-    updateMethod.EditNilai(id, data).then((res) => {
+  // console.log(data);
+  const edit = (Parentid, id, data) => {
+    updateMethod.EditNilai(Parentid, id, data).then((res) => {
       Swal.fire(`data berhasil di update`);
       Navigate("/guru/Nilai-Siswa");
     });
@@ -37,46 +33,35 @@ export function EditNilai() {
         <div className="py-4 pl-5 text-xl font-bold">
           <p>Halaman Edit Nilai</p>
         </div>
-        <Input
-          label="nama"
-          defaultValue={data.nama}
-          onChange={(e) => {
-            setData({
-              ...data,
-              nama: e.target.value,
-            });
-          }}
-        />
-        <Input
-          type="number"
-          label="nilai"
-          defaultValue={data.nilai}
-          onChange={(e) => {
-            setData({
-              ...data,
-              nilai: e.target.value,
-            });
-          }}
-        />
-        <Input
-          label="kategori"
-          defaultValue={data.kategori}
-          onChange={(e) => {
-            setData({
-              ...data,
-              kategori: e.target.value,
-            });
-          }}
-        />
-        <div
-          className="w-fit rounded-lg border-2 border-green-200 text-blue-500 hover:cursor-pointer hover:text-green-300"
-          onClick={() => edit(id, data)}
-        >
-          <button className="p-2">
-            <BorderColorIcon />
-            <span className="font-bold hover:cursor-pointer">Edit Nilai ?</span>
-          </button>
-        </div>
+        {data.map(({ kategori, nilai, _id }, i) => {
+          return (
+            <div key={i}>
+              <p>{kategori}</p>
+              <Input
+                type="number"
+                label="nilai"
+                defaultValue={nilai}
+                onChange={(e) => {
+                  setPostData({
+                    ...postData,
+                    nilai: e.target.value,
+                  });
+                }}
+              />
+              <div
+                className="w-fit rounded-lg border-2 border-green-200 text-blue-500 hover:cursor-pointer hover:text-green-300"
+                onClick={() => edit(id, _id, postData)}
+              >
+                <button className="p-2">
+                  <BorderColorIcon />
+                  <span className="font-bold hover:cursor-pointer">
+                    Edit Nilai ?
+                  </span>
+                </button>
+              </div>
+            </div>
+          );
+        })}
       </Card>
     </CardBody>
   );

@@ -16,7 +16,7 @@ class PostMethod {
 
   PostJawaban = async (data) => {
     return await api
-      .post(`/api/v1/soal/post-jawaban`, data, {
+      .post(`/api/v1/nilai/post-jawaban`, data, {
         headers: tokenHeader(),
       })
       .then((res) => {
@@ -70,7 +70,7 @@ class GetMethod {
 
   GetNilaiById = async (id) => {
     return await api
-      .get(`/api/v1/soal/nilai/${id}`, {
+      .get(`/api/v1/nilai/${id}`, {
         headers: tokenHeader(),
       })
       .then((res) => {
@@ -90,7 +90,7 @@ class GetMethod {
 
   GetNilai = async () => {
     return await api
-      .get(`/api/v1/soal/nilai-siswa`, {
+      .get(`/api/v1/nilai/nilai-siswa`, {
         headers: tokenHeader(),
       })
       .then((res) => {
@@ -100,7 +100,7 @@ class GetMethod {
 
   GetNilaiGrafik = async () => {
     return await api
-      .get(`/api/v1/soal/nilai-grafik`, {
+      .get(`/api/v1/nilai/nilai-grafik`, {
         headers: tokenHeader(),
       })
       .then((res) => {
@@ -110,7 +110,7 @@ class GetMethod {
 
   GetNilais = async () => {
     return await api
-      .get(`/api/v1/soal/nilai`, {
+      .get(`/api/v1/nilai`, {
         headers: tokenHeader(),
       })
       .then((res) => {
@@ -194,9 +194,9 @@ class UpdateMethod {
       });
   };
 
-  EditNilai = async (id, data) => {
+  EditNilai = async (Parentid, id, data) => {
     return await api
-      .put(`/api/v1/soal/edit-nilai/${id}`, data, {
+      .put(`/api/v1/nilai/${Parentid}/${id}`, data, {
         headers: tokenHeader(),
       })
       .then((res) => {
@@ -230,7 +230,7 @@ class UpdateMethod {
 class DeleteMethod {
   DeleteNilaiById = async (id) => {
     return await api
-      .delete(`/api/v1/soal/nilai/${id}`, {
+      .delete(`/api/v1/nilai/${id}`, {
         headers: tokenHeader(),
       })
       .then((res) => {

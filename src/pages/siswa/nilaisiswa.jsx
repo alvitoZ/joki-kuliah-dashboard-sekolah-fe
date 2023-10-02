@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Card, CardBody, Typography } from "@material-tailwind/react";
-import BorderColorIcon from "@mui/icons-material/BorderColor";
-import DeleteIcon from "@mui/icons-material/Delete";
 import { getMethod } from "@/service/auth";
 
 export function NilaiSiswa() {
@@ -19,41 +17,49 @@ export function NilaiSiswa() {
         <div className="text-xl font-bold">
           <p>Daftar nilai berdasarkan kategori</p>
         </div>
-        <table className="w-[100%] table-auto text-left">
-          <thead className="">
+        <table className="min-w-full text-left text-sm font-light">
+          <thead className="dark:border-neutral-500 border-b font-medium">
             <tr>
-              {["Nama Siswa", "Total Nilai", "Kategori"].map((head) => (
-                <th key={head} className="py-4 text-sm font-medium uppercase">
+              {[
+                "No",
+                "Nama Siswa",
+                "Sesi",
+                "C1",
+                "C2",
+                "C3",
+                "C4",
+                "C5",
+                "C6",
+              ].map((head, i) => (
+                <th key={i} scope="col" className="px-6 py-4">
                   {head}
                 </th>
               ))}
             </tr>
           </thead>
-          <tbody className="text-left">
-            {data.map(({ nama, nilai, kategori }, i) => {
+          <tbody>
+            {data.map(({ student_name, session_id, nilai }, i) => {
               return (
-                <tr
-                  key={i}
-                  className={`${
-                    i % 2 ? "bg-blue-gray-300" : "bg-white"
-                  } hover:bg-blue-gray-400
-                  `}
-                >
-                  <td className="py-2">{nama}</td>
-                  <td className="py-2">{nilai}</td>
-                  <td className="py-2">{kategori}</td>
-                  {/* <td className="hidden p-4">
-                    <div className="flex flex-col gap-2">
-                      <div>
-                        <BorderColorIcon />
-                        <span className="font-bold text-gray-700">edit</span>
-                      </div>
-                      <div>
-                        <DeleteIcon />
-                        <span className="font-bold text-red-500">Hapus</span>
-                      </div>
-                    </div>
-                  </td> */}
+                <tr key={i} className="dark:border-neutral-500 border-b">
+                  <td className="whitespace-nowrap px-6 py-4 font-medium">
+                    {i + 1}
+                  </td>
+                  <td className="whitespace-nowrap px-6 py-4 font-medium">
+                    {student_name}
+                  </td>
+                  <td className="whitespace-nowrap px-6 py-4 font-medium">
+                    {session_id}
+                  </td>
+                  {nilai.map(({ nilai }, index) => {
+                    return (
+                      <td
+                        key={index}
+                        className="whitespace-nowrap px-6 py-4 font-medium"
+                      >
+                        {nilai}
+                      </td>
+                    );
+                  })}
                 </tr>
               );
             })}

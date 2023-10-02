@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 
 const TugasGagal = ({ kategori, total_benar, nilai, hasilParent }) => {
   return (
     <div className="max-w-xs overflow-hidden rounded bg-blue-gray-300">
-      <div className="h-8 text-center text-base font-bold"></div>
-      <div className="bg-black text-center text-base font-bold text-red-900">
-        <p className="pb-2">Kumpulkan Jawaban</p>
+      <div>
+        <div className="h-8 text-center text-base font-bold"></div>
+        <div className="bg-black text-center text-base font-bold text-red-900">
+          <p className="pb-2">Kumpulkan Jawaban</p>
+        </div>
       </div>
       <div
         className="flex flex-col gap-3 p-6
@@ -22,20 +23,23 @@ const TugasGagal = ({ kategori, total_benar, nilai, hasilParent }) => {
         <p className="text-base font-bold text-gray-800">
           Kategori Penilaian: {kategori ? kategori : ""}
         </p>
-        {nilai === 100 ? (
+        <div>
+          {nilai === 100 ? (
+            <div></div>
+          ) : (
+            <p className="text-base font-bold text-gray-800">
+              Komentar: Kamu sepertinya mengalami kesulitan dalam menganalisa
+              pertanyaan, kalo ada yg mau ditanya silahkan diskusikan dengan
+              Guru mu, Oke!
+            </p>
+          )}
           <button
-            className="w-fit bg-green-500 text-base font-bold text-white hover:bg-red-500"
+            className="w-fit bg-red-500 py-2 px-4 hover:bg-blue-500 hover:text-white"
             onClick={() => hasilParent()}
           >
             Lanjut
           </button>
-        ) : (
-          <p className="text-base font-bold text-gray-800">
-            Komentar: Kamu sepertinya mengalami kesulitan dalam menganalisa
-            pertanyaan, kalo ada yg mau ditanya silahkan diskusikan dengan Guru
-            mu, Oke!
-          </p>
-        )}
+        </div>
       </div>
     </div>
   );
