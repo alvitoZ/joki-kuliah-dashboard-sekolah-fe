@@ -10,6 +10,7 @@ export const publicHeader = () => {
 export const tokenHeader = () => {
   return {
     "ngrok-skip-browser-warning": "true",
+    "ngrok-skip-browser-warning": "1",
     "Content-Type": "application/json",
     Authorization: `Bearer ${localStorage.getItem("token")}`,
   };
