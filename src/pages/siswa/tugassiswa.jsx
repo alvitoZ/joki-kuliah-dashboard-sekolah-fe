@@ -6,7 +6,6 @@ import { getMethod, postMethod } from "@/service/auth";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { resultArr, jumlah, filterJawaban } from "@/helpers/filterjawaban";
-import { GrafikNilai } from "@/widgets/layout";
 
 export function TugasSiswa() {
   const [soal, setSoal] = useState([]);
@@ -53,7 +52,7 @@ export function TugasSiswa() {
     }
   };
 
-  const coba = () => {
+  const coba = (jawaban) => {
     const ids = jawaban.map(({ _id }) => _id);
     const filtered = jawaban.filter(
       ({ _id }, index) => !ids.includes(_id, index + 1)
@@ -91,7 +90,6 @@ export function TugasSiswa() {
     setAllJawaban([]);
     setGrafikNilai(1);
     postMethod.PostJawaban(resultArr(allJawaban)).then((res) => {
-      console.log(res);
       nav("/siswa/grafik-nilai");
     });
   }
@@ -152,16 +150,16 @@ export function TugasSiswa() {
               })}
             </div>
             <div className="rounded-lg border-2 bg-blue-gray-800 hover:border-red-500">
-              <div className="flex justify-evenly p-2">
+              <div className="flex justify-evenly p-2 text-white">
                 <button
                   onClick={() => cobafilter(jawaban)}
-                  className="bg-red-500 py-2 px-4 hover:bg-blue-500 hover:text-white"
+                  className="bg-red-500 py-2 px-4 hover:bg-blue-500"
                 >
                   Lanjut?
                 </button>
                 <button
-                  onClick={() => coba()}
-                  className="bg-green-300 py-2 px-4 hover:bg-blue-500 hover:text-white"
+                  onClick={() => coba(jawaban)}
+                  className="bg-green-300 py-2 px-4 hover:bg-blue-500 "
                 >
                   Selesai?
                 </button>

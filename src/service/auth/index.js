@@ -100,7 +100,7 @@ class GetMethod {
 
   GetNilaiGrafik = async () => {
     return await api
-      .get(`/api/v1/nilai/nilai-grafik`, {
+      .get(`/api/v1/nilai/nilai/nilai-grafik`, {
         headers: tokenHeader(),
       })
       .then((res) => {

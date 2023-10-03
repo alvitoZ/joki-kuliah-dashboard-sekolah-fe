@@ -60,7 +60,6 @@ export function NilaiSiswaGuru() {
                         "No",
                         "Aksi",
                         "Nama Siswa",
-                        "Sesi",
                         "C1",
                         "C2",
                         "C3",
@@ -77,7 +76,7 @@ export function NilaiSiswaGuru() {
                     </tr>
                   </thead>
                   <tbody>
-                    {data.map(({ student_name, session_id, nilai, _id }, i) => {
+                    {data.map(({ student_name, nilai, _id }, i) => {
                       return (
                         <tr
                           key={i}
@@ -94,7 +93,7 @@ export function NilaiSiswaGuru() {
                                   Navigate(`/guru/edit-nilai/${_id}`)
                                 }
                               >
-                                <button className="p-1 ">
+                                <button className="flex flex-row p-1">
                                   <BorderColorIcon />
                                   <span className="font-bold hover:cursor-pointer">
                                     Edit
@@ -103,7 +102,7 @@ export function NilaiSiswaGuru() {
                               </div>
                               <div className="w-fit rounded-lg border-2 border-red-500 text-red-500 hover:cursor-pointer hover:text-green-300">
                                 <button
-                                  className="p-1"
+                                  className="flex flex-row p-1"
                                   onClick={() => deleteById(_id)}
                                 >
                                   <DeleteIcon />
@@ -117,9 +116,6 @@ export function NilaiSiswaGuru() {
 
                           <td className="whitespace-nowrap px-6 py-4 font-medium">
                             {student_name}
-                          </td>
-                          <td className="whitespace-nowrap px-6 py-4 font-medium">
-                            {session_id}
                           </td>
                           {nilai.map(({ nilai }, index) => {
                             return (

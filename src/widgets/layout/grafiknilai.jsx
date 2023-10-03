@@ -12,7 +12,7 @@ export function GrafikNilai() {
   const [chartData, setChartData] = useState([]);
   useEffect(() => {
     getMethod.GetNilaiGrafik().then((res) => {
-      setChartData(res.data.data);
+      setChartData(res.data.data.nilai);
     });
   }, []);
 

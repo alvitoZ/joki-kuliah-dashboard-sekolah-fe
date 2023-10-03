@@ -35,8 +35,8 @@ export function EditNilai() {
         </div>
         {data.map(({ kategori, nilai, _id }, i) => {
           return (
-            <div key={i}>
-              <p>{kategori}</p>
+            <div key={i} className="flex flex-col gap-4">
+              <p className="font-semibold">{kategori}</p>
               <Input
                 type="number"
                 label="nilai"

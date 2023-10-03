@@ -20,25 +20,17 @@ export function NilaiSiswa() {
         <table className="min-w-full text-left text-sm font-light">
           <thead className="dark:border-neutral-500 border-b font-medium">
             <tr>
-              {[
-                "No",
-                "Nama Siswa",
-                "Sesi",
-                "C1",
-                "C2",
-                "C3",
-                "C4",
-                "C5",
-                "C6",
-              ].map((head, i) => (
-                <th key={i} scope="col" className="px-6 py-4">
-                  {head}
-                </th>
-              ))}
+              {["No", "Nama Siswa", "C1", "C2", "C3", "C4", "C5", "C6"].map(
+                (head, i) => (
+                  <th key={i} scope="col" className="px-6 py-4">
+                    {head}
+                  </th>
+                )
+              )}
             </tr>
           </thead>
           <tbody>
-            {data.map(({ student_name, session_id, nilai }, i) => {
+            {data.map(({ student_name, nilai }, i) => {
               return (
                 <tr key={i} className="dark:border-neutral-500 border-b">
                   <td className="whitespace-nowrap px-6 py-4 font-medium">
@@ -46,9 +38,6 @@ export function NilaiSiswa() {
                   </td>
                   <td className="whitespace-nowrap px-6 py-4 font-medium">
                     {student_name}
-                  </td>
-                  <td className="whitespace-nowrap px-6 py-4 font-medium">
-                    {session_id}
                   </td>
                   {nilai.map(({ nilai }, index) => {
                     return (
