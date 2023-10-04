@@ -5,28 +5,9 @@ import {
   Button,
   IconButton,
   Breadcrumbs,
-  Input,
-  Menu,
-  MenuHandler,
-  MenuList,
-  MenuItem,
-  Avatar,
-  Tooltip,
 } from "@material-tailwind/react";
-import {
-  UserCircleIcon,
-  Cog6ToothIcon,
-  ArrowRightOnRectangleIcon,
-  BellIcon,
-  ClockIcon,
-  CreditCardIcon,
-  Bars3Icon,
-} from "@heroicons/react/24/solid";
-import {
-  useMaterialTailwindController,
-  setOpenConfigurator,
-  setOpenSidenav,
-} from "@/context";
+import { UserCircleIcon, Bars3Icon } from "@heroicons/react/24/solid";
+import { useMaterialTailwindController, setOpenSidenav } from "@/context";
 
 import SignOut from "./SignOut";
 
@@ -34,7 +15,7 @@ export function DashboardNavbar() {
   const [controller, dispatch] = useMaterialTailwindController();
   const { fixedNavbar, openSidenav } = controller;
   const { pathname } = useLocation();
-  const [layout, page] = pathname.split("/").filter((el) => el !== "");
+  const [layout, page, page2] = pathname.split("/").filter((el) => el !== "");
 
   return (
     <Navbar
@@ -42,7 +23,7 @@ export function DashboardNavbar() {
       className={`w-full rounded-xl transition-all ${
         fixedNavbar
           ? "sticky top-4 z-40 py-3 shadow-md shadow-blue-gray-500/5 "
-          : "px-4 py-1"
+          : "sticky z-50 px-4 py-1 shadow-md shadow-blue-gray-500/5"
       }`}
       fullWidth
       blurred={fixedNavbar}
@@ -72,7 +53,7 @@ export function DashboardNavbar() {
             </Typography>
           </Breadcrumbs>
           <Typography variant="h6" color="blue-gray">
-            {page}
+            {page2}
           </Typography>
         </div>
         <div className="flex items-center gap-4">
