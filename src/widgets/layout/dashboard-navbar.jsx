@@ -53,7 +53,7 @@ export function DashboardNavbar() {
             </Typography>
           </Breadcrumbs>
           <Typography variant="h6" color="blue-gray">
-            {page2}
+            {page2 ? page2 : page}
           </Typography>
         </div>
         <div className="flex items-center gap-4">

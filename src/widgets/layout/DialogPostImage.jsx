@@ -100,7 +100,8 @@ export function DialogPostImage({ child }) {
       <Dialog
         open={opendialog}
         // handler={handleOpenDialog}
-        className=" h-full w-full  overflow-auto"
+        fullWidth
+        className="h-full w-80 overflow-auto"
       >
         <DialogHeader>Tambah Gambar Untuk Soal/Jawaban Baru</DialogHeader>
         <div>
@@ -144,7 +145,7 @@ export function DialogPostImage({ child }) {
               );
             })}
           </DialogBody>
-          <DialogFooter className="">
+          <DialogFooter className="flex w-full flex-row gap-4">
             <Button
               variant="gradient"
               color="red"
