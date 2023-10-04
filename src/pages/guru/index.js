@@ -7,3 +7,4 @@ export * from "@/pages/guru/editsoals";
 export * from "@/pages/guru/editsoal";
 export * from "@/pages/guru/materiguru";
 export * from "@/pages/guru/pengaturanguru";
+export * from "@/pages/guru/nilaikelompoksiswa";

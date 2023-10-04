@@ -21,6 +21,7 @@ import {
   EditSoal,
   MateriGuru,
   PengaturanGuru,
+  NilaiKelompokSiswa,
 } from "./pages/guru";
 
 const icon = {
@@ -177,6 +178,12 @@ export const routes = [
         name: "Nilai Siswa",
         path: "/Nilai-Siswa",
         element: <NilaiSiswaGuru />,
+      },
+      {
+        icon: <UserPlusIcon {...icon} />,
+        name: "Nilai Kelompok Siswa",
+        path: "/Nilai-Kelompok-Siswa",
+        element: <NilaiKelompokSiswa />,
       },
     ],
   },

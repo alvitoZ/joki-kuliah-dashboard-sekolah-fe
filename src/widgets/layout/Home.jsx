@@ -11,7 +11,7 @@ export function Home() {
     nav("/auth/home", { replace: true });
   }, []);
   return (
-    <div className=" container mx-auto p-16">
+    <div className=" container mx-auto">
       <Card className="w-full max-w-full p-4">
         <Typography variant="lead" className="py-4 text-start font-bold">
           Tata Cara Register siswa

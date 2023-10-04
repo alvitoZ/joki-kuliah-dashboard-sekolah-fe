@@ -113,7 +113,7 @@ export function BuatSoal() {
 
   return (
     <React.Fragment>
-      <div className="grid gap-4 px-60">
+      <div className="grid gap-4 px-10">
         <div className="flex gap-4 border-2 border-red-600">
           <IconButton color="pink" onClick={addFieldsSoal}>
             <PlusCircleIcon {...icon} />

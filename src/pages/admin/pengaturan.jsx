@@ -137,10 +137,10 @@ export const Pengaturan = () => {
         </div>
       </div>
       <Card className="">
-        <CardBody className="flex flex-row gap-4">
+        <CardBody className="flex flex-wrap gap-4">
           <div className="flex flex-col gap-8">
             <p className="font-bold text-gray-600">Informasi Profil</p>
-            <div className="flex items-center gap-4">
+            <div className="flex flex-col items-center gap-4 md:flex-row">
               <img
                 className="h-28 w-28 object-cover hover:scale-150"
                 src={
@@ -150,7 +150,7 @@ export const Pengaturan = () => {
                 }
                 alt="your image"
               />
-              <div className="flex flex-col items-center rounded-md bg-red-600 ">
+              <div className="flex w-52 flex-col items-center rounded-md bg-red-600 md:w-full ">
                 <p className="pt-2 text-white">Upload Foto</p>
                 <input
                   type="file"
@@ -171,7 +171,7 @@ export const Pengaturan = () => {
           </div>
         </CardBody>
       </Card>
-      <Card className="flex h-full  flex-row justify-start gap-4">
+      <Card className="flex h-full flex-col justify-start gap-4 md:flex-row">
         <CardBody className="flex flex-col flex-wrap gap-4">
           <Typography
             as="span"
@@ -261,7 +261,7 @@ export const Pengaturan = () => {
             </div>
           </div>
         </CardBody>
-        <div className="flex w-[30%] flex-col gap-4 pt-6">
+        <div className="flex w-[30%] flex-col gap-4 p-4">
           <Typography
             as="span"
             variant="small"
