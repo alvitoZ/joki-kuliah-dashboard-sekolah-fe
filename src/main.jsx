@@ -14,7 +14,6 @@ import { Admin, Auth, Siswa, Guru } from "@/layouts";
 import ErrorPage from "./pages/error-page";
 import { EditNilai, EditSoals } from "./pages/guru";
 import { EditUser } from "./pages/admin";
-import GrafikNilai from "./widgets/layout/grafiknilai";
 import Home from "./widgets/layout/Home";
 // React-Router
 const router = createBrowserRouter([
@@ -56,11 +55,6 @@ const router = createBrowserRouter([
   {
     path: "/admin/edit-user/:id",
     element: <EditUser />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/siswa/grafik-nilai",
-    element: <GrafikNilai />,
     errorElement: <ErrorPage />,
   },
 ]);

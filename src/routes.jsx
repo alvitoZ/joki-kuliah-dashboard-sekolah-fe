@@ -22,6 +22,7 @@ import {
   MateriGuru,
   PengaturanGuru,
   NilaiKelompokSiswa,
+  NilaiGrafik,
 } from "./pages/guru";
 
 const icon = {
@@ -184,6 +185,12 @@ export const routes = [
         name: "Nilai Kelompok Siswa",
         path: "/Nilai-Kelompok-Siswa",
         element: <NilaiKelompokSiswa />,
+      },
+      {
+        icon: <UserPlusIcon {...icon} />,
+        name: "Nilai Grafik Siswa",
+        path: "/Nilai-Grafik-Siswa",
+        element: <NilaiGrafik />,
       },
     ],
   },

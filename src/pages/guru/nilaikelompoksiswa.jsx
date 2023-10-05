@@ -1,45 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { Card, CardBody, Typography } from "@material-tailwind/react";
-import BorderColorIcon from "@mui/icons-material/BorderColor";
-import DeleteIcon from "@mui/icons-material/Delete";
-import { deleteMethod, getMethod } from "@/service/auth";
+import { Card, CardBody } from "@material-tailwind/react";
+import { getMethod } from "@/service/auth";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 import Search from "@/widgets/layout/Search";
+import { useMaterialTailwindController, setOpenAccordion } from "@/context";
 
 export function NilaiKelompokSiswa() {
   const Navigate = useNavigate();
   const [data, setData] = useState([]);
-  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     getMethod.GetNilais().then((res) => {
       setData(res.data.data);
     });
-  }, [refresh]);
+  }, []);
 
-  const deleteById = (id) => {
-    Swal.fire({
-      title: "Hapus Nilai ini?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Ya, Hapus!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: `data berhasil dihapus`,
-          icon: "success",
-          confirmButtonText: "Tutup",
-        }).then((_) => {
-          deleteMethod.DeleteNilaiById(id).then((res) => {
-            setRefresh((v) => !v);
-          });
-        });
-      }
-    });
-  };
+  const [controller, dispatch] = useMaterialTailwindController();
 
   return (
     <CardBody className="mr-8 flex flex-col gap-4 px-0 pb-2">
@@ -56,7 +32,7 @@ export function NilaiKelompokSiswa() {
                 <table className="min-w-full text-left text-sm font-light">
                   <thead className="dark:border-neutral-500 border-b font-medium">
                     <tr>
-                      {["No", "C1", "C2", "C3", "C4", "C5", "C6"].map(
+                      {["No", "Aksi", "C1", "C2", "C3", "C4", "C5", "C6"].map(
                         (head, i) => {
                           return (
                             <th key={i} scope="col" className="px-6 py-4">
@@ -68,7 +44,7 @@ export function NilaiKelompokSiswa() {
                     </tr>
                   </thead>
                   <tbody>
-                    {data.map(({ student_name, nilai, _id }, i) => {
+                    {data.map(({ student_name, nilai }, i) => {
                       return (
                         <tr
                           key={i}
@@ -77,7 +53,22 @@ export function NilaiKelompokSiswa() {
                           <td className="whitespace-nowrap px-6 py-4 font-medium">
                             {i + 1}
                           </td>
-                          {nilai.map(({ nilai }, index) => {
+                          <td className="whitespace-nowrap px-6 py-4 font-medium">
+                            <div
+                              className="w-fit rounded-lg border-2 border-black bg-green-300 text-white"
+                              onClick={() => {
+                                setOpenAccordion(dispatch, i);
+                                Navigate("/guru/Nilai-Grafik-Siswa", {
+                                  replace: true,
+                                });
+                              }}
+                            >
+                              <button className="p-1 hover:bg-blue-300">
+                                Show Grafik
+                              </button>
+                            </div>
+                          </td>
+                          {nilai.map((_, index) => {
                             return (
                               <td
                                 key={index}

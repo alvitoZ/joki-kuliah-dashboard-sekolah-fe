@@ -86,15 +86,16 @@ export function TugasSiswa() {
     }
   };
 
-  if (grafikNilai === 7) {
-    setAllJawaban([]);
-    setGrafikNilai(1);
-    postMethod.PostJawaban(resultArr(allJawaban)).then((res) => {
-      nav("/siswa/grafik-nilai");
-    });
-  }
-
   const lanjut = () => {
+    if (nilai === 5) {
+      postMethod.PostJawaban(resultArr(allJawaban)).then((res) => {
+        window.location.reload();
+      });
+    } else if (jumlah(filterJawaban(allJawaban[nilai])).nilai < 100) {
+      postMethod.PostJawaban(resultArr(allJawaban)).then((res) => {
+        window.location.reload();
+      });
+    }
     setGrafikNilai((e) => e + 1);
     setNilai((c) => (c === 5 ? 0 : c + 1));
     setKategoriC((c) => (c === 6 ? 1 : c + 1));

@@ -37,7 +37,7 @@ const TugasGagal = ({ kategori, total_benar, nilai, hasilParent }) => {
             className="w-fit bg-red-500 py-2 px-4 hover:bg-blue-500 hover:text-white"
             onClick={() => hasilParent()}
           >
-            Lanjut
+            {nilai < 100 ? "Kembali" : "Lanjut"}
           </button>
         </div>
       </div>
