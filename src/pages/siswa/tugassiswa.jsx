@@ -52,40 +52,6 @@ export function TugasSiswa() {
     }
   };
 
-  const coba = (jawaban) => {
-    const ids = jawaban.map(({ _id }) => _id);
-    const filtered = jawaban.filter(
-      ({ _id }, index) => !ids.includes(_id, index + 1)
-    );
-    if (filtered.length >= soal.length) {
-      // setJawaban([]);
-      Swal.fire({
-        title: `dengan ini maka session sekarang akan berakhir dengan nilai tergantung berapa soal yang sudah dikerjakan`,
-        icon: "question",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Ya, akhiri!",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire({
-            title: `nilai berhasil dikirimkan kembali ke session baru`,
-            icon: "success",
-            confirmButtonText: "Tutup",
-          }).then((_) => {
-            allJawaban.push({
-              kategori: "c" + kategoriC,
-              jawaban: filtered,
-            });
-            postMethod.PostJawaban(resultArr(allJawaban)).then((res) => {
-              window.location.reload();
-            });
-          });
-        }
-      });
-    }
-  };
-
   const lanjut = () => {
     if (nilai === 5) {
       postMethod.PostJawaban(resultArr(allJawaban)).then((res) => {
@@ -150,22 +116,24 @@ export function TugasSiswa() {
                 );
               })}
             </div>
-            <div className="rounded-lg border-2 bg-blue-gray-800 hover:border-red-500">
+            <div className=" bg-black text-center text-base font-bold text-red-900 ">
+              <button
+                onClick={() => cobafilter(jawaban)}
+                className="pb-2 hover:bg-blue-500 hover:text-white"
+              >
+                Kumpulkan Jawaban
+              </button>
+            </div>
+            {/* <div className="rounded-lg border-2 bg-blue-gray-800 hover:border-red-500">
               <div className="flex justify-evenly p-2 text-white">
                 <button
                   onClick={() => cobafilter(jawaban)}
                   className="bg-red-500 py-2 px-4 hover:bg-blue-500"
                 >
-                  Lanjut?
-                </button>
-                <button
-                  onClick={() => coba(jawaban)}
-                  className="bg-green-300 py-2 px-4 hover:bg-blue-500 "
-                >
-                  Selesai?
+                  Kumpulkan Jawaban
                 </button>
               </div>
-            </div>
+            </div> */}
           </div>
         )}
       </div>
