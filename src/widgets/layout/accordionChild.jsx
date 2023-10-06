@@ -12,11 +12,11 @@ Chart.register(CategoryScale);
 
 export function AccordionChild({ nilai, sesi, index, expanded, handleChange }) {
   const dataPie = {
-    labels: nilai.map((data) => data.kategori),
+    labels: nilai.map((data) => (data.kategori ? data.kategori : "-")),
     datasets: [
       {
         label: "Grafik Total Nilai",
-        data: nilai.map((data) => data.nilai),
+        data: nilai.map((data) => (data.nilai ? data.nilai : "-")),
         backgroundColor: ["pink", "yellow", "blue", "red", "green", "orange"],
         borderColor: "black",
         borderWidth: 2,
@@ -24,11 +24,11 @@ export function AccordionChild({ nilai, sesi, index, expanded, handleChange }) {
     ],
   };
   const dataBar = {
-    labels: nilai.map((data) => data.kategori),
+    labels: nilai.map((data) => (data.kategori ? data.kategori : "-")),
     datasets: [
       {
         label: "Grafik Total Nilai",
-        data: nilai.map((data) => data.nilai),
+        data: nilai.map((data) => (data.nilai ? data.nilai : "-")),
         backgroundColor: ["pink", "yellow", "blue", "red", "green", "orange"],
         borderColor: "black",
         borderWidth: 2,

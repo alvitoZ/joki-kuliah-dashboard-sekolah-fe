@@ -98,16 +98,6 @@ class GetMethod {
       });
   };
 
-  GetNilaiGrafik = async () => {
-    return await api
-      .get(`/api/v1/nilai/nilai/nilai-grafik`, {
-        headers: tokenHeader(),
-      })
-      .then((res) => {
-        return res;
-      });
-  };
-
   GetNilais = async () => {
     return await api
       .get(`/api/v1/nilai`, {

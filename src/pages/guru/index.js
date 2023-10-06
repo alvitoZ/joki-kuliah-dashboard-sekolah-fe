@@ -9,3 +9,4 @@ export * from "@/pages/guru/materiguru";
 export * from "@/pages/guru/pengaturanguru";
 export * from "@/pages/guru/nilaikelompoksiswa";
 export * from "@/pages/guru/nilaigrafik";
+export * from "@/pages/guru/kelompokgrafik";

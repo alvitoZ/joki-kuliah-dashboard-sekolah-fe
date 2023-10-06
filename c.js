@@ -100,7 +100,7 @@ const removeFieldsJawaban = (parentIndex, childIndex) => {
   // setSoal(data);
   return { data: c4[0].jawaban, jawaban, parentIndex, childIndex };
 };
-console.log(removeFieldsJawaban(0, 1));
+// console.log(removeFieldsJawaban(0, 1));
 
 const addFieldsJawaban = (parentIndex) => {
   let data = [...c3];
@@ -135,3 +135,75 @@ const coba = [
 ];
 
 // console.log(coba[0].kitan);s
+
+const filterNameKategori = (params) => {
+  const arr = [];
+  for (let data of params) {
+    for (let entry of data.nilai) {
+      if (entry.nilai > 0) {
+        // arr.push(data.student_name);
+        arr.push({
+          name: data.student_name,
+          kategori: entry.kategori,
+          nilai: entry.nilai,
+        });
+      }
+    }
+  }
+  return arr;
+};
+
+const filtered = (arr) => {
+  const ids = arr.map(({ name }) => name);
+  const filtered = arr.filter(
+    ({ name }, index) => !ids.includes(name, index + 1)
+  );
+  return filtered;
+};
+
+const loop2 = (array) => {
+  const categories = new Set(array.map((data) => data.kategori)); // membuat koleksi kategori yang unik
+  const result = [];
+  for (let category of categories) {
+    result.push({
+      kategori: category,
+      total: filtered(array.filter((data) => data.kategori === category))
+        .length,
+    });
+  }
+  return result.sort((a, b) => a.kategori.localeCompare(b.kategori));
+};
+
+console.log(loop2(filterNameKategori(test)));
+
+// const loop = (params) => {
+//   const c1 = [];
+//   const c2 = [];
+//   const c3 = [];
+//   const c4 = [];
+//   const c5 = [];
+//   const c6 = [];
+//   for (let data of params) {
+//     if (data.kategori === "c1") {
+//       c1.push(data);
+//     } else if (data.kategori === "c2") {
+//       c2.push(data);
+//     } else if (data.kategori === "c3") {
+//       c3.push(data);
+//     } else if (data.kategori === "c4") {
+//       c4.push(data);
+//     } else if (data.kategori === "c5") {
+//       c5.push(data);
+//     } else {
+//       c6.push(data);
+//     }
+//   }
+//   return {
+//     c1: filtered(c1).length,
+//     c2: filtered(c2).length,
+//     c3: filtered(c3).length,
+//     c4: filtered(c4).length,
+//     c5: filtered(c5).length,
+//     c6: filtered(c6).length,
+//   };
+// };
