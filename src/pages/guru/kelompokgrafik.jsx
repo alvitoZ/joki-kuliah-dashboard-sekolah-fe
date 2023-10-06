@@ -16,7 +16,6 @@ export function KelompokGrafik() {
       setChartData(res.data.data);
     });
   }, []);
-  console.log(chartData);
 
   const data = loop(filterNameKategori(chartData));
 
