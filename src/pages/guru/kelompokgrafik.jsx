@@ -11,6 +11,7 @@ Chart.register(CategoryScale);
 
 export function KelompokGrafik() {
   const [chartData, setChartData] = useState([]);
+
   useEffect(() => {
     getMethod.GetNilais().then((res) => {
       setChartData(res.data.data);
@@ -20,11 +21,11 @@ export function KelompokGrafik() {
   const data = loop(filterNameKategori(chartData));
 
   const dataPie = {
-    labels: data.map((data) => data.kategori),
+    labels: ["c1", "c2", "c3", "c4", "c5", "c6"],
     datasets: [
       {
         label: "Grafik Total Nilai",
-        data: data.map((data) => data.total),
+        data: data.map((data) => data),
         backgroundColor: ["pink", "yellow", "blue", "red", "green", "orange"],
         borderColor: "black",
         borderWidth: 2,
@@ -32,11 +33,11 @@ export function KelompokGrafik() {
     ],
   };
   const dataBar = {
-    labels: data.map((data) => data.kategori),
+    labels: ["c1", "c2", "c3", "c4", "c5", "c6"],
     datasets: [
       {
         label: "Grafik Total Nilai",
-        data: data.map((data) => data.total),
+        data: data.map((data) => data),
         backgroundColor: ["pink", "yellow", "blue", "red", "green", "orange"],
         borderColor: "black",
         borderWidth: 2,
@@ -46,7 +47,7 @@ export function KelompokGrafik() {
 
   return (
     <div className="py-5">
-      <Card className="bg-gray-500">
+      <Card className="">
         <CardBody className="">
           <div className="flex h-auto w-[50vw] flex-wrap">
             <Bar
