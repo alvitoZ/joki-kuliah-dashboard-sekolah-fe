@@ -19,12 +19,12 @@ export function EditSoal() {
           color="blue"
           onChange={(e) => setTemp(e)}
         >
-          <Option value="c1">c1</Option>
-          <Option value="c2">c2</Option>
-          <Option value="c3">c3</Option>
-          <Option value="c4">c4</Option>
-          <Option value="c5">c5</Option>
-          <Option value="c6">c6</Option>
+          <Option value="c1">C1</Option>
+          <Option value="c2">C2</Option>
+          <Option value="c3">C3</Option>
+          <Option value="c4">C4</Option>
+          <Option value="c5">C5</Option>
+          <Option value="c6">C6</Option>
         </Select>
         {/* <Link to={"/guru/Edit-Soal"}>kembali</Link> */}
       </div>

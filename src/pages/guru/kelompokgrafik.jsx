@@ -21,7 +21,7 @@ export function KelompokGrafik() {
   const data = loop(filterNameKategori(chartData));
 
   const dataPie = {
-    labels: ["c1", "c2", "c3", "c4", "c5", "c6"],
+    labels: ["C1", "C2", "C3", "C4", "C5", "C6"],
     datasets: [
       {
         label: "Grafik Total Nilai",
@@ -33,7 +33,7 @@ export function KelompokGrafik() {
     ],
   };
   const dataBar = {
-    labels: ["c1", "c2", "c3", "c4", "c5", "c6"],
+    labels: ["C1", "C2", "C3", "C4", "C5", "C6"],
     datasets: [
       {
         label: "Grafik Total Nilai",

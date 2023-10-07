@@ -7,12 +7,17 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { capitalizeFirstLetter } from "@/helpers/capitalize";
 
 Chart.register(CategoryScale);
 
 export function AccordionChild({ nilai, sesi, index, expanded, handleChange }) {
+  const c = "kitan";
+  c.localeCompare;
   const dataPie = {
-    labels: nilai.map((data) => (data.kategori ? data.kategori : "-")),
+    labels: nilai.map((data) =>
+      data.kategori ? capitalizeFirstLetter(data.kategori) : "-"
+    ),
     datasets: [
       {
         label: "Grafik Total Nilai",
@@ -24,7 +29,9 @@ export function AccordionChild({ nilai, sesi, index, expanded, handleChange }) {
     ],
   };
   const dataBar = {
-    labels: nilai.map((data) => (data.kategori ? data.kategori : "-")),
+    labels: nilai.map((data) =>
+      data.kategori ? capitalizeFirstLetter(data.kategori) : "-"
+    ),
     datasets: [
       {
         label: "Grafik Total Nilai",
