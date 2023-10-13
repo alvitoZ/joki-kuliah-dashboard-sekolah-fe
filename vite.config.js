@@ -6,5 +6,7 @@ export default defineConfig({
   resolve: {
     alias: [{ find: "@", replacement: "/src" }],
   },
-  // server: { https: true },
+  server: {
+    origin: "http://203.194.114.146:3001",
+  },
 });
