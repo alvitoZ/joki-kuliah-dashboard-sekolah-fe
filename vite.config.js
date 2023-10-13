@@ -6,9 +6,5 @@ export default defineConfig({
   resolve: {
     alias: [{ find: "@", replacement: "/src" }],
   },
-  server: {
-    https: {
-      rejectUnauthorized: false,
-    },
-  },
+  // server: { https: true },
 });
