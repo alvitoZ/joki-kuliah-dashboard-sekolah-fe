@@ -7,7 +7,6 @@ export default defineConfig({
     alias: [{ find: "@", replacement: "/src" }],
   },
   server: {
-    host: "203.194.114.146",
     https: {
       rejectUnauthorized: false,
     },
