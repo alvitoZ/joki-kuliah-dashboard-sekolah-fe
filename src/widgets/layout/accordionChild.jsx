@@ -2,6 +2,10 @@ import React from "react";
 import Chart from "chart.js/auto";
 import { CategoryScale } from "chart.js";
 import { Pie, Bar } from "react-chartjs-2";
+
+import ChartDataLabels from "chartjs-plugin-datalabels";
+import { ArcElement, Tooltip, Legend } from "chart.js";
+
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -9,15 +13,14 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { capitalizeFirstLetter } from "@/helpers/capitalize";
 
-Chart.register(CategoryScale);
+Chart.register(CategoryScale, ArcElement, Tooltip, Legend, ChartDataLabels);
 
 export function AccordionChild({ nilai, sesi, index, expanded, handleChange }) {
-  const c = "kitan";
-  c.localeCompare;
   const dataPie = {
     labels: nilai.map((data) =>
       data.kategori ? capitalizeFirstLetter(data.kategori) : "-"
     ),
+
     datasets: [
       {
         label: "Grafik Total Nilai",
@@ -63,6 +66,17 @@ export function AccordionChild({ nilai, sesi, index, expanded, handleChange }) {
                   display: true,
                   text: "Nilai Dari C1 sampai C6",
                 },
+                datalabels: {
+                  formatter: (value, ctx) => {
+                    let dataArr = ctx.chart.data.datasets[0].data;
+                    dataArr.map((data) => {
+                      data;
+                    });
+                    let percentage = value + "%";
+                    return percentage;
+                  },
+                  color: "#FFF",
+                },
               },
             }}
           />
@@ -73,6 +87,19 @@ export function AccordionChild({ nilai, sesi, index, expanded, handleChange }) {
                 title: {
                   display: true,
                   text: "Nilai Dari C1 sampai C6",
+                },
+                responsive: true,
+                maintainAspectRatio: false,
+                datalabels: {
+                  formatter: (value, ctx) => {
+                    let dataArr = ctx.chart.data.datasets[0].data;
+                    dataArr.map((data) => {
+                      data;
+                    });
+                    let percentage = value + "%";
+                    return percentage;
+                  },
+                  color: "#FFF",
                 },
               },
             }}
