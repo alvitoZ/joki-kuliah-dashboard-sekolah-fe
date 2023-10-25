@@ -66,18 +66,6 @@ export function AccordionChild({ nilai, sesi, index, expanded, handleChange }) {
                   display: true,
                   text: "Nilai Dari C1 sampai C6",
                 },
-                datalabels: {
-                  formatter: (value, ctx) => {
-                    let sum = 0;
-                    let dataArr = ctx.chart.data.datasets[0].data;
-                    dataArr.map((data) => {
-                      sum += data;
-                    });
-                    let percentage = ((value * 100) / sum).toFixed(2) + "%";
-                    return percentage;
-                  },
-                  color: "#FFF",
-                },
               },
             }}
           />
