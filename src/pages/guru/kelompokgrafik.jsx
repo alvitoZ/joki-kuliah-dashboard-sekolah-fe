@@ -3,11 +3,12 @@ import { useState, useEffect } from "react";
 import { getMethod } from "@/service/auth";
 import { Card, CardBody } from "@material-tailwind/react";
 import Chart from "chart.js/auto";
-import { CategoryScale } from "chart.js";
+import { CategoryScale, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie, Bar } from "react-chartjs-2";
 import { filterNameKategori, loop } from "@/helpers/filterkategori";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 
-Chart.register(CategoryScale);
+Chart.register(CategoryScale, ArcElement, Tooltip, Legend, ChartDataLabels);
 
 export function KelompokGrafik() {
   const [chartData, setChartData] = useState([]);
@@ -66,6 +67,18 @@ export function KelompokGrafik() {
               data={dataPie}
               options={{
                 plugins: {
+                  datalabels: {
+                  formatter: (value, ctx) => {
+                    let sum = 0;
+                    let dataArr = ctx.chart.data.datasets[0].data;
+                    dataArr.map((data) => {
+                      sum += data;
+                    });
+                    let percentage = ((value * 100) / sum).toFixed(2) + "%";
+                    return percentage;
+                  },
+                  color: "#FFF",
+                },
                   title: {
                     display: true,
                     text: "Nilai Dari C1 sampai C6",
