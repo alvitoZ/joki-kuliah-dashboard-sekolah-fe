@@ -68,11 +68,12 @@ export function AccordionChild({ nilai, sesi, index, expanded, handleChange }) {
                 },
                 datalabels: {
                   formatter: (value, ctx) => {
+                    let sum = 0;
                     let dataArr = ctx.chart.data.datasets[0].data;
                     dataArr.map((data) => {
-                      data;
+                      sum += data;
                     });
-                    let percentage = value + "%";
+                    let percentage = ((value * 100) / sum).toFixed(2) + "%";
                     return percentage;
                   },
                   color: "#FFF",
@@ -92,11 +93,12 @@ export function AccordionChild({ nilai, sesi, index, expanded, handleChange }) {
                 maintainAspectRatio: false,
                 datalabels: {
                   formatter: (value, ctx) => {
+                    let sum = 0;
                     let dataArr = ctx.chart.data.datasets[0].data;
                     dataArr.map((data) => {
-                      data;
+                      sum += data;
                     });
-                    let percentage = value + "%";
+                    let percentage = ((value * 100) / sum).toFixed(2) + "%";
                     return percentage;
                   },
                   color: "#FFF",
