@@ -56,44 +56,48 @@ export function AccordionChild({ nilai, sesi, index, expanded, handleChange }) {
         <Typography>{sesi}</Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <div className="flex h-auto w-[50vw] flex-wrap">
-          <Bar
-            data={dataBar}
-            height={300}
-            options={{
-              plugins: {
-                title: {
-                  display: true,
-                  text: "Nilai Dari C1 sampai C6",
-                },
-              },
-            }}
-          />
-          <Pie
-            data={dataPie}
-            options={{
-              plugins: {
-                title: {
-                  display: true,
-                  text: "Nilai Dari C1 sampai C6",
-                },
-                responsive: true,
-                maintainAspectRatio: false,
-                datalabels: {
-                  formatter: (value, ctx) => {
-                    let sum = 0;
-                    let dataArr = ctx.chart.data.datasets[0].data;
-                    dataArr.map((data) => {
-                      sum += data;
-                    });
-                    let percentage = ((value * 100) / sum).toFixed(2) + "%";
-                    return percentage;
+        <div className="flex h-auto w-full flex-row flex-wrap">
+          <div className="">
+            <Bar
+              data={dataBar}
+              height={300}
+              options={{
+                plugins: {
+                  title: {
+                    display: true,
+                    text: "Nilai Dari C1 sampai C6",
                   },
-                  color: "#FFF",
                 },
-              },
-            }}
-          />
+              }}
+            />
+          </div>
+          <div>
+            <Pie
+              data={dataPie}
+              options={{
+                plugins: {
+                  title: {
+                    display: true,
+                    text: "Nilai Dari C1 sampai C6",
+                  },
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  datalabels: {
+                    formatter: (value, ctx) => {
+                      let sum = 0;
+                      let dataArr = ctx.chart.data.datasets[0].data;
+                      dataArr.map((data) => {
+                        sum += data;
+                      });
+                      let percentage = ((value * 100) / sum).toFixed(2) + "%";
+                      return percentage;
+                    },
+                    color: "#FFF",
+                  },
+                },
+              }}
+            />
+          </div>
         </div>
       </AccordionDetails>
     </Accordion>
