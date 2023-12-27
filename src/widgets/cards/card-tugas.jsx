@@ -8,7 +8,7 @@ const CardTugas = ({ id, abcde, text, isSelected, onClick }) => {
 
   return (
     <div
-      className={`border-[2px] border-black ${
+      className={`border-[2px] border-black py-2 rounded-lg ${
         buttonClassName ? buttonClassName : "bg-[#f1f0f0] "
       }  cursor-pointer text-center text-sm font-bold hover:bg-green-500`}
       // onClick={() => setClicked("bg-red-700")}
@@ -16,7 +16,7 @@ const CardTugas = ({ id, abcde, text, isSelected, onClick }) => {
     >
       {/* <p>{abcde}) Gerak suatu benda dan lintasannya berupa garis lurus</p> */}
       <div className="flex justify-center gap-1">
-        <p>{abcde})</p>
+        <p>{abcde}.</p>
         <span>
           {" "}
           <div dangerouslySetInnerHTML={{ __html: text }}></div>

@@ -25,7 +25,14 @@ export function AccordionChild({ nilai, sesi, index, expanded, handleChange }) {
       {
         label: "Grafik Total Nilai",
         data: nilai.map((data) => (data.nilai ? data.nilai : "-")),
-        backgroundColor: ["pink", "yellow", "blue", "red", "green", "orange"],
+        backgroundColor: [
+          "#8AFEFD",
+          "yellow",
+          "pink",
+          "#FF4A4A",
+          "#04FF17",
+          "#C7FC00",
+        ],
         borderColor: "black",
         borderWidth: 2,
       },
@@ -39,7 +46,14 @@ export function AccordionChild({ nilai, sesi, index, expanded, handleChange }) {
       {
         label: "Grafik Total Nilai",
         data: nilai.map((data) => (data.nilai ? data.nilai : "-")),
-        backgroundColor: ["pink", "yellow", "blue", "red", "green", "orange"],
+        backgroundColor: [
+          "#8AFEFD",
+          "yellow",
+          "pink",
+          "#FF4A4A",
+          "#04FF17",
+          "#C7FC00",
+        ],
         borderColor: "black",
         borderWidth: 2,
       },
@@ -56,8 +70,8 @@ export function AccordionChild({ nilai, sesi, index, expanded, handleChange }) {
         <Typography>{sesi}</Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <div className="flex h-auto w-full flex-row flex-wrap">
-          <div className="">
+        <div className="flex h-auto w-full justify-evenly flex-row flex-wrap">
+          <div className="border-2 border-gray-400 p-4 rounded-lg shadow-2xl">
             <Bar
               data={dataBar}
               height={300}
@@ -71,7 +85,7 @@ export function AccordionChild({ nilai, sesi, index, expanded, handleChange }) {
               }}
             />
           </div>
-          <div>
+          <div className="border-2 border-gray-400 p-4 rounded-lg shadow-2xl">
             <Pie
               data={dataPie}
               options={{
@@ -92,7 +106,7 @@ export function AccordionChild({ nilai, sesi, index, expanded, handleChange }) {
                       let percentage = ((value * 100) / sum).toFixed(2) + "%";
                       return percentage;
                     },
-                    color: "#FFF",
+                    color: "#000",
                   },
                 },
               }}

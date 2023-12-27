@@ -10,9 +10,9 @@ export function EditSoal() {
   }, [temp]);
 
   return (
-    <div className="my-10 rounded-lg border-2 border-red-600 p-10">
+    <div className="my-10 rounded-lg border-2 border-gray-700 p-10">
       <div className="flex flex-col gap-4">
-        <p className="text-pink-600">Select Kategori</p>
+        <p className="text-blue-300">Select Kategori</p>
         <Select
           size="lg"
           label="Pilih Kategori"

@@ -27,7 +27,7 @@ export function KelompokGrafik() {
       {
         label: "Grafik Total Nilai",
         data: data.map((data) => data),
-        backgroundColor: ["pink", "yellow", "blue", "red", "green", "orange"],
+        backgroundColor: ["#8AFEFD", "yellow", "pink", "#FF4A4A", "#04FF17", "#C7FC00"],
         borderColor: "black",
         borderWidth: 2,
       },
@@ -39,7 +39,7 @@ export function KelompokGrafik() {
       {
         label: "Grafik Total Nilai",
         data: data.map((data) => data),
-        backgroundColor: ["pink", "yellow", "blue", "red", "green", "orange"],
+        backgroundColor:["#8AFEFD", "yellow", "pink", "#FF4A4A", "#04FF17", "#C7FC00"],
         borderColor: "black",
         borderWidth: 2,
       },
@@ -50,8 +50,8 @@ export function KelompokGrafik() {
     <div className="py-5">
       <Card className="">
         <CardBody className="">
-          <div className="flex h-auto w-full flex-row flex-wrap">
-            <div className="">
+          <div className="flex h-auto w-full flex-row flex-wrap justify-evenly">
+            <div className="border-2 border-gray-400 p-6 rounded-lg">
               <Bar
                 data={dataBar}
                 height={300}
@@ -65,7 +65,7 @@ export function KelompokGrafik() {
                 }}
               />
             </div>
-            <div>
+            <div className="border-2 border-gray-400 p-6 rounded-lg">
               <Pie
                 data={dataPie}
                 options={{
@@ -80,7 +80,7 @@ export function KelompokGrafik() {
                         let percentage = ((value * 100) / sum).toFixed(2) + "%";
                         return percentage;
                       },
-                      color: "#FFF",
+                      color: "#000",
                     },
                     title: {
                       display: true,

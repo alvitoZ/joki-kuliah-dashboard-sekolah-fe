@@ -38,7 +38,7 @@ export function BuatMateri() {
   return (
     <Card className="h-full w-full overflow-y-auto">
       <CardBody className="flex flex-col gap-8 px-0 py-10">
-        <div className="border-2 border-black py-6">
+        <div className="border-2 border-gray-700 rounded-xl py-6">
           <div className="px-8">
             <Input
               className=""

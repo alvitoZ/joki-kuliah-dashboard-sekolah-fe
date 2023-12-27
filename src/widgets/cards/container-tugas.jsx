@@ -13,8 +13,8 @@ const ContainerTugas = ({ kategori, _id, soal, id, data, atasFunc }) => {
   };
 
   return (
-    <div>
-      <p className="py-4 text-xs font-bold text-gray-700">
+    <div className="flex flex-col gap-2">
+      <p className="py-4 text-base font-bold text-gray-700">
         nomor {id + 1} kategori <span className="capitalize">{kategori}</span>
       </p>
       <div className="flex gap-1">

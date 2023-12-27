@@ -44,7 +44,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
         <p className="flex items-center gap-4 py-6 px-8">
           <marquee behavior="" direction="">
             <Typography variant="h3" color="white">
-              Diagnostik Siswa Online
+              Selamat Datang ... di diagnostik siswa online
             </Typography>
           </marquee>
         </p>

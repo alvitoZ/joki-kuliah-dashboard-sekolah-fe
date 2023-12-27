@@ -30,14 +30,14 @@ export const HomeAdmin = () => {
         </CardBody>
       </Card>
       <Card className="">
-        <p className="p-6 text-2xl font-extrabold text-red-800">
+        <p className="p-6 text-2xl font-extrabold text-blue-500">
           Selamat datang, {fullname}
         </p>
         <CardBody className="p-8">
           <Card className="">
             <CardBody className="flex flex-col gap-4">
               <div className="flex flex-col">
-                <p className="text-2xl font-extrabold text-red-800">
+                <p className="text-2xl font-extrabold text-blue-500">
                   Jumlah Guru : {data.length}
                 </p>
 
@@ -48,7 +48,7 @@ export const HomeAdmin = () => {
                 </Link>
               </div>
               <div className="flex flex-col">
-                <p className="text-2xl font-extrabold text-red-800">
+                <p className="text-2xl font-extrabold text-blue-500">
                   Jumlah Siswa : {data2.length}
                 </p>
                 <Link to={"/admin/data-siswa"}>

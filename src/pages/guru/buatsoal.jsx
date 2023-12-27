@@ -114,11 +114,11 @@ export function BuatSoal() {
   return (
     <React.Fragment>
       <div className="grid gap-4 px-10">
-        <div className="flex gap-4 border-2 border-red-600">
-          <IconButton color="pink" onClick={addFieldsSoal}>
+        <div className="flex gap-4 border-2 border-gray-700 w-fit rounded-lg items-center px-2">
+          <IconButton color="green" onClick={addFieldsSoal}>
             <PlusCircleIcon {...icon} />
           </IconButton>
-          <p className="text-pink-600">tambah soal</p>
+          <p className="text-blue-300">tambah soal</p>
         </div>
         <Select
           size="lg"
@@ -138,10 +138,10 @@ export function BuatSoal() {
         {soal.map((parent, parentIndex) => {
           return (
             <div key={parentIndex} className="flex gap-10">
-              <div className="">
+              <div className="bg-gray-200 p-6 rounded-lg shadow-2xl">
                 <Typography
                   variant="h6"
-                  className="flex items-center text-red-900"
+                  className="flex items-center text-light-blue-400"
                 >
                   Soal: {parentIndex + 1}
                 </Typography>
@@ -151,7 +151,7 @@ export function BuatSoal() {
                     childFunc={(e) => handleFormSoalChange(e, parentIndex)}
                   />
                 </div>
-                <div className="flex gap-4 border-2 border-red-600">
+                <div className="flex gap-4 border-2 border-gray-700 w-fit rounded-lg px-2 items-center">
                   <IconButton
                     color="blue"
                     onClick={() => addFieldsJawaban(parentIndex)}
@@ -162,16 +162,16 @@ export function BuatSoal() {
                 </div>
                 {parent.jawaban.map((child, childIndex) => {
                   return (
-                    <div className="pl-10" key={childIndex}>
-                      <div className="border-2 border-red-600">
+                    <div className="p-4" key={childIndex}>
+                      <div className="border-2 border-gray-700 rounded-lg px-2">
                         <Typography
-                          variant="small"
-                          className="flex items-center font-bold text-red-900"
+                          variant="h4"
+                          className="flex items-center font-bold text-light-blue-400"
                         >
                           Jawaban: {alphabet[childIndex]}
                         </Typography>
 
-                        <div className="flex border-2 border-red-600">
+                        <div className="flex border-2 border-gray-700 w-fit px-2 rounded-lg">
                           <p>status</p>
                           <input
                             type="checkbox"
@@ -233,7 +233,7 @@ export function BuatSoal() {
           onClick={() => sendData(temp, soal)}
           className="flex items-center justify-center rounded-lg"
         >
-          <button className="w-fit bg-green-500 p-2 text-white hover:bg-red-600">
+          <button className="w-fit bg-green-500 p-2 text-white hover:shadow-green-600 shadow-2xl hover:scale-105">
             Post Soal
           </button>
         </div>

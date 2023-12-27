@@ -96,7 +96,7 @@ export function TugasSiswa() {
             total_benar={filterJawaban(allJawaban[nilai]).benar.length}
           />
         ) : (
-          <div className="max-w-xs overflow-hidden rounded bg-white ">
+          <div className="max-w-xl overflow-hidden rounded bg-white">
             <div className="px-6 py-4 shadow-lg">
               <p className="mb-2 text-lg font-bold text-red-900">
                 Pilihan Ganda

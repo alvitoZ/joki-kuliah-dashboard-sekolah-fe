@@ -14,7 +14,7 @@ const TugasGagal = ({ kategori, total_benar, nilai, hasilParent }) => {
       "
       >
         <p className="text-base font-bold text-gray-800">Detail Nilai</p>
-        <p className="text-base font-bold text-gray-800">
+        <p className="text-base font-bold text-red-400">
           Total Nilai Kamu: {nilai ? nilai : 0}%
         </p>
         <p className="text-base font-bold text-gray-800">
@@ -29,7 +29,7 @@ const TugasGagal = ({ kategori, total_benar, nilai, hasilParent }) => {
           ) : (
             <p className="text-base font-bold text-gray-800">
               Komentar: Kamu sepertinya mengalami kesulitan dalam menganalisa
-              pertanyaan, kalo ada yg mau ditanya silahkan diskusikan dengan
+              pertanyaan di dalam kategori <span className="capitalize text-red-400">{kategori}</span>, kalo ada yg mau ditanya silahkan diskusikan dengan
               Guru mu, Oke!
             </p>
           )}
