@@ -10,6 +10,7 @@ import { PlusCircleIcon, MinusCircleIcon } from "@heroicons/react/24/outline";
 import { getMethod, postMethod } from "@/service/auth";
 import Swal from "sweetalert2";
 import Rte from "@/widgets/layout/Rte";
+import Test from "@/widgets/layout/Test";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -109,12 +110,12 @@ export function BuatSoal() {
     });
   };
 
-  const [temp, setTemp] = useState("");
+  const [temp, setTemp] = useState("c1");
 
   return (
     <React.Fragment>
       <div className="grid gap-4 px-10">
-        <div className="flex gap-4 border-2 border-gray-700 w-fit rounded-lg items-center px-2">
+        <div className="flex w-fit items-center gap-4 rounded-lg border-2 border-gray-700 px-2">
           <IconButton color="green" onClick={addFieldsSoal}>
             <PlusCircleIcon {...icon} />
           </IconButton>
@@ -138,7 +139,7 @@ export function BuatSoal() {
         {soal.map((parent, parentIndex) => {
           return (
             <div key={parentIndex} className="flex gap-10">
-              <div className="bg-gray-200 p-6 rounded-lg shadow-2xl">
+              <div className="rounded-lg bg-gray-200 p-6 shadow-2xl">
                 <Typography
                   variant="h6"
                   className="flex items-center text-light-blue-400"
@@ -151,7 +152,7 @@ export function BuatSoal() {
                     childFunc={(e) => handleFormSoalChange(e, parentIndex)}
                   />
                 </div>
-                <div className="flex gap-4 border-2 border-gray-700 w-fit rounded-lg px-2 items-center">
+                <div className="flex w-fit items-center gap-4 rounded-lg border-2 border-gray-700 px-2">
                   <IconButton
                     color="blue"
                     onClick={() => addFieldsJawaban(parentIndex)}
@@ -163,7 +164,7 @@ export function BuatSoal() {
                 {parent.jawaban.map((child, childIndex) => {
                   return (
                     <div className="p-4" key={childIndex}>
-                      <div className="border-2 border-gray-700 rounded-lg px-2">
+                      <div className="rounded-lg border-2 border-gray-700 px-2">
                         <Typography
                           variant="h4"
                           className="flex items-center font-bold text-light-blue-400"
@@ -171,7 +172,7 @@ export function BuatSoal() {
                           Jawaban: {alphabet[childIndex]}
                         </Typography>
 
-                        <div className="flex border-2 border-gray-700 w-fit px-2 rounded-lg">
+                        <div className="flex w-fit rounded-lg border-2 border-gray-700 px-2">
                           <p>status</p>
                           <input
                             type="checkbox"
@@ -233,7 +234,7 @@ export function BuatSoal() {
           onClick={() => sendData(temp, soal)}
           className="flex items-center justify-center rounded-lg"
         >
-          <button className="w-fit bg-green-500 p-2 text-white hover:shadow-green-600 shadow-2xl hover:scale-105">
+          <button className="w-fit bg-green-500 p-2 text-white shadow-2xl hover:scale-105 hover:shadow-green-600">
             Post Soal
           </button>
         </div>

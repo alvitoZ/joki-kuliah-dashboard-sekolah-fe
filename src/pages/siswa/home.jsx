@@ -21,12 +21,12 @@ export const HomeSiswa = () => {
       </Card>
       <Card className="">
         <CardBody className="flex flex-col gap-4">
-          <p className="text-2xl font-extrabold text-red-800">
+          <p className="text-2xl font-extrabold text-blue-400">
             Selamat datang, {fullname}
           </p>
           <p className="font-bold">
             kamu memiliki 1 tugas latihan yang baru.{" "}
-            <span className="font-extrabold text-red-800 hover:text-green-500">
+            <span className="font-extrabold text-light-green-300 hover:opacity-50">
               <Link to="/siswa/Latihan-Tugas">Kerjakan sekarang!</Link>
             </span>
           </p>
@@ -37,13 +37,13 @@ export const HomeSiswa = () => {
         </CardBody>
         <CardBody>
           <div className="flex flex-col gap-4 ">
-            <p className="w-auto text-2xl font-extrabold text-red-800">
+            <p className="w-auto text-2xl font-extrabold text-blue-400">
               Di Website Ini kamu akan belajar mengenai Gerak Lurus dalam Fisika
             </p>
             <p className="font-bold">
               kamu memiliki 1 tugas latihan yang baru.{" "}
               <Link to="/siswa/Latihan-Tugas">
-                <span className="font-extrabold text-red-800 hover:text-green-500">
+                <span className="font-extrabold text-light-green-300 hover:opacity-50">
                   Kerjakan sekarang!
                 </span>
               </Link>
@@ -53,7 +53,7 @@ export const HomeSiswa = () => {
               hari ini ya.
             </p>{" "}
             <Link to="/siswa/Nilai-Siswa">
-              <div className="flex h-auto w-32 items-center justify-center rounded-lg border-2 border-red-600 text-red-500 hover:border-green-500 hover:text-green-500">
+              <div className="flex h-auto w-32 items-center justify-center rounded-lg border-2 border-gray-400 text-blue-400  hover:border-green-500 hover:text-green-500 hover:shadow-2xl">
                 <p className="p-1 font-extrabold">lihat nilaimu</p>
               </div>
             </Link>

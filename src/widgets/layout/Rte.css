@@ -1,6 +1,5 @@
 button {
   border-radius: 8px;
-  /* background-color: blue; */
 }
 
 .App {
@@ -11,14 +10,15 @@ button {
 
 /* TitTap Editor Design */
 .ProseMirror {
-  padding: 10px;
-  border-top: 1px solid grey;
+  padding: 30px;
   background: white;
-  border-radius: 0 0 5px 5px;
+  border-radius: 5px;
+  border: 3px solid gray;
   min-height: 100px;
+  box-shadow: rgba(46, 224, 240, 0.4) 5px 5px, rgba(46, 237, 240, 0.3) 10px 10px;
 }
+
 .ProseMirror:focus {
-  border: none;
   outline: 1px solid aqua;
 }
 
@@ -38,25 +38,6 @@ button {
 .ProseMirror h5,
 .ProseMirror h6 {
   line-height: 1.1;
-}
-
-.ProseMirror code {
-  background-color: rgba(#616161, 0.1);
-  color: #616161;
-}
-
-.ProseMirror pre {
-  background: #0d0d0d;
-  color: #fff;
-  font-family: "JetBrainsMono", monospace;
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-}
-.ProseMirror code {
-  color: inherit;
-  padding: 0;
-  background: none;
-  font-size: 0.8rem;
 }
 
 .ProseMirror img {
@@ -79,6 +60,7 @@ button {
 .textEditor {
   border-radius: 5px;
   border: 1px solid grey;
+
 }
 .menuBar {
   padding-bottom: 5px;

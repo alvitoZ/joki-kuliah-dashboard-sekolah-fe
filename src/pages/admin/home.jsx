@@ -57,7 +57,6 @@ export const HomeAdmin = () => {
                   </p>
                 </Link>
               </div>
-              <p>Tanggal</p>
             </CardBody>
           </Card>
         </CardBody>

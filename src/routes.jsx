@@ -47,12 +47,6 @@ export const routes = [
         path: "/pengaturan",
         element: <Pengaturan />,
       },
-      {
-        icon: <UserPlusIcon {...icon} />,
-        name: "Logout",
-        path: "/logout",
-        element: <Profile />,
-      },
     ],
   },
   {
@@ -89,12 +83,6 @@ export const routes = [
         name: "Edit profil",
         path: "/pengaturan",
         element: <PengaturanSiswa />,
-      },
-      {
-        icon: <UserPlusIcon {...icon} />,
-        name: "Logout",
-        path: "/logout",
-        element: <Profile />,
       },
     ],
   },
@@ -138,12 +126,6 @@ export const routes = [
         name: "Pengaturan",
         path: "/edit-profil",
         element: <PengaturanGuru />,
-      },
-      {
-        icon: <UserPlusIcon {...icon} />,
-        name: "Logout",
-        path: "/logout",
-        element: <Profile />,
       },
     ],
   },

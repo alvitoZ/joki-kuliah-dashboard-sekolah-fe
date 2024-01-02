@@ -40,22 +40,28 @@ export function DialogPostImage({ child }) {
   //END FOR DIALOG
 
   const postGambar = (data) => {
-    postMethod
-      .PostImage(data)
-      .then((res) => {
-        Swal.fire({
-          title: "Berhasil",
-          icon: "success",
+    if (data.image) {
+      postMethod
+        .PostImage(data)
+        .then((res) => {
+          Swal.fire({
+            title: "Berhasil",
+            icon: "success",
+          });
+          setRefresh((v) => !v);
+          handleOpenDialog();
+        })
+        .catch((err) => {
+          Swal.fire({
+            title: "gagal",
+            icon: "error",
+          });
         });
-        setRefresh((v) => !v);
-        handleOpenDialog();
-      })
-      .catch((err) => {
-        Swal.fire({
-          title: "gagal",
-          icon: "error",
-        });
-      });
+    }
+    Swal.fire({
+      title: "gagal tidak ada gambar yang diplih",
+      icon: "error",
+    });
   };
 
   const hapusGambar = (id) => {
@@ -87,12 +93,10 @@ export function DialogPostImage({ child }) {
     });
   }, [refresh]);
 
-  const getImage = (data) => {};
-
   //
   return (
     <>
-      <div className="w-fit cursor-pointer rounded-lg bg-green-500 font-bold text-white hover:bg-blue-400">
+      <div className="w-fit cursor-pointer rounded-lg bg-green-500 font-bold text-white  hover:opacity-50">
         <p onClick={() => handleOpenDialog()} className="p-2">
           Open Image
         </p>
@@ -106,7 +110,7 @@ export function DialogPostImage({ child }) {
         <DialogHeader>Tambah Gambar Untuk Soal/Jawaban Baru</DialogHeader>
         <div>
           <DialogBody divider className="flex h-full w-full flex-wrap p-4">
-            <div className="flex h-40 w-40 flex-col items-center rounded-md border-2 border-red-600">
+            <div className="flex h-40 w-40 flex-col items-center rounded-md border-2 border-gray-500">
               <img
                 className="max-w-32 max-h-32"
                 src={imgData}
@@ -115,18 +119,21 @@ export function DialogPostImage({ child }) {
               <input
                 // onChange={(e) => console.log(e.target.files[0].name)}
                 onChange={(e) => onChangePicture(e)}
-                className="block w-32 cursor-pointer rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:placeholder-gray-400"
+                className="block w-32 cursor-pointer rounded-lg border border-gray-600 bg-gray-50 text-sm text-gray-900 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:placeholder-gray-400"
                 type="file"
               />
             </div>
             {images.map(({ image, alt, _id }, i) => {
+              if (!image.endsWith("jpg") && !image.endsWith("png") && !image.endsWith("jpeg")) {
+                return;
+              }
               return (
                 <div
                   key={i}
                   onClick={() =>
                     child(`${import.meta.env.VITE_BASEURL}/images/` + image)
                   }
-                  className="relative flex h-40 w-40 cursor-pointer flex-col items-center rounded-md border-2 border-red-600 active:opacity-70"
+                  className="relative flex h-40 w-40 cursor-pointer flex-col items-center rounded-md border-2 bg-gray-700 active:opacity-70"
                 >
                   <img
                     className="max-w-32 max-h-32"
